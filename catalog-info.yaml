@@ -1,9 +1,9 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: agent-led-ui
-  title: Agent-Led-Ui
-  description: An agent led UI for testing.
+  name: agent-led-idv
+  title: Agent-Led-Idv
+  description: An agent led idv UI for testing.
     TODO: add description for blank-prototype-kit.
 
   annotations:
