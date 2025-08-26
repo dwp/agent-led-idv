@@ -3,11 +3,11 @@ kind: Component
 metadata:
   name: agent-led-idv
   title: Agent-Led-Idv
-  description: An agent led idv UI for testing.
-    TODO: add description for blank-prototype-kit.
+  description: |
+     An agent led idv UI for testing.
 
   annotations:
-    gitlab.com/project-slug: dwp/user-centred-design/blank-prototype-kit
+    gitlab.com/project-slug: dwp/user-centred-design/agent-led-idv
 
   labels:
     dwp.gov.uk/version: 1.0.0
