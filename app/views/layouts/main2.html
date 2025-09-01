@@ -46,6 +46,39 @@
       }
     })
 }}
+
+{{
+    dwpKeyDetailsBar({
+        primaryIdentifier: {
+            text: 'Name:',
+            value: 'Carers Allowance'
+        },
+        secondaryIdentifier: {
+            text: 'Component:',
+            value: 'DWP'
+        },
+        status: {
+            text: 'Claim status:',
+            value: 'Pending-new',
+            classes: 'govuk-tag--blue'
+        },
+        additionalData: [
+        {
+            text: "Date received:",
+            value: "25 April 2024"
+        },
+        {
+            text: "Client ID:",
+            value: "CA-WEB"
+        },
+        {
+            text: "Environment:",
+            value: "Production"
+        }
+        ]
+    })
+}}
+
 {% endblock %}
 
 {% block beforeContent %}

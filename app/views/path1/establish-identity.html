@@ -1,0 +1,74 @@
+{% extends "layouts/main_path1.html" %}
+
+{% block pageTitle %}
+  Establish identity – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Step 1</span>
+      <h1 class="govuk-heading-l">
+        Establish identity
+      </h1>
+
+      <p>
+        Before you can verify the customers identity (ID) you need to match the claimed ID to their DWP customer record.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        Action – establish identity questions
+      </h2>
+
+      <p>
+        The following questions, including historical values where appropriate, will help to match the customer to their DWP record:
+      </p>
+
+      <p class="govuk-body">You should ask:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>What is your last name?</li>
+        <li>What is your first name?</li>
+        <li>What is your date of birth?</li>
+        <li>What is your address?</li>
+        <li>What is your National Insurance number (NINO) or identity code?</li>
+      </ul>
+
+      <p>
+        You must ask enough questions to satisfy that you have matched the customer to the correct DWP record.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        Additional questions available
+      </h2>
+
+      <p>
+        The following questions can also be used, if needed, to establish the customers ID:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>What is your home telephone number?</li>
+        <li>What is your mobile telephone number?</li>
+        <li>What is your email address?</li>
+      </ul>
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-visually-hidden">Warning</span>
+          Make sure you are confident you have established the caller's identity before continuing to the next step.
+        </strong>
+      </div>
+
+      {{ govukButton({
+        text: "Continue",
+        href: "fraud-check"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

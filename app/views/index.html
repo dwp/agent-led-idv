@@ -1,25 +1,280 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Home" %}
-
 {% block content %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+{% set title =  "Agent Led IDV" %}
 
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
+{% set serviceName %}
+    DWP – Agent Led Identity Verification
+{% endset%}
 
-    <h1 class="govuk-heading-xl">
-      {{ serviceName }}
-    </h1>
+<h1 class="govuk-heading-l">Agent-led IDV prototype UI</h1>
 
+<p>
+  While in Alpha the aim of an Agent-led UI minimum viable product (MVP) is give DWP agents a digital tool to better deliver business compliant identity Verification when dealing with claimants over different channels.
+</p>
 
-      {{ govukButton({
-          text: "Continue",
-          href: "example/where-do-you-live"
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+  <div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#past-day">
+        Design prototypes
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#past-week">
+        Ideas space
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#past-month">
+        Error designs
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#past-year">
+        Useful links
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#past-year">
+        Archived designs
+      </a>
+    </li>
+  </ul>
+  <div class="govuk-tabs__panel" id="past-day">
+    <h2 class="govuk-heading-l">Prototypes</h2>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    <div><strong class="govuk-tag govuk-tag--purple">Concept</strong><strong class="govuk-tag govuk-tag--yellow">Sprint 1</strong> <strong class="govuk-tag govuk-tag--blue">In progress</strong></div>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+    <div>
+              <span class="govuk-caption-m">August 2025</span>
+              <h1 class="govuk-heading-m">Guided Light UI v1.0</h1>
+            </div>
+
+    <p>
+      In the next round of UR we are looking to test another important aspect of our guided UI. this is in more detail content here.
+    </p>
+
+      <h2 class="govuk-heading-s">We will be looking at:</h2>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>Linear checklist view of the IDV process broken into sequential stages</li>
+            <li>Explain matching process</li>
+            <li>Static text guidance for what to do step by step</li>
+            <li>Embedded policy reminders or tooltips that reinforce importance of IDV</li>
+            <li>Guidance links for more complex scenarios</li>
+            <li>Checkboxes for personal tracking to remind that each stage is done (but not stored)</li>
+            <li>Critical messaging to the users, interruption pages or notifications</li>
+        </ul>
+
+        {{ govukButton({
+          text: "Start prototype",
+          href: '/path1/start'
         }) }}
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
-  </div>
-</div>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    <div><strong class="govuk-tag govuk-tag--purple">Concept</strong><strong class="govuk-tag govuk-tag--yellow">Sprint 2</strong> <strong class="govuk-tag govuk-tag--blue">In progress</strong></div>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+    <div>
+              <span class="govuk-caption-m">November 2025</span>
+              <h1 class="govuk-heading-m">Future iteration</h1>
+            </div>
+
+    <p>
+      In the next round of UR we are looking to test another important aspect of our guided UI. this is in more detail content here.
+    </p>
+
+      <h2 class="govuk-heading-s">We will be looking at:</h2>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>Design consideration 1</li>
+            <li>Design consideration 2</li>
+            <li>Design consideration 3</li>
+        </ul>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      </div>
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+          <h2 class="govuk-heading-l">Ideas space</h2>
+
+          <h2 class="govuk-heading-m">Quick win for Colleague View?</h2>
+
+          <p>
+            Simply insert notification banners into their journey. This is would act as an alert or reminder for the user to perform the manual IDV checks.
+          </p>
+
+          <div class="govuk-notification-banner govuk-notification-banner" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Important
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <h3 class="govuk-notification-banner__heading">
+              You must perform identity verification before continuing with the call
+            </h3>
+
+            <p>
+              Please take the actions described below:
+            </p>
+
+            <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                    Step 1 - Establish identity
+                  </span>
+                </h2>
+              </div>
+              <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+                <p class="govuk-body">Before you can verify the customers identity (ID) you need to match the claimed ID to their DWP customer record.</p>
+
+                <p class="govuk-body">You should ask:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>What is your last name?</li>
+                <li>What is your first name?</li>
+                <li>What is your date of birth?</li>
+                <li>What is your address?</li>
+                <li>What is your National Insurance number (NINO) or identity code?</li>
+              </ul>
+
+              <p class="govuk-body">You must ask enough questions to satisfy that you have matched the customer to the correct DWP record.</p>
+
+              </div>
+            </div>
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                    Step 2 - Fraud check
+                  </span>
+                </h2>
+              </div>
+              <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+                <p class="govuk-body">You must preview the claimant’s personal details in CIS Searchlight for the following fraud indicators:</p>
+
+                <p class="govuk-body">You should ask:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>You must preview the claimant’s personal details in CIS Searchlight for the following fraud indicators</li>
+                <li>Where an ID @ Risk Flag is held in CIS, take specific action detailed within the Knowledge based verification questions guidance to verify the customers identity./li>
+              </ul>
+
+              </div>
+            </div>
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                    Step 3 - Verify identity
+                  </span>
+                </h2>
+              </div>
+              <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+                <p class="govuk-body">This is the content for Know your audience.</p>
+              </div>
+            </div>
+            <div class="govuk-accordion__section">
+            </div>
+          </div>
+
+        </div>
+      </div>
+            <h2 class="govuk-heading-m">Dynamic KBV list</h2>
+            <p class="govuk-body">Using the accordion componenet to list KBVs.</p>
+
+            <div class="govuk-notification-banner govuk-notification-banner" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__header">
+              <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                Important
+              </h2>
+            </div>
+            <div class="govuk-notification-banner__content">
+              <h3 class="govuk-notification-banner__heading">
+                You must verify the callers identity by asking 2 from 3 knowledge based verification questions. </h3>
+
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>Do not use new claim data for first-time claimants</li>
+                  <li>Use historical data where possible</li>
+                  <li>Choose questions from 2 different systems if available.</li>
+                </ul>
+
+              <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+              <div class="govuk-accordion__section">
+                <div class="govuk-accordion__section-header">
+                  <h2 class="govuk-accordion__section-heading">
+                    <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                      KBVs from CIS Searchlight
+                    </span>
+                  </h2>
+                </div>
+                <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>"Name another benefit or DWP payment you receive." (A 'none' response is acceptable)</li>
+                  <li>"Name another benefit you have claimed previously, regardless of whether it was paid to you?"</li>
+                  <li>"What was your previous surname?"</li>
+                  <li>"What were your previous addresses?" (First line of address and town are acceptable, postcode not needed). </li>
+                  <li>"On which date did your claim for the other benefit start?" (The correct month and year is acceptable).</li>
+                  <li>""What is the weekly or monthly amount of the other benefit?" (A reasonable tolerance range, depending on the amount, may be applied).</li>
+                  <li>"When did you receive your last payment?"</li>
+                  <li>"What is your partner’s National Insurance number?"</li>
+                  <li>"What is your partner’s full name?"</li>
+                  <li>"What is your partner’s date of birth?"</li>
+                  <li>"How many dependents are in your claim?"</li>
+                  <li>"What is the name of one of your dependent children?"</li>
+                  <li>"What is the date of birth of one of your dependent children?"</li>
+                </ul>
+
+                </div>
+              </div>
+              <div class="govuk-accordion__section">
+                <div class="govuk-accordion__section-header">
+                  <h2 class="govuk-accordion__section-heading">
+                    <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                      KBVs from legacy, PTP CAMS, UC systems
+                    </span>
+                  </h2>
+                </div>
+                <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+                  <p class="govuk-body">You must preview the claimant’s personal details in CIS Searchlight for the following fraud indicators:</p>
+
+                  <p class="govuk-body">You should ask:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>You must preview the claimant’s personal details in CIS Searchlight for the following fraud indicators</li>
+                  <li>Where an ID @ Risk Flag is held in CIS, take specific action detailed within the Knowledge based verification questions guidance to verify the customers identity./li>
+                </ul>
+
+                </div>
+              </div>
+              <div class="govuk-accordion__section">
+                <div class="govuk-accordion__section-header">
+                  <h2 class="govuk-accordion__section-heading">
+                    <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                      KBVs that are business specific
+                    </span>
+                  </h2>
+                </div>
+                <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+                  <p class="govuk-body">This is the content for Know your audience.</p>
+                </div>
+              </div>
+              <div class="govuk-accordion__section">
+              </div>
+            </div>
+
+          ----
+
 
 {% endblock %}

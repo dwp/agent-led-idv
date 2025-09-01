@@ -13,6 +13,7 @@
 {% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 
+
 {% block header %}
 
 {{
@@ -23,40 +24,29 @@
         navigation: {
           items: [
               {
-                  href: "/path1/start",
-                  text: "Latest prototype"
+                  href: "#",
+                  text: "Find someone"
               },
               {
                   href: "#",
-                  text: "Journey maps"
+                  text: "Tasks"
               },
               {
                   href: "#",
-                  text: "Show and tells"
+                  text: "Telephone claim"
               },
               {
                   href: "#",
-                  text: "Confluence space"
+                  text: "Paper claim"
               },
               {
                   href: "#",
-                  text: "Design documentation"
+                  text: "Admin"
               }
           ]
       }
     })
 }}
-{% endblock %}
-
-{% block beforeContent %}
-
-{{ govukPhaseBanner({
-  tag: {
-    text: "Prototype"
-  },
-  html: 'This is a prototype and should not be used as a real service</a>.'
-}) }}
-{% endblock %}
 
 
 {% block footer %}
@@ -71,8 +61,8 @@
                 text: "Accessibility statement"
             },
             {
-                href: "/manage-prototype",
-                text: "Manage prototype"
+                href: "/contact-dwp-support",
+                text: "Contact support (opens in a new tab)"
             },
             {
                 href: "",

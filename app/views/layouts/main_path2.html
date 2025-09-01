@@ -18,34 +18,43 @@
 {{
     dwpHeader({
         serviceName: "Agent Led IDV",
-        serviceHref: '#',
-        container: true,
-        navigation: {
-          items: [
-              {
-                  href: "/path1/start",
-                  text: "Latest prototype"
-              },
-              {
-                  href: "#",
-                  text: "Journey maps"
-              },
-              {
-                  href: "#",
-                  text: "Show and tells"
-              },
-              {
-                  href: "#",
-                  text: "Confluence space"
-              },
-              {
-                  href: "#",
-                  text: "Design documentation"
-              }
-          ]
-      }
+        serviceHref: '/index',
+        container: true
     })
 }}
+
+{{
+    dwpKeyDetailsBar({
+        primaryIdentifier: {
+            text: 'Name:',
+            value: 'John Smith'
+        },
+        secondaryIdentifier: {
+            text: 'Component:',
+            value: 'QQ 39 56 20'
+        },
+        status: {
+            text: 'Claim status:',
+            value: 'IDV Not verified',
+            classes: 'govuk-tag--blue'
+        },
+        additionalData: [
+        {
+            text: "Fraud markers:",
+            value: "No"
+        },
+        {
+            text: "Previously called:",
+            value: "Yes"
+        },
+        {
+            text: "Other:",
+            value: "Content"
+        }
+        ]
+    })
+}}
+
 {% endblock %}
 
 {% block beforeContent %}
@@ -56,6 +65,11 @@
   },
   html: 'This is a prototype and should not be used as a real service</a>.'
 }) }}
+
+{{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
 {% endblock %}
 
 
@@ -71,8 +85,8 @@
                 text: "Accessibility statement"
             },
             {
-                href: "/manage-prototype",
-                text: "Manage prototype"
+              href: "/manage-prototype",
+              text: "Manage prototype"
             },
             {
                 href: "",
