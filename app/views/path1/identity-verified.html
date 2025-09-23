@@ -1,0 +1,45 @@
+{% extends "layouts/main_path1.html" %}
+
+{% block pageTitle %}
+  Customer identity verfied – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleText: "Customer identity verified"
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+      <h2 class="govuk-heading-m" govuk-!-padding-right-5>
+        The IDV check has been successfully completed
+      </h2>
+
+      <p>
+        The customer has successfully verified their identity. You should record the outcome of this identity check in the relevant service line system.
+      </p>
+
+      <p>
+        You can now continue to process their request.
+      </p>
+
+      <div class="govuk-inset-text">
+        If you are inactive for more than 2 minutes, this page will time out and return to the start of the IDV process.
+      </div>
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Finish IDV check and return to start",
+        href: "start"
+
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

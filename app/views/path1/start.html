@@ -1,7 +1,7 @@
 {% extends "layouts/main_path1.html" %}
 
 {% block pageTitle %}
-  Confirm user identity – {{ serviceName }} – GOV.UK Prototype Kit
+  Check the identity of a customer – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
@@ -10,23 +10,21 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Confirm user identity
+        Check the identity of a customer
       </h1>
 
       <p>
-        During Alpha we will be testing a range of Agent-led UIs to help and support DWP agents to deliver more effective identify verification inline with the current IDV Operational Instruections.
+        You must check the identity of anyone who contacts DWP before:
       </p>
 
-      <h2 class="govuk-heading-m">
-        This could be a start page
-      </h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>paying benefits</li>
+        <li>updating DWP records</li>
+        <li>sharing personal claimant information</li>
+      </ul>
 
       <p>
-        We can use this page to make sure the user knows what to expect on the next section of pages.
-      </p>
-
-      <p>
-        Read more <a href="/path/of/page">about this topic</a>.
+        This tool will help you to verify their identity and tell you how to record the outcome of the identity verification (IDV) check.
       </p>
 
       <a href="select-channel" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">

@@ -1,7 +1,7 @@
 {% extends "layouts/main_path1.html" %}
 
 {% block pageTitle %}
-  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+  Type of telephony – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
@@ -10,7 +10,7 @@
 <fieldset class="govuk-fieldset">
 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
 <h1 class="govuk-fieldset__heading">
-  Type of call
+  Type of telephony
 </h1>
 </legend>
 <div class="govuk-radios" data-module="govuk-radios">
@@ -32,22 +32,6 @@
 </fieldset>
 </div>
 
-  <details class="govuk-details">
-  <summary class="govuk-details__summary">
-  <span class="govuk-details__summary-text">
-    Does the claimant want general information only?
-  </span>
-  </summary>
-  <div class="govuk-details__text">
-  If the customer is requesting general information only, which can be answered without the need to ask for their details, the IDV check does not apply.
-  Examples of this could be:
-  information about a form
-  return address for documents
-  contact numbers for other departments
-  other general information queries
-  </div>
-  </details>
-
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
       {{ govukButton({
@@ -55,7 +39,15 @@
         href: "establish-identity"
       }) }}
 
-    </div>
-  </div>
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            If you cannot complete this task
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          Content to support and advise the agent would go here.
+        </div>
+      </details>
 
 {% endblock %}

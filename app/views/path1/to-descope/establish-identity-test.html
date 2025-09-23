@@ -1,0 +1,80 @@
+{% extends "layouts/main_path1.html" %}
+
+{% block pageTitle %}
+  Establish identity – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Establish identity</span>
+      <h1 class="govuk-heading-l">
+        You need to match the customer to their DWP record
+      </h1>
+
+      <p>
+        Before you can verify the claimant's identity (ID), you need to establish their identity by matching them to their DWP claimant record.
+      </p>
+
+      <p>To do this, you should ask:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>What is your last name?</li>
+        <li>What is your first name?</li>
+        <li>What is your National Insurance number?</li>
+      </ul>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Additional questions available
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+        </div>
+      </details>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Have you matched the customer to their DWP record?
+            </h1>
+          </legend>
+          <div id="changedName-hint" class="govuk-hint">
+            This includes changing your last name or spelling your name differently
+          </div>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="changedName" name="changedName" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="changedName">Yes</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="changedName-2" name="changedName" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="changedName-2">No</label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Continue",
+        href: "fraud-check"
+      }) }}
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            If you cannot complete this task
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+        </div>
+      </details>
+
+    </div>
+  </div>
+{% endblock %}

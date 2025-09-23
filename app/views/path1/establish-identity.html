@@ -1,7 +1,7 @@
 {% extends "layouts/main_path1.html" %}
 
 {% block pageTitle %}
-  Establish identity – {{ serviceName }} – GOV.UK Prototype Kit
+  You need to match the customer to their DWP record – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
@@ -9,66 +9,82 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">Step 1</span>
+      <span class="govuk-caption-l">Establish identity</span>
       <h1 class="govuk-heading-l">
-        Establish identity
+        You need to match the customer to their DWP record
       </h1>
 
       <p>
-        Before you can verify the customers identity (ID) you need to match the claimed ID to their DWP customer record.
+        Before you can verify the claimant's identity (ID), you need to establish their identity by matching them to their DWP claimant record.
       </p>
-
-      <h2 class="govuk-heading-m">
-        Action – establish identity questions
-      </h2>
 
       <p>
-        The following questions, including historical values where appropriate, will help to match the customer to their DWP record:
+        To do this, you should ask:
       </p>
 
-      <p class="govuk-body">You should ask:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>What is your last name?</li>
         <li>What is your first name?</li>
-        <li>What is your date of birth?</li>
-        <li>What is your address?</li>
-        <li>What is your National Insurance number (NINO) or identity code?</li>
+        <li>What is your National Insurance number?</li>
       </ul>
 
-      <p>
-        You must ask enough questions to satisfy that you have matched the customer to the correct DWP record.
-      </p>
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Additional questions available
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <ul class="govuk-list govuk-list--bullet">
+            <li>What is your home telephone number?</li>
+            <li>What is your mobile telephone number?</li>
+            <li>What is your email address?</li>
+          </ul>
+        </div>
+      </details>
 
-      <h2 class="govuk-heading-m">
-        Additional questions available
-      </h2>
+      <form class="form" action="/establish-answer" method="post">
 
-      <p>
-        The following questions can also be used, if needed, to establish the customers ID:
-      </p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>What is your home telephone number?</li>
-        <li>What is your mobile telephone number?</li>
-        <li>What is your email address?</li>
-      </ul>
-
-      {% from "govuk/components/button/macro.njk" import govukButton %}
-
-      <div class="govuk-warning-text">
-        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-        <strong class="govuk-warning-text__text">
-          <span class="govuk-visually-hidden">Warning</span>
-          Make sure you are confident you have established the caller's identity before continuing to the next step.
-        </strong>
-      </div>
+      {{ govukRadios({
+        name: "matched",
+        value: data['matched'],
+        fieldset: {
+          legend: {
+            text: "Have you matched the customer to their DWP record?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
 
       {{ govukButton({
-        text: "Continue",
-        href: "fraud-check"
+        text: "Continue"
       }) }}
+
+      </form>
 
     </div>
   </div>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            If you cannot complete this task
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          Content to support and advise the agent would go here.
+        </div>
+      </details>
 
 {% endblock %}

@@ -1,0 +1,35 @@
+{% extends "layouts/main_path1.html" %}
+
+{% block pageTitle %}
+  You need to end this customer interaction – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">NIFU fraud flag</span>
+      <h1 class="govuk-heading-l">
+        You need to end this customer interaction
+      </h1>
+
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-visually-hidden">Warning</span>
+          If the NIFU flag is present in Searchlight then you must end the customer interaction here and do not continue this journey.
+        </strong>
+      </div>
+
+      <p>
+        You can now reset the tool ready for the next session by clicking the button below.
+      </p>
+
+      {{ govukButton({
+        text: "Finish IDV check and return to start",
+        href: "start"
+
+      }) }}
+
+{% endblock %}

@@ -42,10 +42,6 @@
 </fieldset>
 </div>
 
-      <p>
-        Read more <a href="establish-identity">about this topic</a>.
-      </p>
-
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
       {{ govukButton({
@@ -53,7 +49,15 @@
         href: "telephony-start"
       }) }}
 
-    </div>
-  </div>
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            If you cannot complete this task
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          Content to support and advise the agent would go here.
+        </div>
+      </details>
 
 {% endblock %}

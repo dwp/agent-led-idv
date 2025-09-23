@@ -1,7 +1,7 @@
 {% extends "layouts/main_path1.html" %}
 
 {% block pageTitle %}
-  Verify identity – {{ serviceName }} – GOV.UK Prototype Kit
+  You need to ask the customer knowledge-based verification questions – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
@@ -9,33 +9,178 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">Step 3</span>
+      {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+      {% set html %}
+        <h3 class="govuk-notification-banner__heading">
+          ID at Risk fraud flag found
+        </h3>
+
+        <p class="govuk-body">Do not use these KBV questions</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Bank or building society information</li>
+          <li>Current employment detail</li>
+        </ul>
+
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: html
+      }) }}
+
+      <span class="govuk-caption-l">Verify identity</span>
       <h1 class="govuk-heading-l">
-        Verify identity
+        You need to ask the customer knowledge-based verification (KBV) questions
       </h1>
 
       <p>
-        COntent here...
+        To pass the IDV check the customer needs to correctly answer 2 of 3 KBV questions. You must choose questions from 2 different systems, if available.
       </p>
 
       <p>
-        Read more <a href="/path/of/page">about this topic</a>.
+        Use historical data where possible. For first-time claimants, do not use new claim data to verify their identity.
       </p>
 
-      <div class="govuk-warning-text">
-        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-        <strong class="govuk-warning-text__text">
-          <span class="govuk-visually-hidden">Warning</span>
-          Make sure you are confident you have ask the appropriate but varied knownledge based verification questions before continuing to the next step.
-        </strong>
+        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                Questions from CIS Searchlight
+              </span>
+            </h2>
+          </div>
+          <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+          <ul class="govuk-list govuk-list--bullet">
+            <li>"Name another benefit or DWP payment you receive." (A 'none' response is acceptable)</li>
+            <li>"Name another benefit you have claimed previously, regardless of whether it was paid to you?"</li>
+            <li>"What was your previous surname?"</li>
+            <li>"What were your previous addresses?" (First line of address and town are acceptable, postcode not needed). </li>
+            <li>"On which date did your claim for the other benefit start?" (The correct month and year is acceptable).</li>
+            <li>"What is the weekly or monthly amount of the other benefit?" (A reasonable tolerance range, depending on the amount, may be applied).</li>
+            <li>"When did you receive your last payment?"</li>
+            <li>"What is your partner’s National Insurance number?"</li>
+            <li>"What is your partner’s full name?"</li>
+            <li>"What is your partner’s date of birth?"</li>
+            <li>"How many dependents are in your claim?"</li>
+            <li>"What is the name of one of your dependent children?"</li>
+            <li>"What is the date of birth of one of your dependent children?"</li>
+          </ul>
+
+          </div>
+        </div>
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                Questions from legacy, PTP CAMS, UC systems
+              </span>
+            </h2>
+          </div>
+          <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+          <ul class="govuk-list govuk-list--bullet">
+            <li>"What is the date of your most recent marriage?"</li>
+            <li>"Please provide your bank sort code where you receive benefits, pension, or primary income." (If this question is asked, the last 4 digits of bank account question should not be asked)</li>
+            <li>"What is the name of your primary home mortgage lender?"</li>
+            <li>"What is the monthly rate of your primary home mortgage payment?" (A reasonable range of difference may be applied depending on the amount).</li>
+            <li>"What is your pay or payment day?"</li>
+            <li>"What is the name of the employer that pays your work pension?" </li>
+            <li>"What is the weekly or monthly amount of your work pension?" (A reasonable tolerance range, depending on the amount, may be applied).</li>
+            <li>"What current deductions are taken from your benefit or wage?"</li>
+            <li>"How much is deducted from your benefit or wage?"(A reasonable tolerance range, depending on amount, can be applied).</li>
+            </ul>
+
+            <p class="govuk-body"><strong>The following questions can also be used to verify identity but only if not used as part of establishing identity:</strong></p>
+
+            <ul class="govuk-list govuk-list--bullet">
+            <li>"What is your home telephone number?" (Do not use this to verify identity in an outbound call if it is the number you have called the claimant on).</li>
+            <li>"What is your mobile telephone number?" (Do not use this to verify identity in an outbound call if it is the number you have called the claimant on).</li>
+            <li>"What is your email address?"</li>
+          </ul>
+
+          </div>
+        </div>
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                Questions that are business specific
+              </span>
+            </h2>
+          </div>
+          <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+
+            <ul class="govuk-list govuk-list--bullet">
+              <li>"When did you last contact the department?" (No previous contact is acceptable).</li>
+              <li>"What was your last contact about?" (No previous contact is acceptable). </li>
+              <li>"What was the date of the recent correspondence you received from the department?" (The correct month and year is acceptable).</li>
+              <li>"What is your signing day?" (For relevant benefits). </li>
+              <li>"When were you last admitted or discharged from hospital?" (The correct month and year is acceptable).</li>
+              <li>"What is the name and surgery address of your GP?"</li>
+              </ul>
+
+              <p class="govuk-body"><strong>Any questions relating to a recent event.</strong></p>
+
+              <ul class="govuk-list govuk-list--bullet">
+              <li>"What components of PIP have you been awarded?" (Must give both components and levels if awarded).</li>
+              <li>"What other income or wage do you have?" (A reasonable tolerance range, depending on the amount, can be applied). </li>
+              <li>"What is the name and address of your previous employer?"</li>
+              <li>"What is your Debt Reference number?"</li>
+              <li>"On what date was your Vehicle Certificate of Entitlement issued?" (The correct month and year is acceptable).</li>
+              <li>"What is the name of the disabled person you care for?"</li>
+              <li>"What is the date of birth of the disabled person you care for?"</li>
+              <li>"What is your relationship with the disabled person you care for?"</li>
+              <li>"What is your Child Maintenance Group case reference number?"</li>
+            </ul>
+          </div>
+        </div>
+        <div class="govuk-accordion__section">
+        </div>
       </div>
 
-      {{ govukButton({
-        text: "Continue",
-        href: "idv-success"
+      <form class="form" action="/verify-answer" method="post">
+
+      {{ govukRadios({
+        name: "verify",
+        value: data['verify'],
+        fieldset: {
+          legend: {
+            text: "Have you successfully verified their identity?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
       }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
 
     </div>
   </div>
+
+  <details class="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        If you cannot complete this task
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      Content to support and advise the agent would go here.
+    </div>
+  </details>
 
 {% endblock %}

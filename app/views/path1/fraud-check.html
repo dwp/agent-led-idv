@@ -1,7 +1,7 @@
 {% extends "layouts/main_path1.html" %}
 
 {% block pageTitle %}
-  Fraud check – {{ serviceName }} – GOV.UK Prototype Kit
+  Check the claimed ID is not at a higher risk of fraud – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
@@ -9,65 +9,80 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">Step 2</span>
+      <span class="govuk-caption-l">Fraud checks</span>
       <h1 class="govuk-heading-l">
-        Fraud check
+        You need to check the claimed ID is not at a higher risk of fraud or suspected to be fake
       </h1>
 
       <p>
-        A fraud check must be completed:
+        Now that you have established the customer's identity, you must carry out identity fraud checks.
       </p>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li>during customer contact </li>
-          <li>during claim processing </li>
-          <li>before claim completion, or </li>
-          <li>before any payment impact.</li>
-        </ul>
-
-        <h2 class="govuk-heading-m">
-          Action
-        </h2>
-
-        <p>
-          You must preview the claimant’s personal details in CIS Searchlight for the following fraud indicators:
-        </p>
-
-        <h2 class="govuk-heading-m">
-          Action - Check date of death held
-        </h2>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>where identity verification (IDV) is passed you must investigate whether the date of death has been incorrectly recorded on CIS Searchlight, learn about Part 2 - General and Specialist Procedures </li>
-            <li>where IDV is not passed you must complete a fraud referral</li>
-          </ul>
-
-        <h2 class="govuk-heading-m">
-          You must make sure the claimed identity is not:
-        </h2>
-
-          <ul class="govuk-list govuk-list--bullet">
-            <li>at a higher risk than usual of identity fraud </li>
-            <li>suspected to be a synthetic or made-up identity. </li>
-          </ul>
 
       <p>
-        Where an ID @ Risk Flag is held in CIS, take specific action detailed within the <a href="#">Knowledge based verification questions</a> guidance to verify the customers identity.
+        To do this, open CIS Searchlight and preview the customer's details.
       </p>
 
-      <div class="govuk-warning-text">
-        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-        <strong class="govuk-warning-text__text">
-          <span class="govuk-visually-hidden">Warning</span>
-          Make sure you are confident you have completed an effective fraud check before continuing to the next step.
-        </strong>
-      </div>
+      <form class="form" action="/fraud-answer" method="post">
 
-      {{ govukButton({
-        text: "Continue",
-        href: "verify-identity"
-      }) }}
+        {{ govukCheckboxes({
+          name: "fraud",
+          values: data["fraud"],
+          fieldset: {
+            legend: {
+              text: "Does the customer's record have any of the following fraud markers?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "Select all that apply."
+          },
+          items: [
+            {
+              value: "dateofdeath ",
+              text: "Date of death"
+            },
+            {
+              value: "nifu",
+              text: "NIFU"
+            },
+            {
+              value: "idatrisk",
+              text: "ID at risk"
+            },
+            {
+              value: "cfems",
+              text: "CFEMS"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "none",
+              text: "No, none of these",
+              behaviour: "exclusive"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        </form>
 
     </div>
   </div>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            If you cannot complete this task
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          Content to support and advise the agent would go here.
+        </div>
+      </details>
 
 {% endblock %}
