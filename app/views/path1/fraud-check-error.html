@@ -1,0 +1,102 @@
+{% extends "layouts/main_path1.html" %}
+
+{% block pageTitle %}
+  Error - Check the claimed ID is not at a higher risk of fraud – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: [
+          {
+            text: "Make sure you select any fraud markers you see or select none",
+            href: "#fraud"
+          }
+        ]
+      }) }}
+
+      <span class="govuk-caption-l">Fraud checks</span>
+      <h1 class="govuk-heading-l">
+        You need to check the claimed ID is not at a higher risk of fraud or suspected to be fake
+      </h1>
+
+      <p>
+        Now that you have established the customer's identity, you must carry out identity fraud checks.
+      </p>
+
+      <p>
+        To do this, open CIS Searchlight and preview the customer's details.
+      </p>
+
+      <form class="form" action="/fraud-answer" method="post">
+
+
+                {{ govukCheckboxes({
+                  name: "fraud",
+                  values: data["fraud"],
+                  fieldset: {
+                    legend: {
+                      text: "Does the customer's record have any of the following fraud markers?",
+                      isPageHeading: false,
+                      classes: "govuk-fieldset__legend--m"
+                    }
+                    },
+                    hint: {
+                      text: "Select all that apply"
+                    },
+                    errorMessage: {
+                      text: "Make sure you select any fraud markers you see or select none"
+                    },
+                    items: [
+                    {
+                      value: "dateofdeath",
+                      text: "Date of death"
+                    },
+                    {
+                      value: "nifu",
+                      text: "NIFU"
+                    },
+                    {
+                      value: "idatrisk",
+                      text: "ID at risk"
+                    },
+                    {
+                      value: "cfems",
+                      text: "CFEMS"
+                    },
+                    {
+                      divider: "or"
+                    },
+                    {
+                      value: "none",
+                      text: "No, none of these",
+                      behaviour: "exclusive"
+                    }
+                    ]
+                  }) }}
+
+                  {{ govukButton({
+                    text: "Continue"
+                  }) }}
+
+        </form>
+
+    </div>
+  </div>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            If you cannot complete this task
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          Content to support and advise the agent would go here.
+        </div>
+      </details>
+
+{% endblock %}
