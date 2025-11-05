@@ -70,8 +70,9 @@
           }
         ]
       }) }}
-
+    <!--
     <form class="form" action="/kbv-answer/identity-verified-timeline" method="post">
+      -->
 
     {{ govukRadios({
       name: "verify",
@@ -96,10 +97,13 @@
     }) }}
 
     {{ govukButton({
-      text: "Continue"
+      text: "Continue",
+      href: "identity-verified-timeline"
     }) }}
 
+    <!--
   </form>
+  -->
 
       <details class="govuk-details">
         <summary class="govuk-details__summary">

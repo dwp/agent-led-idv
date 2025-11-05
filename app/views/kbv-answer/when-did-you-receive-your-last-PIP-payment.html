@@ -55,7 +55,8 @@
   ]
 }) }}
 
-<form class="form" action="/kbv-answer/name-and-surgery-address-of-your-GP" method="post">
+<!--
+<form class="form" action="/kbv-answer/name-and-surgery-address-of-your-GP" method="post">-->
 
 {{ govukRadios({
   name: "verify",
@@ -80,10 +81,13 @@
 }) }}
 
 {{ govukButton({
-  text: "Continue"
+  text: "Continue",
+  href: "name-and-surgery-address-of-your-GP"
 }) }}
 
+<!--
 </form>
+-->
 
     <details class="govuk-details">
       <summary class="govuk-details__summary">
