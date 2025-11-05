@@ -1,0 +1,60 @@
+{% extends "layouts/main_path2.html" %}
+
+{% block pageTitle %}
+  Ask the customer knowledge-based verification questions – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    {% set html %}
+    <h3 class="govuk-notification-banner__heading">
+      ID at Risk fraud flag found
+    </h3>
+
+    <p class="govuk-body">Do not use these KBV questions</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Bank or building society information</li>
+      <li>Current employment detail</li>
+    </ul>
+    {% endset %}
+
+    {{ govukNotificationBanner({
+      html: html,
+      type: "important"
+    }) }}
+
+    <h1 class="govuk-heading-l">
+      You need to ask the customer knowledge-based verification (KBV) questions
+    </h1>
+
+    <p>
+      To prove their identity, the customer must correctly answer 2 of 3 KBV questions. You must choose questions from 2 different systems, if available.
+    </p>
+
+    <p>Use historical data where possible. For first-time claimants, do not use new claim data to verify their identity.
+    </p>
+
+    {{ govukButton({
+      text: "Continue",
+      href: "/kbv-list/kbv-cis-list"
+    }) }}
+
+  </div>
+</div>
+
+<details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      If you cannot complete this task
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    Content to support and advise the agent would go here.
+  </div>
+</details>
+
+{% endblock %}

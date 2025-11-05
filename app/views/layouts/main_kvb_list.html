@@ -12,42 +12,39 @@
 {% from "internal-service-footer/macro.njk" import dwpFooter %}
 {% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
 
 {% block header %}
 
 {{
-        dwpHeader({
-            serviceName: "Identity Checker",
-            serviceHref: "/index",
-            action: "Report fraud risk",
-            actionHref: "#",
-            container: true
-        })
+    dwpHeader({
+        serviceName: "Agent Led IDV",
+        serviceHref: '/index',
+        container: true
+    })
 }}
 
 {{
     dwpKeyDetailsBar({
         primaryIdentifier: {
             text: 'Name:',
-            value: 'Jane Doe'
+            value: 'John Smith'
         },
         secondaryIdentifier: {
-            text: 'National insurance number',
-            value: 'QQ 12 34 56 X'
+            text: 'Component:',
+            value: 'QQ 39 56 20'
         },
         status: {
             text: 'Claim status:',
-            value: 'Vulnerable',
-            classes: 'govuk-tag--purple'
+            value: 'IDV Not verified',
+            classes: 'govuk-tag--blue'
         },
         additionalData: [
         {
-            text: "Title here:",
+            text: "Fraud markers:",
             value: "No"
         },
         {
-            text: "Title here:",
+            text: "Previously called:",
             value: "Yes"
         },
         {
@@ -69,6 +66,10 @@
   html: 'This is a prototype and should not be used as a real service</a>.'
 }) }}
 
+{{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
 {% endblock %}
 
 

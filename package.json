@@ -9,9 +9,8 @@
     "@govuk-prototype-kit/common-templates": "2.0.1",
     "@govuk-prototype-kit/step-by-step": "2.2.3",
     "find-an-address-plugin": "github:dwp/find-an-address-plugin",
-    "govuk-frontend": "5.12.0",
+    "govuk-frontend": "5.13.0",
     "govuk-prototype-kit": "13.18.1",
-    "hmrc-frontend": "6.93.0",
     "jquery": "3.7.1",
     "notifications-node-client": "8.2.1"
   }

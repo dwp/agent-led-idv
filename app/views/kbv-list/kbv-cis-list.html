@@ -1,0 +1,103 @@
+{% extends "layouts/main_path2.html" %}
+
+{% block pageTitle %}
+  Select one KBV question to ask from CIS Searchlight – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <!-- Notification banner for fraud flags -->
+
+      {% set html %}
+
+        <h3 class="govuk-notification-banner__heading">
+          ID at Risk fraud flag found
+        </h3>
+
+        <p class="govuk-body">Do not use these KBV questions</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Bank or building society information</li>
+          <li>Current employment detail</li>
+        </ul>
+
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: html
+      }) }}
+
+      <span class="govuk-caption-l">Question 1</span>
+      <h1 class="govuk-heading-l">
+        Choose one CIS Searchlight question from the list below to ask the customer
+      </h1>
+      <p class="govuk-body">Use the data held in CIS Searchlight to check if the customer's answer is correct.</p>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>Name another benefit or DWP payment you receive. (A 'none' response is acceptable)</li>
+        <li>Name another benefit you have claimed previously, regardless of whether it was paid to you?</li>
+        <li>What was your previous surname?</li>
+        <li>What were your previous addresses? (First line of address and town are acceptable, postcode not needed). </li>
+        <li>On which date did your claim for the other benefit start?" (The correct month and year is acceptable).</li>
+        <li>What is the weekly or monthly amount of the other benefit? (A reasonable tolerance range, depending on the amount, may be applied).</li>
+        <li>When did you receive your last payment?</li>
+        <li>What is your partner’s National Insurance number?</li>
+        <li>What is your partner’s full name?</li>
+        <li>What is your partner’s date of birth?</li>
+        <li>How many dependents are in your claim?</li>
+        <li>What is the name of one of your dependent children?</li>
+        <li>What is the date of birth of one of your dependent children?</li>
+      </ul>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <form class="form" action="/answer-kbv-cis-list" method="post">
+
+    {{ govukRadios({
+      name: "verify",
+      value: data['verify'],
+      fieldset: {
+        legend: {
+          text: "Did the customer answer the question correctly?",
+          isPageHeading: false,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Yes"
+        },
+        {
+          value: "no",
+          text: "No"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue",
+      href: "kbv-legacy-list"
+    }) }}
+
+    </form>
+
+    </div>
+  </div>
+
+  <details class="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        If you cannot complete this task
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      Content to support and advise the agent would go here.
+    </div>
+  </details>
+
+{% endblock %}
