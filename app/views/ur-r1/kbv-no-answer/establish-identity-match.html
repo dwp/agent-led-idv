@@ -1,13 +1,13 @@
-{% extends "layouts/main_path2.html" %}
+{% extends "layouts/main_path1.html" %}
 
 {% block pageTitle %}
-  Name another benefit you have previously applied for? – {{ serviceName }} – GOV.UK Prototype Kit
+  Establish customer identity – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-three-quarters">
+    <div class="govuk-grid-column-two-thirds">
 
       <!-- Notification banner for fraud flags -->
 
@@ -30,71 +30,61 @@
         html: html
       }) }}-->
 
-      <span class="govuk-caption-l">Question 1</span>
-      <h1 class="govuk-heading-l">
-        Name another benefit you have previously applied for?
-      </h1>
-      <p class="govuk-body">Check the answer the customer gives matches one of the answers below.</p>
+      <!-- `form tag for radios` -->
 
-      {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+<!--      <form class="form" action="/match1-answer" method="post">
 
-{{ govukSummaryList({
-  card: {
-    title: {
-      text: "Customer data held on CIS Searchlight"
-    }
-  },
-  rows: [
-    {
-      key: {
-        text: "Benefit 1"
-      },
-      value: {
-        html: "Jobseeker's Allowance (JSA)"
-      }
-    },
-    {
-      key: {
-        text: "Benefit 2"
-      },
-      value: {
-        html: "Maternity Allowance"
-      }
-    }
-  ]
-}) }}
+-->
 
-    <form class="form" action="/kbv-answer/when-did-you-receive-your-last-PIP-payment" method="post">
+      <!--<span class="govuk-caption-l">Caption title</span>-->
 
-    {{ govukRadios({
-      name: "verify",
-      value: data['verify'],
-      fieldset: {
-        legend: {
-          text: "Did the customer answer the question correctly?",
-          isPageHeading: false,
-          classes: "govuk-fieldset__legend--m"
-        }
-      },
-      items: [
-        {
-          value: "yes",
-          text: "Yes"
-        },
-        {
-          value: "no",
-          text: "No"
-        }
-      ]
-    }) }}
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Before I can continue with your request, I need to check your identity
+            </h1>
+          </legend>
 
-    {{ govukButton({
-      text: "Continue",
-      href: "when-did-you-receive-your-last-PIP-payment"  
-    }) }}
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
 
-    </form>
+          <div class="govuk-form-group">
+            <h2 class="govuk-heading-m">What is your full name?</h2>
+            <label class="govuk-label" for="first-name">First name</label>
+            <input class="govuk-input" id="first-name" name="firstname" type="text" autocomplete="off" spellcheck="false">
+          </div>
 
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="last-name">Last name</label>
+            <input class="govuk-input" id="last-name" name="lastname" type="text" autocomplete="off" spellcheck="false">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--m" for="national-insurance-number">
+              What is your National Insurance number?
+            </label>
+            <div id="national-insurance-number-hint" class="govuk-hint">
+              It’s on your National Insurance card, benefit letter, payslip or P60 – for example, QQ 12 34 56 X.
+            </div>
+            <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing"
+                   id="national-insurance-number"
+                   name="nationalinsurancenumber"
+                   type="text"
+                   autocomplete="off"
+                   spellcheck="false"
+                   aria-describedby="national-insurance-number-hint">
+          </div>
+        </fieldset>
+
+        {{ govukButton({
+          text: "Find customer record",
+          href: 'kbv-start'
+        }) }}
+
+        <!--
+      </form>
+
+
+<!--
     <details class="govuk-details">
       <summary class="govuk-details__summary">
         <span class="govuk-details__summary-text">
@@ -105,10 +95,14 @@
         Content to support and advise the agent would go here.
       </div>
     </details>
+    -->
 
 
     </div>
 
+    <!-- `right sidebar` -->
+
+<!--
     <div class="govuk-grid-column-one-quarter">
 
       <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
@@ -141,6 +135,6 @@
     </div>
   </div>
 
-
+-->
 
 {% endblock %}

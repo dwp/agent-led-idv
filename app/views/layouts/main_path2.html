@@ -16,47 +16,30 @@
 
 {% block header %}
 
-{{
-        dwpHeader({
-            serviceName: "Identity Checker",
-            serviceHref: "/index",
-            action: "Report fraud risk",
-            actionHref: "#",
-            container: true
-        })
-}}
+<header class="dwp-header">
+    <div class="dwp-header__content govuk-width-container">
+      <div class="dwp-header__service-name">
+        <a href="/index" class="dwp-header__link">Identity Checker</a>
+      </div>
+  </div>
 
-{{
-    dwpKeyDetailsBar({
-        primaryIdentifier: {
-            text: 'Name:',
-            value: 'Jane Doe'
-        },
-        secondaryIdentifier: {
-            text: 'National insurance number',
-            value: 'QQ 12 34 56 X'
-        },
-        status: {
-            text: 'Claim status:',
-            value: 'Vulnerable',
-            classes: 'govuk-tag--purple'
-        },
-        additionalData: [
-        {
-            text: "Title here:",
-            value: "No"
-        },
-        {
-            text: "Title here:",
-            value: "Yes"
-        },
-        {
-            text: "Other:",
-            value: "Content"
-        }
-        ]
-    })
-}}
+  <section class="dwp-key-details-bar" aria-label="Key details" data-landmark-index="2">
+    <div class="dwp-key-details-bar__key-details">
+      <dl class="dwp-key-details-bar__top-block">
+          <dt class="govuk-visually-hidden">Name:</dt>
+          <dd class="dwp-key-details-bar__primary">Albus Dumbledore</dd>
+          <dt class="govuk-visually-hidden">National insurance number</dt>
+          <dd class="dwp-key-details-bar__secondary">QQ 12 34 56 X</dd>
+          <!--<dt class="govuk-visually-hidden">Customer status</dt>
+          <dd class="dwp-key-details-bar__status">
+            <strong class="govuk-tag dwp-key-details-bar__status--dwp-default">
+              Vulnerable</strong>
+          </dd>-->
+      </dl>
+    </div>
+  </section>
+</header>
+
 
 {% endblock %}
 

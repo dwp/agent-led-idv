@@ -1,0 +1,89 @@
+{% extends "layouts/main_path2.html" %}
+
+{% block pageTitle %}
+  Customer identity verified – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    {{ govukPanel({
+      titleText: "Customer identity verified"
+    }) }}
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+    <h2 class="govuk-heading-m">
+      The IDV check has been successfully completed
+    </h2>
+
+    <p>
+      The customer has successfully verified their identity. You should record the outcome of this identity check in the relevant service line system.
+    </p>
+
+    <p>
+      You can now continue to process their request.
+    </p>
+
+    <div class="govuk-inset-text">
+      If you are inactive for more than 2 minutes, this page will time out and return to the start of the IDV process.
+    </div>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      text: "Close Identity Checker and continue",
+      href: "kbv-start"
+    }) }}
+
+    <p>
+      (Button just returns to KBV start on this prototype page)
+    </p>
+
+  </div>
+
+  <!--
+
+  <div class="govuk-grid-column-one-quarter">
+
+    <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary" aria-labelledby="subsection-title">
+      <h2 class="govuk-heading-m" id="subsection-title">
+        KBV progress
+      </h2>
+
+      <div class="govuk-!-padding-bottom-1"></div>
+
+      <div class="dwp-timeline">
+        <ol class="dwp-timeline__items">
+          <li class="dwp-timeline__item">
+            <h3 class="dwp-timeline__heading">Question 1</h3>
+            <p class="dwp-timeline__datetime">CIS Searchlight</p>
+            <strong class="govuk-tag govuk-tag--red">Failed</strong>
+          </li>
+
+          <div class="govuk-!-padding-bottom-1"></div>
+
+          <li class="dwp-timeline__item">
+            <h3 class="dwp-timeline__heading">Question 2</h3>
+            <p class="dwp-timeline__datetime">Legacy</p>
+            <strong class="govuk-tag govuk-tag--green">Correct</strong>
+          </li>
+
+          <div class="govuk-!-padding-bottom-1"></div>
+
+          <li class="dwp-timeline__item">
+            <h3 class="dwp-timeline__heading">Question 3</h3>
+            <p class="dwp-timeline__datetime">Business specific</p>
+            <strong class="govuk-tag govuk-tag--green">Correct</strong>
+          </li>
+        </ol>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+-->
+
+{% endblock %}

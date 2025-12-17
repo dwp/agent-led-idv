@@ -15,69 +15,30 @@
 
 {% block header %}
 
-{{
-    dwpHeader({
-        serviceName: "Agent Led IDV",
-        serviceHref: '#',
-        container: true,
-        navigation: {
-          items: [
-              {
-                  href: "/path1/start",
-                  text: "Latest prototype"
-              },
-              {
-                  href: "#",
-                  text: "Journey maps"
-              },
-              {
-                  href: "#",
-                  text: "Show and tells"
-              },
-              {
-                  href: "#",
-                  text: "Confluence space"
-              },
-              {
-                  href: "#",
-                  text: "Design documentation"
-              }
-          ]
-      }
-    })
-}}
+<header class="dwp-header">
+  <div class="dwp-header__content govuk-width-container">
+    <div class="dwp-header__service-name">
+      <a href="/index" class="dwp-header__link">Identity Checker</a>
+    </div>
+  </div>
 
-{{
-    dwpKeyDetailsBar({
-        primaryIdentifier: {
-            text: 'Name:',
-            value: 'Carers Allowance'
-        },
-        secondaryIdentifier: {
-            text: 'Component:',
-            value: 'DWP'
-        },
-        status: {
-            text: 'Claim status:',
-            value: 'Pending-new',
-            classes: 'govuk-tag--blue'
-        },
-        additionalData: [
-        {
-            text: "Date received:",
-            value: "25 April 2024"
-        },
-        {
-            text: "Client ID:",
-            value: "CA-WEB"
-        },
-        {
-            text: "Environment:",
-            value: "Production"
-        }
-        ]
-    })
-}}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+  <section class="dwp-quick-reference dwp-quick-reference--alternative" aria-label="Case information">
+  <dl class="dwp-quick-reference__block">
+    <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+    <dd class="dwp-quick-reference__primary">Jane Doe</dd>
+    <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">National Insurance number:</dt>
+    <dd class="dwp-quick-reference__secondary">QQ 12 34 56 X</dd>
+  </dl>
+</section>
+
+</div>
+</div>
+
+</header>
+
 
 {% endblock %}
 

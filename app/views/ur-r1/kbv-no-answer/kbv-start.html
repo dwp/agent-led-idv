@@ -10,14 +10,12 @@
 
     {% set html %}
     <h3 class="govuk-notification-banner__heading">
-      ID at Risk fraud flag found
+      Counter fraud checks complete
     </h3>
 
-    <p class="govuk-body">The following KBVs will not be offered to ask the customer</p>
-
-    <ul class="govuk-list govuk-list--bullet">
-      <li>Bank or building society information</li>
-      <li>Current employment detail</li>
+    <ul class="govuk-list">
+      <li>No fraud flags found on customer record.</li>
+      <li>No additional action needed.</li>
     </ul>
     {% endset %}
 
@@ -27,10 +25,15 @@
     }) }}
 
     <h1 class="govuk-heading-l">
-      You need to ask the customer knowledge-based verification (KBV) questions
+      Now I need to ask you some security questions
     </h1>
     {# Page heading explaining the purpose of the task #}
 
+    <div class="govuk-inset-text colour-blue"><p>
+    The customer must correctly answer 2 of 3 KBV questions. The questions will be based on information we hold about the customer. </p><p>You should enter the answer given by the customer. The system will then compare this with the data held by DWP.</p>
+    </div>
+
+    <!--
     <p>
       To prove their identity, the customer must correctly answer 2 of 3 KBV questions. The questions will be based on information we hold about the customer.
     </p>
@@ -41,27 +44,17 @@
 
     <p>Once they have answered all of the necessary questions, you will be advised on how to continue.</p>
     {# Guidance on what happens after the KBV process is completed #}
+    -->
 
     {{ govukButton({
       text: "Continue",
-      href: "another-benefit-you-have-previously-applied-for"
+      href: 'another-benefit-you-have-previously-applied-for'
     }) }}
     {# GOV.UK styled button that links to the next KBV question #}
 
-
-    <details class="govuk-details">
-      <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">
-          If you cannot complete this task
-        </span>
-      </summary>
-      <div class="govuk-details__text">
-        Content to support and advise the agent would go here.
-      </div>
-    </details>
-    {# Expandable section providing help or fallback instructions #}
-
   </div>
+
+  <!--
 
   <div class="govuk-grid-column-one-quarter">
 
@@ -101,4 +94,7 @@
 
   </div>
 </div>
+
+-->
+
 {% endblock %}

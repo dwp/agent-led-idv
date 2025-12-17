@@ -1,7 +1,7 @@
-{% extends "layouts/main_path2.html" %}
+{% extends "layouts/main_path1.html" %}
 
 {% block pageTitle %}
-  When did you receive your last PIP payment? – {{ serviceName }} – GOV.UK Prototype Kit
+  Establish customer identity – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
@@ -30,64 +30,50 @@
         html: html
       }) }}-->
 
-      <span class="govuk-caption-l">Question 2</span>
-      <h1 class="govuk-heading-l">
-        When did you receive your last PIP payment?
-      </h1>
-      <p class="govuk-body">Check the answer the customer gives matches one of the answers below.</p>
+      <!-- `form tag for radios` -->
 
+      <!-- <form class="form" action="" method="post"> -->
 
-{{ govukSummaryList({
-  card: {
-    title: {
-      text: "Customer data held in Legacy systems"
-    }
-  },
-  rows: [
-    {
-      key: {
-        text: "Date"
-      },
-      value: {
-        html: "25 September 2025"
-      }
-    }
-  ]
-}) }}
+      <span class="govuk-caption-l">Caption title</span>
+      <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+    <h1 class="govuk-fieldset__heading">
+      Establish customer identity
+    </h1>
+  </legend>
+  <p class="govuk-body">
+    You should establish the customer's identity by matching the claimed ID to their DWP customer record. Try to enter as much information as possible.
+  </p>
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="address-line-1">
+      First name
+    </label>
+    <input class="govuk-input" id="address-line-1" name="addressLine1" type="text" autocomplete="address-line1">
+  </div>
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="address-line-2">
+      Last name
+    </label>
+    <input class="govuk-input" id="address-line-2" name="addressLine2" type="text" autocomplete="address-line2">
+  </div>
+  <div class="govuk-form-group">
+  <label class="govuk-label" for="national-insurance-number">
+    National Insurance number
+  </label>
+  <div id="national-insurance-number-hint" class="govuk-hint">
+    For example, ‘QQ 12 34 56 X’
+  </div>
+  <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing" id="national-insurance-number" name="nationalInsuranceNumber" type="text" spellcheck="false" aria-describedby="national-insurance-number-hint">
+</div>
+</fieldset>
 
-<!--
-<form class="form" action="/kbv-answer/name-and-surgery-address-of-your-GP" method="post">-->
-
-{{ govukRadios({
-  name: "verify",
-  value: data['verify'],
-  fieldset: {
-    legend: {
-      text: "Did the customer answer the question correctly?",
-      isPageHeading: false,
-      classes: "govuk-fieldset__legend--m"
-    }
-  },
-  items: [
-    {
-      value: "yes",
-      text: "Yes"
-    },
-    {
-      value: "no",
-      text: "No"
-    }
-  ]
-}) }}
-
-{{ govukButton({
-  text: "Continue",
-  href: "name-and-surgery-address-of-your-GP"
-}) }}
+    {{ govukButton({
+      text: "Continue",
+      href: "kbv-start"
+    }) }}
 
 <!--
-</form>
--->
+    </form> -->
 
     <details class="govuk-details">
       <summary class="govuk-details__summary">
@@ -103,6 +89,9 @@
 
     </div>
 
+    <!-- `right sidebar` -->
+
+<!--
     <div class="govuk-grid-column-one-quarter">
 
       <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
@@ -115,13 +104,13 @@
             <li class="dwp-timeline__item">
               <h2 class="dwp-timeline__heading">Question 1</h2>
               <p class="dwp-timeline__datetime">CIS Searchlight</p>
-              <strong class="govuk-tag govuk-tag--red">Failed</strong>
+              <strong class="govuk-tag govuk-tag--blue">In progress</strong>
             </li>
             <div class="govuk-!-padding-bottom-1"></div>
             <li class="dwp-timeline__item">
               <h2 class="dwp-timeline__heading">Question 2</h2>
               <p class="dwp-timeline__datetime">Legacy</p>
-              <strong class="govuk-tag govuk-tag--blue">In progress</strong>
+              <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
             </li>
             <div class="govuk-!-padding-bottom-1"></div>
             <li class="dwp-timeline__item">
@@ -134,5 +123,7 @@
       </aside>
     </div>
   </div>
+
+-->
 
 {% endblock %}
