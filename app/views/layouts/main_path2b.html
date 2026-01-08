@@ -12,16 +12,45 @@
 {% from "internal-service-footer/macro.njk" import dwpFooter %}
 {% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
 
 {% block header %}
 
-{{
-    dwpHeader({
-        serviceName: "Identity Checker",
-        serviceHref: '/index',
-        container: true
-    })
-}}
+<header class="dwp-header">
+    <div class="dwp-header__content govuk-width-container">
+      <div class="dwp-header__service-name">
+        <a href="/index" class="dwp-header__link">Identity Checker</a>
+      </div>
+  </div>
+
+  <section class="dwp-key-details-bar" aria-label="Key details" data-landmark-index="1">
+    <div class=" govuk-width-container dwp-key-details-bar__key-details">
+      <dl class="dwp-key-details-bar__top-block">
+        <dt class="govuk-visually-hidden">Name:</dt>
+        <dd class="dwp-key-details-bar__primary">
+            Albus Dumbledore
+        </dd>
+        <dt class="govuk-visually-hidden">National Insurance Number:</dt>
+        <dd class="dwp-key-details-bar__secondary">
+          QQ 12 34 56 X
+        </dd>
+    </dl>
+    <dl class="dwp-key-details-bar__bottom-block ">
+      <dt class="govuk-visually-hidden">What type of engaement it is</dt>
+      <dd>
+        Inbound call
+      </dd>
+      <!--
+      <dt class="govuk-visually-hidden">Who is the engagement with</dt>
+      <dd>
+        Albus Dumbledore
+      </dd>-->
+    </dl>
+    </div>
+  </section>
+
+</header>
+
 
 {% endblock %}
 
@@ -46,7 +75,6 @@
         {% include '_includes/language-toggle.njk' %}
     {% endif %}
 {% endblock %}
-
 
 
 {% block footer %}

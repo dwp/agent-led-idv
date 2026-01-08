@@ -43,7 +43,7 @@ router.post('/verify-answer', function (request, response) {
     }
 })
 
-/////// new routes //// kbv show answer ////
+/////// new routes //// kbv show answer UR-r1 ////
 
 router.post('/match1-answer', function (request, response) {
     const firstName = request.body['firstname'];
@@ -136,7 +136,7 @@ router.post('/mobile-show', (req, res) => {
 });
 
 
-////////// route code for full fat //////////
+////////// route code for full fat UR-r1 //////////
 
 // --------------------
 // Q1: Another benefit applied for
@@ -218,3 +218,126 @@ router.get('/identity-verified-success', (req, res) => {
 router.get('/ur-r1/kbv-no-answer/error', (req, res) => {
     res.render('ur-r1/kbv-no-answer/error');
 });
+
+// -------------------------
+// UR-r2 routes
+// -------------------------
+
+// --------------------
+// Establish identity NINO
+// --------------------
+
+router.post('/nino-answer', function (request, response) {
+    var nino = request.session.data['nationalinsurancenumber']
+
+    if (!nino || nino.length === 0) {
+        response.redirect('/ur-r2/establish-your-identity-nino-error')
+    } else if (nino.includes("QQ 12 34 56 C")) {
+        response.redirect("/ur-r2/confirm-correct-record")
+    } else {
+        response.redirect('/ur-r2/correct-record-unhappy')
+    }
+})
+
+// --------------------
+// Establish identity name DOB
+// --------------------
+
+
+
+
+// --------------------
+// Correct customer record
+// --------------------
+
+router.post('/correct-record', function (request, response) {
+    var correctrecord = request.session.data['correctrecord']
+    if (correctrecord == "yes") {
+        response.redirect("/ur-r2/kbv-start-flag-found")
+    } else {
+        response.redirect("/ur-r2/correct-record-unhappy")
+    }
+})
+
+// -------------------------
+// UR-r2 - Show Answers
+// -------------------------
+
+router.post('/another-benefit-show-ur2', function (request, response) {
+    var anotherbenefitshow = request.session.data['anotherbenefitshow'];
+
+    if (!anotherbenefitshow) {
+        // If no answer is selected, redirect to an error page
+        response.redirect("/ur-r2/kbv-answer/another-benefit-you-have-previously-applied-for-error");
+    } else if (anotherbenefitshow === "yes") {
+        response.redirect("/ur-r2/kbv-answer/when-did-you-receive-your-last-state-pension-payment");
+    } else {
+        response.redirect("/ur-r2/kbv-answer/when-did-you-receive-your-last-state-pension-payment");
+    }
+});
+
+
+/////
+
+router.post('/pension-date-show-ur2', (req, res) => {
+  const q1 = (req.session.data['anotherbenefitshow'] || '').toLowerCase().trim();
+  const q2 = (req.session.data['pensiondateshow'] || '').toLowerCase().trim();
+
+  // Guard: user shouldn’t be here without answering Q1
+  if (!['yes', 'no'].includes(q1)) {
+    return res.redirect('/kbv-answer/another-benefit-you-have-previously-applied-for');
+  }
+
+  // NEW: Guard for missing Q2
+  if (!['yes', 'no'].includes(q2)) {
+    return res.redirect('/error-page'); // Replace with your actual error page route
+  }
+
+  if (q1 === 'yes' && q2 === 'yes') {
+    return res.redirect('/ur-r2/identity-verified-flag-found');
+  }
+  if ((q1 === 'no' && q2 === 'yes') || (q1 === 'yes' && q2 === 'no')) {
+    return res.redirect('/ur-r2/kbv-answer/what-is-your-mobile-telephone-number');
+  }
+
+  // q1 === 'no' && q2 === 'no'
+  return res.redirect('/ur-r2/identity-not-verified-flag-found');
+});
+
+
+///////
+
+router.post('/mobile-show-ur2', (req, res) => {
+  const q2 = (req.session.data['pensiondateshow'] || '').toLowerCase().trim();
+  const q3 = (req.session.data['mobileshow'] || '').toLowerCase().trim();
+
+  // Guard: user shouldn’t be here without answering Q2
+  if (!['yes', 'no'].includes(q2)) {
+    return res.redirect('/kbv-answer/when-did-you-receive-your-last-state-pension-payment');
+  }
+
+  // NEW: Guard for missing Q3
+  if (!['yes', 'no'].includes(q3)) {
+    return res.redirect('/error-page'); // Replace with your actual error page route
+  }
+
+  if (q2 === 'yes' && q3 === 'yes') {
+    return res.redirect('/ur-r2/identity-verified-flag-found');
+  }
+  if (q2 === 'no' && q3 === 'yes') {
+    return res.redirect('/ur-r2/identity-verified-flag-found');
+  }
+  if (q2 === 'yes' && q3 === 'no') {
+    return res.redirect('/ur-r2/identity-not-verified-flag-found');
+  }
+
+  // q2 === 'no' && q3 === 'no'
+  return res.redirect('/ur-r2/identity-not-verified-flag-found');
+});
+
+//////////
+
+
+// --------------------------------------
+// UR-r2 - Routing for flag found variant
+// --------------------------------------

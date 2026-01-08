@@ -23,21 +23,21 @@
       </div>
   </div>
 
-  <section class="dwp-key-details-bar" aria-label="Key details" data-landmark-index="2">
-    <div class="dwp-key-details-bar__key-details">
+  <section class="dwp-key-details-bar" aria-label="Key details" data-landmark-index="1">
+    <div class=" govuk-width-container dwp-key-details-bar__key-details">
       <dl class="dwp-key-details-bar__top-block">
-          <dt class="govuk-visually-hidden">Name:</dt>
-          <dd class="dwp-key-details-bar__primary">Albus Dumbledore</dd>
-          <dt class="govuk-visually-hidden">National insurance number</dt>
-          <dd class="dwp-key-details-bar__secondary">QQ 12 34 56 X</dd>
-          <!--<dt class="govuk-visually-hidden">Customer status</dt>
-          <dd class="dwp-key-details-bar__status">
-            <strong class="govuk-tag dwp-key-details-bar__status--dwp-default">
-              Vulnerable</strong>
-          </dd>-->
-      </dl>
+        <dt class="govuk-visually-hidden">Name:</dt>
+        <dd class="dwp-key-details-bar__primary">
+            Albus Dumbledore
+        </dd>
+        <dt class="govuk-visually-hidden">National Insurance Number:</dt>
+        <dd class="dwp-key-details-bar__secondary">
+          QQ 12 34 56 X
+        </dd>
+    </dl>
     </div>
   </section>
+
 </header>
 
 
@@ -52,6 +52,17 @@
   html: 'This is a prototype and should not be used as a real service</a>.'
 }) }}
 
+    {% if breadcrumbs == 'true' %}
+        {% include '_includes/breadcrumbs.njk' %}
+    {% endif %}
+
+    {% if backLink == 'true' %}
+        {% include '_includes/back-link.njk' %}
+    {% endif %}
+
+    {% if languageToggle == 'true' %}
+        {% include '_includes/language-toggle.njk' %}
+    {% endif %}
 {% endblock %}
 
 
