@@ -270,9 +270,9 @@ router.post('/another-benefit-show-ur2', function (request, response) {
         // If no answer is selected, redirect to an error page
         response.redirect("/ur-r2/kbv-answer/another-benefit-you-have-previously-applied-for-error");
     } else if (anotherbenefitshow === "yes") {
-        response.redirect("/ur-r2/kbv-answer/when-did-you-receive-your-last-state-pension-payment");
+        response.redirect("/ur-r2/kbv-answer/When-did-you-receive-your-last-payment");
     } else {
-        response.redirect("/ur-r2/kbv-answer/when-did-you-receive-your-last-state-pension-payment");
+        response.redirect("/ur-r2/kbv-answer/When-did-you-receive-your-last-payment");
     }
 });
 
@@ -313,7 +313,7 @@ router.post('/mobile-show-ur2', (req, res) => {
 
   // Guard: user shouldn’t be here without answering Q2
   if (!['yes', 'no'].includes(q2)) {
-    return res.redirect('/kbv-answer/when-did-you-receive-your-last-state-pension-payment');
+    return res.redirect('/kbv-answer/when-did-you-receive-your-last-payment');
   }
 
   // NEW: Guard for missing Q3
