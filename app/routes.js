@@ -232,12 +232,17 @@ router.post('/nino-answer', function (request, response) {
 
     if (!nino || nino.length === 0) {
         response.redirect('/ur-r2/establish-your-identity-nino-error')
-    } else if (nino.includes("QQ 12 34 56 C")) {
+    } else if (
+        nino.includes("QQ 12 34 56 C") ||
+        nino === "qq123456c" ||
+        nino === "QQ123456C"
+    ) {
         response.redirect("/ur-r2/confirm-correct-record")
     } else {
         response.redirect('/ur-r2/correct-record-unhappy')
     }
 })
+
 
 // --------------------
 // Establish identity name DOB
