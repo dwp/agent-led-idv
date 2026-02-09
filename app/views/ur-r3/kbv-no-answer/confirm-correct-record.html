@@ -1,0 +1,123 @@
+{% extends "layouts/main_path1.html" %}
+
+{% block pageTitle %}
+  Confirm correct record open – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <!-- Notification banner for fraud flags -->
+
+      <!-- {% set html %}
+
+        <h3 class="govuk-notification-banner__heading">
+          ID at Risk fraud flag found
+        </h3>
+
+        <p class="govuk-body">Do not use these KBV questions</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Bank or building society information</li>
+          <li>Current employment detail</li>
+        </ul>
+
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: html
+      }) }}-->
+
+      <h1 class="govuk-heading-l">
+        I am just confirming that I have the correct record open
+      </h1>
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m">Personal details</caption>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Name</th>
+            <td class="govuk-table__cell">Albus Dumbledore</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">National Insurance number</th>
+            <td class="govuk-table__cell">QQ 12 34 56 C</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Date of birth</th>
+            <td class="govuk-table__cell">5 January 1978</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form class="form" action="/correct-record-r3-blindcheck" method="post">
+
+      {{ govukRadios({
+        name: "correctrecord",
+        value: data['correctrecord'],
+        fieldset: {
+          legend: {
+            text: "Is this the correct customer record?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+</div>
+
+    <!--
+
+    <div class="govuk-grid-column-one-quarter">
+
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          KBV progress
+        </h2>
+        <div class="govuk-!-padding-bottom-1"></div>
+        <div class="dwp-timeline">
+          <ol class="dwp-timeline__items">
+            <li class="dwp-timeline__item">
+              <h2 class="dwp-timeline__heading">Question 1</h2>
+              <p class="dwp-timeline__datetime">CIS Searchlight</p>
+              <strong class="govuk-tag govuk-tag--red">Failed</strong>
+            </li>
+            <div class="govuk-!-padding-bottom-1"></div>
+            <li class="dwp-timeline__item">
+              <h2 class="dwp-timeline__heading">Question 2</h2>
+              <p class="dwp-timeline__datetime">Legacy</p>
+              <strong class="govuk-tag govuk-tag--blue">In progress</strong>
+            </li>
+            <div class="govuk-!-padding-bottom-1"></div>
+            <li class="dwp-timeline__item">
+              <h2 class="dwp-timeline__heading">Question 3</h2>
+              <p class="dwp-timeline__datetime">Business specific</p>
+              <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
+            </li>
+          </ol>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  -->
+
+{% endblock %}

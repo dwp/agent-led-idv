@@ -1,0 +1,120 @@
+{% extends "layouts/main_path1.html" %}
+
+{% block pageTitle %}
+  What is your full name and date of birth? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<a href="establish-your-identity-nino" class="govuk-back-link">Back</a>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- <form class="form" action="/name-dob-answer" method="post"> -->
+
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What is your full name and date of birth?
+            </h1>
+          </legend>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="first-name">First name</label>
+
+            <input class="govuk-input" id="first-name" name="firstname" type="text" autocomplete="off" spellcheck="false">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="last-name">Last name</label>
+            <input class="govuk-input" id="last-name" name="lastname" type="text" autocomplete="off" spellcheck="false">
+          </div>
+
+          <div class="govuk-form-group">
+
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-birth-hint">
+            <legend class="govuk-fieldset__legend">
+              Date of birth
+            </legend>
+            <div id="date-of-birth-hint" class="govuk-hint">
+              For example, 27 3 2007
+            </div>
+            <div class="govuk-date-input" id="passport-issued">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        </fieldset>
+
+        {{ govukButton({
+          text: "Search for customer record",
+          href: '/ur-r3/kbv-answer/confirm-correct-record'
+        }) }}
+
+    <!--  </form> -->
+
+    </div>
+
+    <!-- `right sidebar` -->
+
+<!--
+    <div class="govuk-grid-column-one-quarter">
+
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          KBV progress
+        </h2>
+        <div class="govuk-!-padding-bottom-1"></div>
+        <div class="dwp-timeline">
+          <ol class="dwp-timeline__items">
+            <li class="dwp-timeline__item">
+              <h2 class="dwp-timeline__heading">Question 1</h2>
+              <p class="dwp-timeline__datetime">CIS Searchlight</p>
+              <strong class="govuk-tag govuk-tag--blue">In progress</strong>
+            </li>
+            <div class="govuk-!-padding-bottom-1"></div>
+            <li class="dwp-timeline__item">
+              <h2 class="dwp-timeline__heading">Question 2</h2>
+              <p class="dwp-timeline__datetime">Legacy</p>
+              <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
+            </li>
+            <div class="govuk-!-padding-bottom-1"></div>
+            <li class="dwp-timeline__item">
+              <h2 class="dwp-timeline__heading">Question 3</h2>
+              <p class="dwp-timeline__datetime">Business specific</p>
+              <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
+            </li>
+          </ol>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+-->
+
+{% endblock %}

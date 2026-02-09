@@ -340,9 +340,213 @@ router.post('/mobile-show-ur2', (req, res) => {
   return res.redirect('/ur-r2/identity-not-verified-flag-found');
 });
 
-//////////
+
+// -------------------------
+// UR-r3 routes
+// -------------------------
+
+// -----------------------------------
+// UR-r3 Show answers matching screens
+// -----------------------------------
+
+// -------------------------------
+// UR-r3 Establish identity NINO
+// -------------------------------
+
+router.post('/nino-answer-r3', function (request, response) {
+    var nino = request.session.data['nationalinsurancenumber']
+
+    if (!nino || nino.length === 0) {
+        response.redirect('/ur-r3/kbv-answer/establish-your-identity-nino-error')
+    } else if (
+        nino.includes("QQ 12 34 56 C") ||
+        nino === "qq123456c" ||
+        nino === "QQ123456C"
+    ) {
+        response.redirect("/ur-r3/kbv-answer/confirm-correct-record")
+    } else {
+        response.redirect('/ur-r3/kbv-answer/correct-record-unhappy')
+    }
+})
+
+// ------------------------------
+// UR-r3 Correct customer record
+// ------------------------------
+
+router.post('/correct-record-r3', function (request, response) {
+    var correctrecord = request.session.data['correctrecord']
+    if (correctrecord == "yes") {
+        response.redirect("/ur-r3/kbv-answer/kbv-start-flag-found")
+    } else {
+        response.redirect("/ur-r3/kbv-answer/correct-record-unhappy")
+    }
+})
+
+// ----------------------------------------------
+// UR-r3 Show Answers questions and IDV outcomes
+// ----------------------------------------------
+
+router.post('/another-benefit-show-r3', function (request, response) {
+    var anotherbenefitshow = request.session.data['anotherbenefitshow'];
+
+    if (!anotherbenefitshow) {
+        // If no answer is selected, redirect to an error page
+        response.redirect("/ur-r3/kbv-answer/another-benefit-you-have-previously-applied-for-error");
+    } else if (anotherbenefitshow === "yes") {
+        response.redirect("/ur-r3/kbv-answer/When-did-you-receive-your-last-payment");
+    } else {
+        response.redirect("/ur-r3/kbv-answer/When-did-you-receive-your-last-payment");
+    }
+});
 
 
-// --------------------------------------
-// UR-r2 - Routing for flag found variant
-// --------------------------------------
+/////
+
+router.post('/pension-date-show-r3', (req, res) => {
+  const q1 = (req.session.data['anotherbenefitshow'] || '').toLowerCase().trim();
+  const q2 = (req.session.data['pensiondateshow'] || '').toLowerCase().trim();
+
+  // Guard: user shouldn’t be here without answering Q1
+  if (!['yes', 'no'].includes(q1)) {
+    return res.redirect('/kbv-answer/another-benefit-you-have-previously-applied-for');
+  }
+
+  // NEW: Guard for missing Q2
+  if (!['yes', 'no'].includes(q2)) {
+    return res.redirect('/error-page'); // Replace with your actual error page route
+  }
+
+  if (q1 === 'yes' && q2 === 'yes') {
+    return res.redirect('/ur-r3/kbv-answer/identity-verified-flag-found');
+  }
+  if ((q1 === 'no' && q2 === 'yes') || (q1 === 'yes' && q2 === 'no')) {
+    return res.redirect('/ur-r3/kbv-answer/what-is-your-mobile-telephone-number');
+  }
+
+  // q1 === 'no' && q2 === 'no'
+  return res.redirect('/ur-r3/kbv-answer/identity-not-verified-flag-found');
+});
+
+
+///////
+
+router.post('/mobile-show-r3', (req, res) => {
+  const q2 = (req.session.data['pensiondateshow'] || '').toLowerCase().trim();
+  const q3 = (req.session.data['mobileshow'] || '').toLowerCase().trim();
+
+  // Guard: user shouldn’t be here without answering Q2
+  if (!['yes', 'no'].includes(q2)) {
+    return res.redirect('/kbv-answer/when-did-you-receive-your-last-payment');
+  }
+
+  // NEW: Guard for missing Q3
+  if (!['yes', 'no'].includes(q3)) {
+    return res.redirect('/error-page'); // Replace with your actual error page route
+  }
+
+  if (q2 === 'yes' && q3 === 'yes') {
+    return res.redirect('/ur-r3/kbv-answer/identity-verified-flag-found');
+  }
+  if (q2 === 'no' && q3 === 'yes') {
+    return res.redirect('/ur-r3/kbv-answer/identity-verified-flag-found');
+  }
+  if (q2 === 'yes' && q3 === 'no') {
+    return res.redirect('/ur-r3/kbv-answer/identity-not-verified-flag-found');
+  }
+
+  // q2 === 'no' && q3 === 'no'
+  return res.redirect('/ur-r3//kbv-answer/identity-not-verified-flag-found');
+});
+
+
+// -----------------------------------
+// UR-r3 Blind check matching screens
+// -----------------------------------
+
+// -------------------------------------------
+// UR-r3 Blind check Establish identity NINO
+// -------------------------------------------
+
+router.post('/nino-answer-r3-blindcheck', function (request, response) {
+    var nino = request.session.data['nationalinsurancenumber']
+
+    if (!nino || nino.length === 0) {
+        response.redirect('/ur-r3/kbv-no-answer/establish-your-identity-nino-error')
+    } else if (
+        nino.includes("QQ 12 34 56 C") ||
+        nino === "qq123456c" ||
+        nino === "QQ123456C"
+    ) {
+        response.redirect("/ur-r3/kbv-no-answer/confirm-correct-record")
+    } else {
+        response.redirect('/ur-r3/kbv-no-answer/correct-record-unhappy')
+    }
+})
+
+// ------------------------------
+// UR-r3 Blind check Correct customer record
+// ------------------------------
+
+router.post('/correct-record-r3-blindcheck', function (request, response) {
+    var correctrecord = request.session.data['correctrecord']
+    if (correctrecord == "yes") {
+        response.redirect("/ur-r3/kbv-no-answer/kbv-start-flag-found")
+    } else {
+        response.redirect("/ur-r3/kbv-no-answer/correct-record-unhappy")
+    }
+})
+
+////////// route code for full fat UR-r3 //////////
+
+// --------------------
+// Q1: Another benefit applied for
+// --------------------
+
+////////// no routing needed fot Q1 //////////
+
+// --------------------
+// Q2: When did you receive your last pension payment?
+// --------------------
+router.get('/ur-r3/kbv-no-answer/when-did-you-receive-your-last-pension-payment', (req, res) => {
+    res.render('/ur-r3/kbv-no-answer/when-did-you-receive-your-last-pension-payment');
+});
+
+router.post('/ur-r3/kbv-no-answer/when-did-you-receive-your-last-pension-payment', (req, res) => {
+    const day = (req.body['pension-received-day'] || '').trim();
+    const month = (req.body['pension-received-month'] || '').trim();
+    const year = (req.body['pension-received-year'] || '').trim();
+
+    const enteredDate = `${day}-${month}-${year}`;
+
+    if (enteredDate === '25-10-2025') {
+        // ✅ Both Q1 and Q2 correct → go to success page
+        return res.redirect('/ur-r3/kbv-no-answer/identity-verified-flag-found');
+    } else {
+        // ❌ Incorrect date → show error page
+        return res.redirect('/ur-r3/kbv-no-answer/what-is-your-mobile-telephone-number');
+    }
+});
+
+
+// --------------------
+// Q3: What is your mobile telephone number?
+// --------------------
+router.get('/ur-r3/kbv-no-answer/what-is-your-mobile-telephone-number', (req, res) => {
+    res.render('ur-r3/kbv-no-answer/what-is-your-mobile-telephone-number');
+});
+
+router.post('/ur-r3/kbv-no-answer/what-is-your-mobile-telephone-number', (req, res) => {
+    const mobileNumber = (req.body['customer-mobile-tel'] || '').trim();
+
+    // Remove spaces for comparison
+    const normalizedNumber = mobileNumber.replace(/\s+/g, '');
+
+    // Flexible check: must match 07123456789 exactly after removing spaces
+    if (normalizedNumber === '07123456789') {
+        // ✅ Correct mobile number → success page
+        return res.redirect('/ur-r3/kbv-no-answer/identity-verified-flag-found');
+    } else {
+        // ❌ Incorrect mobile number → failure page
+        return res.redirect('/ur-r3/kbv-no-answer/identity-not-verified-flag-found');
+    }
+});

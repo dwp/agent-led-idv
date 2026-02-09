@@ -1,0 +1,100 @@
+{% extends "layouts/main_path2b.html" %}
+
+{% block pageTitle %}
+  Ask the customer knowledge-based verification questions – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    {% set html %}
+    <h3 class="govuk-notification-banner__heading">
+      Counter fraud checks complete
+    </h3>
+
+    <ul class="govuk-list">
+      <li>No fraud flags found on customer record.</li>
+      <li>No additional action needed.</li>
+    </ul>
+    {% endset %}
+
+    {{ govukNotificationBanner({
+      html: html,
+      type: "important"
+    }) }}
+
+    <h1 class="govuk-heading-l">
+      Now I need to ask you some security questions
+    </h1>
+    {# Page heading explaining the purpose of the task #}
+
+    <div class="govuk-inset-text colour-blue"><p>
+    The customer must correctly answer 2 of 3 KBV questions. The questions will be based on information we hold about the customer. </p><p>You should enter the answer given by the customer. The system will then compare this with the data held by DWP.</p>
+    </div>
+
+    <!--
+    <p>
+      To prove their identity, the customer must correctly answer 2 of 3 KBV questions. The questions will be based on information we hold about the customer.
+    </p>
+    {# Instruction about the KBV process and its requirements #}
+
+    <p>You will need to confirm whether the answer they give is correct.</p>
+    {# Reminder to the agent to verify the customer's responses #}
+
+    <p>Once they have answered all of the necessary questions, you will be advised on how to continue.</p>
+    {# Guidance on what happens after the KBV process is completed #}
+    -->
+
+    {{ govukButton({
+      text: "Continue",
+      href: 'another-benefit-you-have-previously-applied-for'
+    }) }}
+    {# GOV.UK styled button that links to the next KBV question #}
+
+  </div>
+
+  <!--
+
+  <div class="govuk-grid-column-one-quarter">
+
+    <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary" aria-labelledby="subsection-title">
+      <h2 class="govuk-heading-m" id="subsection-title">
+        KBV progress
+      </h2>
+
+      <div class="govuk-!-padding-bottom-1"></div>
+
+      <div class="dwp-timeline">
+        <ol class="dwp-timeline__items">
+          <li class="dwp-timeline__item">
+            <h3 class="dwp-timeline__heading">Question 1</h3>
+            <p class="dwp-timeline__datetime">CIS Searchlight</p>
+            <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
+          </li>
+
+          <div class="govuk-!-padding-bottom-1"></div>
+
+          <li class="dwp-timeline__item">
+            <h3 class="dwp-timeline__heading">Question 2</h3>
+            <p class="dwp-timeline__datetime">Legacy</p>
+            <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
+          </li>
+
+          <div class="govuk-!-padding-bottom-1"></div>
+
+          <li class="dwp-timeline__item">
+            <h3 class="dwp-timeline__heading">Question 3</h3>
+            <p class="dwp-timeline__datetime">Business specific</p>
+            <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
+          </li>
+        </ol>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+-->
+
+{% endblock %}

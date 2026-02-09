@@ -16,6 +16,76 @@
 
     <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
+    <!-- UR-R2 Testing -->
+
+    <div><strong class="govuk-tag govuk-tag--yellow">UR2</strong> <strong class="govuk-tag govuk-tag--blue">Planned</strong></div>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+    <div>
+            <span class="govuk-caption-m">February 2026</span>
+          <h2 class="govuk-heading-m">UR Round 3 - Matching, flags and both KBV options</h2>
+        </div>
+
+        <p class="govuk-body"><strong>
+             We will focus our testing on:</strong></p>
+
+          <ul class="govuk-list govuk-list--bullet">
+             <li>Establish identity by Nino page</li>
+             <li>Establish identity by full name and date of birth</li>
+             <li>Confirm correct record page</li>
+             <li>Date of death fraud marker found notification banner (in option A)</li>
+             <li>Identity at risk fraud marker found notification banner (in option B)</li>
+          </ul>
+
+        <h2 class="govuk-heading-s">Option A - Agent is shown question and answer</h2>
+
+        <p class="govuk-body">
+          Agent is tasked with asking questions of the customer. Then comparing their responses and accuracy against the answers shown. Prototype will give both sucess and fail outcomes based on selections.
+        </p>
+
+        <a href="/ur-r3/kbv-answer/establish-your-identity-nino" class="govuk-button" rel="noreferrer noopener" target="_blank">
+          View prototype option A
+        </a>
+
+        <h2 class="govuk-heading-s">Option B - Agent is shown question only (blind check)</h2>
+
+        <p class="govuk-body">
+          Agent is tasked with asking questions of the customer then selecting or inputting the answers given. The system will then decide on accuracy. Please refer to the instructions below before using prototype option B.
+        </p>
+
+        <a href="/ur-r3/kbv-no-answer/establish-your-identity-nino" class="govuk-button" rel="noreferrer noopener" target="_blank">
+          View prototype option B
+        </a>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text govuk-!-font-weight-bold">
+              Important instructions for option B flow
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <!-- goal -->
+            <h3 class="govuk-heading-s">To view success after two correct questions only</h3>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
+              <li>Q2 - Enter <strong>correct</strong> date 25-10-2025</li>
+              <li>Customer <strong>verified</strong></li>
+            </ul>
+            <h3 class="govuk-heading-s">To view failure after two from three incorrect questions</h3>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
+              <li>Q2 - Enter <strong>incorrect</strong> date such as 12-11-2023</li>
+              <li>Q3 - Enter <strong>incorrect</strong> mobile number such as 07581234560 (allows for spaces)</li>
+              <li>Customer <strong>not</strong> verified</li>
+            </ul>
+          </div>
+        </details>
+
+     <!-- end of UR-R2 - testing -->
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
    <!-- UR-R2 Testing -->
 
    <div><strong class="govuk-tag govuk-tag--yellow">UR2</strong> <strong class="govuk-tag govuk-tag--blue">Completed</strong></div>
@@ -45,7 +115,7 @@
     </a>
 
     <p class="govuk-body">
-      UR2 insights link will be added when consolidated and documented.
+      A link to UR2 insights will be added when consolidated and documented.
     </p>
 
     <!-- end of UR-R2 - testing -->
@@ -67,7 +137,7 @@
       Focused prototype testing with the Later Life Team to look at two alternatives on how we surface KBV questions.
     </p>
 
-    <h2 class="govuk-heading-s">Option 1 - Agent is shown question and answer</h2>
+    <h2 class="govuk-heading-s">Option A - Agent is shown question and answer</h2>
 
     <p class="govuk-body">
       Agent is tasked with asking questions of the customer. Then comparing their responses and accuracy against the answers shown.
@@ -80,7 +150,7 @@
       View prototype option A
     </a>
 
-    <h2 class="govuk-heading-s">Option 2 - Agent is shown question only (blind check)</h2>
+    <h2 class="govuk-heading-s">Option B - Agent is shown question only (blind check)</h2>
 
     <p class="govuk-body">
       Agent is tasked with asking questions of the customer then selecting or inputting the answers given. The system will then decide on accuracy.
@@ -308,7 +378,7 @@
 
         <!-- Prototype journey list view v1.0 -->
 
-        <div><strong class="govuk-tag govuk-tag--purple">Iteration 1</strong><strong class="govuk-tag govuk-tag--yellow">Design</strong> <strong class="govuk-tag govuk-tag--blue">In progress</strong></div>
+        <div><strong class="govuk-tag govuk-tag--purple">Iteration 1</strong><strong class="govuk-tag govuk-tag--yellow">Design</strong> <strong class="govuk-tag govuk-tag--blue">Completed</strong></div>
 
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
 
@@ -338,25 +408,6 @@
     }) }}
 
     <!-- End of prototype journey list view v1.0 -->
-
-  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-
-  <!-- List of all pages -->
-
-  <h2 class="govuk-heading-m">Prototype page index - Guided UI v1.0</h2>
-  <ul class="govuk-list govuk-list--bullet">
-    <li><a class="govuk-link" href="/path1/start">Check the identity of a customer (Start page)</a></li>
-    <li><a class="govuk-link" href="/path1/select-channel">Select channel</a></li>
-    <li><a class="govuk-link" href="/path1/telephony-start">Select type of telephony</a></li>
-    <li><a class="govuk-link" href="/path1/establish-identity">You need to match the customer to their DWP record (Establish identity)</a></li>
-    <li><a class="govuk-link" href="/path1/fraud-check">Check the claimed ID is not at a higher risk of fraud or suspected to be fake (Fraud checks)</a></li>
-    <li><a class="govuk-link" href="/path1/nifu-stop">You need to end this customer interaction (NIFU fraud flag hard stop)</a></li>
-    <li><a class="govuk-link" href="/path1/verify-identity">Ask the customer knowledge-based verification (KBV) questions (Verify identity)</a></li>
-    <li><a class="govuk-link" href="/path1/identity-verified">Customer identity verified</a></li>
-    <li><a class="govuk-link" href="/path1/identity-not-verified">Customer identity not verified</a></li>
-  </ul>
-
-  <!-- End of ist of all pages -->
 
 
 {% endblock %}

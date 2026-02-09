@@ -1,0 +1,98 @@
+{% extends "layouts/main_path2b.html" %}
+
+{% block pageTitle %}
+  Identity verified – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <div class="govuk-panel govuk-panel--confirmation">
+    <h1 class="govuk-panel__title">
+      Identity check complete
+    </h1>
+    <div class="govuk-panel__body">
+      You have answered the security questions successfully
+    </div>
+  </div>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+           Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+        <h3 class="govuk-heading-s">
+        Date of death held.
+          <span class="govuk-body"> You must investigate this before processing the customer's request. Follow the relevant operational instructions.</span>
+        </h3>
+      </div>
+    </div>
+
+    <p>
+      You have successfully answered the security questions. I can now continue with your request.
+    </p>
+
+    <div class="govuk-inset-text colour-blue">
+      The outcome of this identity check will automatically be recorded by the system.
+    </div>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      text: "Finish IDV check",
+      href: "/ur-r3/kbv-answer/establish-your-identity-nino"
+    }) }}
+
+  </div>
+
+  <!-- `right sidebar` -->
+
+<!--
+
+  <div class="govuk-grid-column-one-quarter">
+
+    <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary" aria-labelledby="subsection-title">
+      <h2 class="govuk-heading-m" id="subsection-title">
+        KBV progress
+      </h2>
+
+      <div class="govuk-!-padding-bottom-1"></div>
+
+      <div class="dwp-timeline">
+        <ol class="dwp-timeline__items">
+          <li class="dwp-timeline__item">
+            <h3 class="dwp-timeline__heading">Question 1</h3>
+            <p class="dwp-timeline__datetime">CIS Searchlight</p>
+            <strong class="govuk-tag govuk-tag--red">Failed</strong>
+          </li>
+
+          <div class="govuk-!-padding-bottom-1"></div>
+
+          <li class="dwp-timeline__item">
+            <h3 class="dwp-timeline__heading">Question 2</h3>
+            <p class="dwp-timeline__datetime">Legacy</p>
+            <strong class="govuk-tag govuk-tag--green">Correct</strong>
+          </li>
+
+          <div class="govuk-!-padding-bottom-1"></div>
+
+          <li class="dwp-timeline__item">
+            <h3 class="dwp-timeline__heading">Question 3</h3>
+            <p class="dwp-timeline__datetime">Business specific</p>
+            <strong class="govuk-tag govuk-tag--green">Correct</strong>
+          </li>
+        </ol>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+-->
+
+{% endblock %}
