@@ -1,0 +1,81 @@
+{% extends "layouts/main_path_ur4.html" %}
+
+{% block pageTitle %}
+  Counter fraud check flag found – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <h1 class="govuk-heading-l">
+      There is a risk of fraud linked to this customer record
+    </h1>
+    {# Page heading explaining the purpose of the task #}
+
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-visually-hidden">Warning</span>
+        Proceed with caution
+      </strong>
+    </div>
+
+    <p class="govuk-body">You have successfully answered the security questions. I can now continue with your request.</p>
+
+    <div class="govuk-inset-text colour-blue"><p>
+      The outcome of this identity check will automatically be recorded by the system.
+    </p>
+    </div>
+
+    {{ govukButton({
+      text: "Continue",
+      href: "/ur-r3/kbv-no-answer/another-benefit-you-have-previously-applied-for"
+    }) }}
+
+  </div>
+
+  <!--
+
+  <div class="govuk-grid-column-one-quarter">
+
+    <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary" aria-labelledby="subsection-title">
+      <h2 class="govuk-heading-m" id="subsection-title">
+        KBV progress
+      </h2>
+
+      <div class="govuk-!-padding-bottom-1"></div>
+
+      <div class="dwp-timeline">
+        <ol class="dwp-timeline__items">
+          <li class="dwp-timeline__item">
+            <h3 class="dwp-timeline__heading">Question 1</h3>
+            <p class="dwp-timeline__datetime">CIS Searchlight</p>
+            <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
+          </li>
+
+          <div class="govuk-!-padding-bottom-1"></div>
+
+          <li class="dwp-timeline__item">
+            <h3 class="dwp-timeline__heading">Question 2</h3>
+            <p class="dwp-timeline__datetime">Legacy</p>
+            <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
+          </li>
+
+          <div class="govuk-!-padding-bottom-1"></div>
+
+          <li class="dwp-timeline__item">
+            <h3 class="dwp-timeline__heading">Question 3</h3>
+            <p class="dwp-timeline__datetime">Business specific</p>
+            <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
+          </li>
+        </ol>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+-->
+
+{% endblock %}

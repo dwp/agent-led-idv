@@ -12,3 +12,30 @@
  .colour-blue {
      border-color: #1d70b8;
    }
+
+ .colour-white {
+     border-color: #ffffff;
+  }
+
+ .govuk-panel--interruption {
+  background-color: #1a65a6;
+  text-align: left;
+  border: none;
+}
+
+.govuk-panel--interruption2 {
+ background-color: #ca3535;
+ text-align: left;
+ border: none;
+}
+
+.govuk-panel--alert {
+ background-color: none;
+ text-align: left;
+ border-width: thick;
+ border-color: #ca3535;
+}
+
+.white-text {
+  color: white;
+}

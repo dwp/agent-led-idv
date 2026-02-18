@@ -1,0 +1,114 @@
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "internal-service-header/macro.njk" import dwpHeader %}
+{% from "internal-service-footer/macro.njk" import dwpFooter %}
+{% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+{% block header %}
+
+<header class="dwp-header">
+    <div class="dwp-header__content govuk-width-container">
+      <div class="dwp-header__service-name">
+        <a href="/index" class="dwp-header__link">Identity Checker</a>
+      </div>
+  </div>
+
+  <section class="dwp-key-details-bar" aria-label="Key details" data-landmark-index="1">
+    <div class=" govuk-width-container dwp-key-details-bar__key-details">
+      <dl class="dwp-key-details-bar__top-block">
+        <dt class="govuk-visually-hidden">Name:</dt>
+        <dd class="dwp-key-details-bar__primary">
+            Albus Dumbledore
+        </dd>
+        <dt class="govuk-visually-hidden">National Insurance Number:</dt>
+        <dd class="dwp-key-details-bar__secondary">
+          QQ 12 34 56 C
+        </dd>
+    </dl>
+    <dl class="dwp-key-details-bar__bottom-block ">
+      <dt class="govuk-visually-hidden">What type of engagement it is</dt>
+      <dd>
+        Inbound call
+      </dd>
+      <dd class="dwp-key-details-bar__status">
+          <strong class="govuk-tag govuk-tag--red">
+            Fraud risk
+          </strong>
+
+        </dd>
+      <!--
+      <dt class="govuk-visually-hidden">Who is the engagement with</dt>
+      <dd>
+        Albus Dumbledore
+      </dd>-->
+    </dl>
+    </div>
+  </section>
+
+</header>
+
+
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukPhaseBanner({
+  tag: {
+    text: "Prototype"
+  },
+  html: 'This is a prototype and should not be used as a real service</a>.'
+}) }}
+
+    {% if breadcrumbs == 'true' %}
+        {% include '_includes/breadcrumbs.njk' %}
+    {% endif %}
+
+    {% if backLink == 'true' %}
+        {% include '_includes/back-link.njk' %}
+    {% endif %}
+
+    {% if languageToggle == 'true' %}
+        {% include '_includes/language-toggle.njk' %}
+    {% endif %}
+{% endblock %}
+
+
+{% block footer %}
+
+{{
+    dwpFooter({
+        meta: {
+            visuallyHiddenTitle: "About this website",
+            items: [
+            {
+                href: "",
+                text: "Accessibility statement"
+            },
+            {
+              href: "/manage-prototype",
+              text: "Manage prototype"
+            },
+            {
+                href: "",
+                text: "Privacy"
+            },
+            {
+                href: "/manage-prototype/clear-data",
+                text: "Clear data"
+            }
+            ]
+        }
+    })
+}}
+
+    {% endblock %}

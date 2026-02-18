@@ -1,0 +1,140 @@
+{% extends "layouts/main_path1.html" %}
+
+{% block pageTitle %}
+  Establish customer identity – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- Notification banner for fraud flags -->
+
+      <!-- {% set html %}
+
+        <h3 class="govuk-notification-banner__heading">
+          ID at Risk fraud flag found
+        </h3>
+
+        <p class="govuk-body">Do not use these KBV questions</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Bank or building society information</li>
+          <li>Current employment detail</li>
+        </ul>
+
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: html
+      }) }}-->
+
+      <!-- `form tag for radios` -->
+
+<!--      <form class="form" action="/match1-answer" method="post">
+
+-->
+
+      <!--<span class="govuk-caption-l">Caption title</span>-->
+
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Before I can continue with your request, I need to check your identity
+            </h1>
+          </legend>
+
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+          <div class="govuk-form-group">
+            <h2 class="govuk-heading-m">What is your full name?</h2>
+            <label class="govuk-label" for="first-name">First name</label>
+            <input class="govuk-input" id="first-name" name="firstname" type="text" autocomplete="off" spellcheck="false">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="last-name">Last name</label>
+            <input class="govuk-input" id="last-name" name="lastname" type="text" autocomplete="off" spellcheck="false">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--m" for="national-insurance-number">
+              What is your National Insurance number?
+            </label>
+            <div id="national-insurance-number-hint" class="govuk-hint">
+              It’s on your National Insurance card, benefit letter, payslip or P60 – for example, QQ 12 34 56 X.
+            </div>
+            <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing"
+                   id="national-insurance-number"
+                   name="nationalinsurancenumber"
+                   type="text"
+                   autocomplete="off"
+                   spellcheck="false"
+                   aria-describedby="national-insurance-number-hint">
+          </div>
+        </fieldset>
+
+        {{ govukButton({
+          text: "Find customer record",
+          href: 'kbv-start'
+        }) }}
+
+        <!--
+      </form>
+
+
+<!--
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          If you cannot complete this task
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        Content to support and advise the agent would go here.
+      </div>
+    </details>
+    -->
+
+
+    </div>
+
+    <!-- `right sidebar` -->
+
+<!--
+    <div class="govuk-grid-column-one-quarter">
+
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          KBV progress
+        </h2>
+        <div class="govuk-!-padding-bottom-1"></div>
+        <div class="dwp-timeline">
+          <ol class="dwp-timeline__items">
+            <li class="dwp-timeline__item">
+              <h2 class="dwp-timeline__heading">Question 1</h2>
+              <p class="dwp-timeline__datetime">CIS Searchlight</p>
+              <strong class="govuk-tag govuk-tag--blue">In progress</strong>
+            </li>
+            <div class="govuk-!-padding-bottom-1"></div>
+            <li class="dwp-timeline__item">
+              <h2 class="dwp-timeline__heading">Question 2</h2>
+              <p class="dwp-timeline__datetime">Legacy</p>
+              <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
+            </li>
+            <div class="govuk-!-padding-bottom-1"></div>
+            <li class="dwp-timeline__item">
+              <h2 class="dwp-timeline__heading">Question 3</h2>
+              <p class="dwp-timeline__datetime">Business specific</p>
+              <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
+            </li>
+          </ol>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+-->
+
+{% endblock %}

@@ -1,0 +1,204 @@
+{% extends "layouts/main_path2b.html" %}
+
+{% block pageTitle %}
+  Counter fraud check flag found – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-panel govuk-panel--interruption2 govuk-!-padding-left-8 govuk-!-padding-top-6 govuk-!-padding-right-6">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-1 white-text">Identity at risk flag found</h1>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-panel govuk-panel--alert govuk-!-padding-left-5
+ govuk-!-padding-top-3 govuk-!-padding-bottom-3 govuk-!-padding-right-2">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-1">Identity at risk flag found</h3>
+      <p class="govuk-body govuk-!-margin-bottom-1">Instructions will be given at the end of the identity check.</p>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-panel govuk-panel--alert govuk-!-padding-left-5
+ govuk-!-padding-top-4 govuk-!-padding-bottom-0 govuk-!-padding-right-2 govuk-!-padding-right-2">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-visually-hidden">Warning</span>
+              Identity at risk flag found on customer record.
+            </strong>
+          </div>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <h1 class="govuk-heading-l">
+      Counter fraud check shows flag found on this record
+    </h1>
+    {# Page heading explaining the purpose of the task #}
+
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+           Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+        <h3 class="govuk-heading-s">
+        Fraud: Date of death held
+          <span class="govuk-body"> You must investigate this before processing the customer's request. <a href="/index" class="govuk-link">Follow the relevant operational instructions.</a></span>
+        </h3>
+      </div>
+    </div>
+
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+           Fraud risk
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+        <h3 class="govuk-heading-s">
+        Date of death held
+          <span class="govuk-body"> You must investigate this before processing the customer's request. <a href="/index" class="govuk-link">Follow the relevant operational instructions.</a></span>
+        </h3>
+      </div>
+    </div>
+
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-visually-hidden">Warning</span>
+        Identity at risk flag found on customer record.
+      </strong>
+    </div>
+
+    <div class="govuk-panel govuk-panel--interruption2 govuk-!-padding-left-8 govuk-!-padding-top-8 govuk-!-padding-right-8">
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-xl govuk-!-margin-bottom-6 white-text">Identity at risk</h1>
+
+          <p class="govuk-body white-text">Counter fraud checks have found a flag found on this customer record.</p>
+
+          <p class="govuk-body white-text">Instructions will be given at the end of the identity check.</p>
+
+        <p class="govuk-body">
+          <a href="/index" class="govuk-link govuk-link--inverse">Prototype home</a>
+          </p>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-panel govuk-panel--interruption govuk-!-padding-left-8 govuk-!-padding-right-6">
+        <h1 class="govuk-heading-l white-text">
+          We need more information about your money and investments
+        </h1>
+
+        <div class="govuk-form-group">
+
+          <p class="govuk-body white-text">
+
+              To pay you the correct amount of Pension Credit, we need to know:
+
+          </p>
+           <ul class="govuk-list govuk-list--bullet white-text">
+              <li>how much money you and your partner have today</li>
+              <li>how much money you both had on 18 November 2025</li>
+          </ul>
+
+
+            <h2 class="govuk-heading-m white-text">
+              Things you may need
+            </h2>
+
+            <!--- LOOKING TO SEE HOW MANY IN LIST --->
+
+             <p class="govuk-body white-text"> To answer the next few questions you may need
+
+                    the current balance and statements for all of your accounts.
+              </p>
+
+
+          <div class="govuk-inset-text colour-white white-text">
+            If you do not enter anything for more than 30 minutes, your application will time out and you will have to start again.
+          </div>
+
+        </div>
+        <form method="post">
+          <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" data-govuk-button-init="">
+            Continue
+          </button>
+        </form>
+      </div>
+
+    <div class="govuk-inset-text colour-blue"><p>
+    The customer must correctly answer 2 of 3 knowledge based verification (KBV) questions. The questions will be based on information we hold about the customer. </p>
+
+    <p>You will need to confirm whether the answer they give is correct.
+    </p>
+    </div>
+
+    {{ govukButton({
+      text: "Continue",
+      href: "/ur-r3/kbv-no-answer/another-benefit-you-have-previously-applied-for"
+    }) }}
+
+  </div>
+
+  <!--
+
+  <div class="govuk-grid-column-one-quarter">
+
+    <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary" aria-labelledby="subsection-title">
+      <h2 class="govuk-heading-m" id="subsection-title">
+        KBV progress
+      </h2>
+
+      <div class="govuk-!-padding-bottom-1"></div>
+
+      <div class="dwp-timeline">
+        <ol class="dwp-timeline__items">
+          <li class="dwp-timeline__item">
+            <h3 class="dwp-timeline__heading">Question 1</h3>
+            <p class="dwp-timeline__datetime">CIS Searchlight</p>
+            <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
+          </li>
+
+          <div class="govuk-!-padding-bottom-1"></div>
+
+          <li class="dwp-timeline__item">
+            <h3 class="dwp-timeline__heading">Question 2</h3>
+            <p class="dwp-timeline__datetime">Legacy</p>
+            <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
+          </li>
+
+          <div class="govuk-!-padding-bottom-1"></div>
+
+          <li class="dwp-timeline__item">
+            <h3 class="dwp-timeline__heading">Question 3</h3>
+            <p class="dwp-timeline__datetime">Business specific</p>
+            <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
+          </li>
+        </ol>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+-->
+
+{% endblock %}

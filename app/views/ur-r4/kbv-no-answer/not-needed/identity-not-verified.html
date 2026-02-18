@@ -1,0 +1,137 @@
+{% extends "layouts/main_path2b.html" %}
+
+{% block pageTitle %}
+  Customer identity verified – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <div class="govuk-panel govuk-panel--confirmation custom-red-panel">
+   <h1 class="govuk-panel__title">
+    Identity not verified
+   </h1>
+  </div>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+    <h2 class="govuk-heading-m">
+      The identity check is complete
+
+    </h2>
+
+    <p class="govuk-body">
+      You have not answered the security questions successfully. I cannot continue with your request and need to end the call.
+    </p>
+
+    <div class="govuk-inset-text colour-blue">
+      The outcome of this identity check will automatically be recorded by the system.
+    </div>
+
+    <h2 class="govuk-heading-m">
+      You can try to prove your identity another way
+      </h2>
+
+    <p>
+      You can either:
+    </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>call back when you have access to the correct information and try again, <strong>or</strong></li>
+        <li>you can send identity documents to DWP in the post.</li>
+      </ul>
+
+      <!--
+
+      <p>
+        Customers have two separate attempts to pass the IDV check. If they fail on the second attempt, seek advice from your team leader.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        If this is their second failed IDV check
+      </h2>
+
+      <p>
+        You must record this outcome in the relevant service line system.
+      </p>
+
+      <p>
+        A bogus call report must be considered and sent as appropriate to the relevant security group inbox. Find out more about <a href="https://www.gov.uk/government/publications/phishing-and-bogus-emails-hm-revenue-and-customs-examples/phishing-emails-and-bogus-contact-hm-revenue-and-customs-examples" class="govuk-link" target="_blank">bogus callers and vishing (opens in a new tab)</a>.
+      </p>
+
+      <p>
+        You should use your judgement to decide whether any alternative arrangements can be made, for example:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>an outbound call</li>
+        <li>face to face, for example a visit or a check at the office</li>
+        <li>requests for documents to be sent by post</li>
+      </ul>
+
+    <div class="govuk-inset-text">
+      If you are inactive for more than 2 minutes, this page will time out and return to the start of the IDV process.
+    </div>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    -->
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+    {{ govukButton({
+      text: "Finish IDV check",
+      href: "establish-identity-match"
+    }) }}
+
+    <p class="govuk-body">(Button returns to Establish identity page.)</p>
+
+  </div>
+
+  <!-- `right sidebar` -->
+
+<!--
+
+  <div class="govuk-grid-column-one-quarter">
+
+    <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary" aria-labelledby="subsection-title">
+      <h2 class="govuk-heading-m" id="subsection-title">
+        KBV progress
+      </h2>
+
+      <div class="govuk-!-padding-bottom-1"></div>
+
+      <div class="dwp-timeline">
+        <ol class="dwp-timeline__items">
+          <li class="dwp-timeline__item">
+            <h3 class="dwp-timeline__heading">Question 1</h3>
+            <p class="dwp-timeline__datetime">CIS Searchlight</p>
+            <strong class="govuk-tag govuk-tag--red">Failed</strong>
+          </li>
+
+          <div class="govuk-!-padding-bottom-1"></div>
+
+          <li class="dwp-timeline__item">
+            <h3 class="dwp-timeline__heading">Question 2</h3>
+            <p class="dwp-timeline__datetime">Legacy</p>
+            <strong class="govuk-tag govuk-tag--green">Correct</strong>
+          </li>
+
+          <div class="govuk-!-padding-bottom-1"></div>
+
+          <li class="dwp-timeline__item">
+            <h3 class="dwp-timeline__heading">Question 3</h3>
+            <p class="dwp-timeline__datetime">Business specific</p>
+            <strong class="govuk-tag govuk-tag--green">Correct</strong>
+          </li>
+        </ol>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+-->
+
+{% endblock %}
