@@ -9,7 +9,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/nino-answer-r3-blindcheck" method="post">
+    <!--  <form class="form" action="/nino-answer-r3-blindcheck" method="post"> -->
 
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -36,10 +36,11 @@
         </fieldset>
 
         {{ govukButton({
-          text: "Search for customer record"
+          text: "Search for customer record",
+          href: "confirm-correct-record"
         }) }}
 
-  </form>
+<!--  </form>-->
 
           <p class="govuk-body">
              <a href="establish-your-identity-name-dob" class="govuk-link">Search without a National Insurance number</a>

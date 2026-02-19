@@ -8,44 +8,35 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
 
-    <div class="govuk-panel govuk-panel--confirmation">
-    <h1 class="govuk-panel__title">
-      Identity check complete
+    <h1 class="govuk-heading-l">
+      You have passed the security questions and I can now look into your request
     </h1>
-    <div class="govuk-panel__body">
-      You have answered the security questions successfully
+    {# Page heading explaining the purpose of the task #}
+
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-visually-hidden">Warning</span>
+        Date of death on customer record.
+      </strong>
     </div>
-  </div>
-
-    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
-
-    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-          <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-           Important
-          </h2>
-        </div>
-        <div class="govuk-notification-banner__content">
-        <h3 class="govuk-heading-s">
-        Identity at risk flag held.
-          <span class="govuk-body"> You must investigate this before processing the customer's request. Follow your service-specific operational instructions.</span>
-        </h3>
-      </div>
-    </div>
-
-    <p>
-      You have successfully answered the security questions. I can now continue with your request.
-    </p>
 
     <div class="govuk-inset-text colour-blue">
-      The outcome of this identity check will automatically be recorded by the system.
+      <h2 class="govuk-heading-s">
+        What you should do next
+      </h2>
+      <ol class="govuk-list govuk-list--number">
+        <li> Check if date of death has been incorrectly recorded on CIS Searchlight. </li>
+        <li> A CIS amendment or a fraud referral may be required.</li>
+        <li> Do not tell the customer about the date of death.</li>
+      </ol>
     </div>
 
     {% from "govuk/components/button/macro.njk" import govukButton %}
 
     {{ govukButton({
-      text: "Finish IDV check",
-      href: "/ur-r3/kbv-no-answer/establish-your-identity-nino"
+      text: "Close Identity Checker",
+      href: "/ur-r4/kbv-no-answer/establish-your-identity-nino"
     }) }}
 
   </div>
