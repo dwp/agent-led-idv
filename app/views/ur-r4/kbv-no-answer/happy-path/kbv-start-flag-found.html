@@ -1,15 +1,29 @@
 {% extends "layouts/main_path2b.html" %}
 
 {% block pageTitle %}
-  Identity verified – {{ serviceName }} – GOV.UK Prototype Kit
+  Ask the customer knowledge-based verification questions – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
 
+  <!--  <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+           Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+        <h3 class="govuk-heading-s">
+        Identity at risk flag found on customer record.
+          <span class="govuk-body"> Instructions will be given at the end of the identity check.</span>
+        </h3>
+      </div>
+    </div> -->
+
     <h1 class="govuk-heading-l">
-      You have passed the security questions and I can now look into your request
+      Now I need to ask you some security questions
     </h1>
     {# Page heading explaining the purpose of the task #}
 
@@ -17,33 +31,25 @@
       <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
       <strong class="govuk-warning-text__text">
         <span class="govuk-visually-hidden">Warning</span>
-        Identity at risk flag on customer record.
+        Date of death on customer record.
       </strong>
     </div>
 
-    <div class="govuk-inset-text colour-blue">
-      <h2 class="govuk-heading-s">
-        What you should do next
-      </h2>
-      <ol class="govuk-list govuk-list--number">
-        <li> Check if date of death has been incorrectly recorded on CIS Searchlight. </li>
-        <li> A CIS amendment or a fraud referral may be required.</li>
-        <li>  Do not tell the customer about the identity at risk flag.</li>
-      </ol>
+    <div class="govuk-inset-text colour-blue"><p>
+    The customer must correctly answer 2 of 3 knowledge based verification (KBV) questions.  </p>
+
+    <p>Further instructions will be given at the end of the identity check.
+    </p>
     </div>
 
-    {% from "govuk/components/button/macro.njk" import govukButton %}
-
     {{ govukButton({
-      text: "Close Identity Checker",
-      href: "/ur-r4/kbv-no-answer/establish-your-identity-nino"
+      text: "Continue",
+      href: "/ur-r4/kbv-no-answer/another-benefit-you-have-previously-applied-for"
     }) }}
 
   </div>
 
-  <!-- `right sidebar` -->
-
-<!--
+  <!--
 
   <div class="govuk-grid-column-one-quarter">
 
@@ -59,7 +65,7 @@
           <li class="dwp-timeline__item">
             <h3 class="dwp-timeline__heading">Question 1</h3>
             <p class="dwp-timeline__datetime">CIS Searchlight</p>
-            <strong class="govuk-tag govuk-tag--red">Failed</strong>
+            <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
           </li>
 
           <div class="govuk-!-padding-bottom-1"></div>
@@ -67,7 +73,7 @@
           <li class="dwp-timeline__item">
             <h3 class="dwp-timeline__heading">Question 2</h3>
             <p class="dwp-timeline__datetime">Legacy</p>
-            <strong class="govuk-tag govuk-tag--green">Correct</strong>
+            <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
           </li>
 
           <div class="govuk-!-padding-bottom-1"></div>
@@ -75,7 +81,7 @@
           <li class="dwp-timeline__item">
             <h3 class="dwp-timeline__heading">Question 3</h3>
             <p class="dwp-timeline__datetime">Business specific</p>
-            <strong class="govuk-tag govuk-tag--green">Correct</strong>
+            <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
           </li>
         </ol>
       </div>

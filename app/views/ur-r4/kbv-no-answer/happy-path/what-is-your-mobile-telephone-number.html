@@ -1,0 +1,104 @@
+{% extends "layouts/main_path2b.html" %}
+
+{% set title =  "What is your mobile telephone number?" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <!-- Notification banner for fraud flags -->
+
+      <!-- {% set html %}
+
+        <h3 class="govuk-notification-banner__heading">
+          ID at Risk fraud flag found
+        </h3>
+
+        <p class="govuk-body">Do not use these KBV questions</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Bank or building society information</li>
+          <li>Current employment detail</li>
+        </ul>
+
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: html
+      }) }}-->
+
+      <!-- `form tag for radios` -->
+
+
+    <form class="form" action="/ur-r4/kbv-no-answer/happy-path/what-is-your-mobile-telephone-number" method="post" autocomplete="off">
+
+        <!--page heading with caption include-->
+        {% set pageHeadingH1 %}
+            <span class="govuk-caption-l">
+                Question 3
+            </span>
+            {{ title }}
+        {% endset %}
+
+        {{ govukInput({
+            label: {
+                html: pageHeadingH1,
+                classes: "govuk-label--l",
+                isPageHeading: true
+            },
+            hint: {
+                text: "For example, 07700 900000 or +44 7700 900999."
+            },
+            classes: "govuk-input--width-10",
+            id: "customer-mobile",
+            name: "customer-mobile-tel",
+            autocomplete: "tel"
+        }) }}
+
+        {{ govukButton({
+            text: "Continue"
+        }) }}
+
+    </form>
+
+    </div>
+
+    <!-- `right sidebar` -->
+
+<!--
+    <div class="govuk-grid-column-one-quarter">
+
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          KBV progress
+        </h2>
+        <div class="govuk-!-padding-bottom-1"></div>
+        <div class="dwp-timeline">
+          <ol class="dwp-timeline__items">
+            <li class="dwp-timeline__item">
+              <h2 class="dwp-timeline__heading">Question 1</h2>
+              <p class="dwp-timeline__datetime">CIS Searchlight</p>
+              <strong class="govuk-tag govuk-tag--blue">In progress</strong>
+            </li>
+            <div class="govuk-!-padding-bottom-1"></div>
+            <li class="dwp-timeline__item">
+              <h2 class="dwp-timeline__heading">Question 2</h2>
+              <p class="dwp-timeline__datetime">Legacy</p>
+              <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
+            </li>
+            <div class="govuk-!-padding-bottom-1"></div>
+            <li class="dwp-timeline__item">
+              <h2 class="dwp-timeline__heading">Question 3</h2>
+              <p class="dwp-timeline__datetime">Business specific</p>
+              <strong class="govuk-tag govuk-tag--grey">Not asked</strong>
+            </li>
+          </ol>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+-->
+
+{% endblock %}

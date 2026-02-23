@@ -606,3 +606,59 @@ router.post('/ur-r4/kbv-no-answer/what-is-your-mobile-telephone-number', (req, r
         return res.redirect('/ur-r4/kbv-no-answer/identity-not-verified-flag-found');
     }
 });
+
+
+////////// route code for full fat UR-r4 - HAPPY PATH NO FLAG //////////
+
+// --------------------
+// Q1: Another benefit applied for
+// --------------------
+
+////////// no routing needed fot Q1 //////////
+
+// --------------------
+// Q2: When did you receive your last pension payment?
+// --------------------
+router.get('/ur-r4/kbv-no-answer/happy-path/when-did-you-receive-your-last-pension-payment', (req, res) => {
+    res.render('/ur-r4/kbv-no-answer/happy-path/when-did-you-receive-your-last-pension-payment');
+});
+
+router.post('/ur-r4/kbv-no-answer/happy-path/when-did-you-receive-your-last-pension-payment', (req, res) => {
+    const day = (req.body['pension-received-day'] || '').trim();
+    const month = (req.body['pension-received-month'] || '').trim();
+    const year = (req.body['pension-received-year'] || '').trim();
+
+    const enteredDate = `${day}-${month}-${year}`;
+
+    if (enteredDate === '25-10-2025') {
+        // ✅ Both Q1 and Q2 correct → go to success page
+        return res.redirect('/ur-r4/kbv-no-answer/happy-path/identity-verified');
+    } else {
+        // ❌ Incorrect date → show error page
+        return res.redirect('/ur-r4/kbv-no-answer/happy-path/what-is-your-mobile-telephone-number');
+    }
+});
+
+
+// --------------------
+// Q3: What is your mobile telephone number?
+// --------------------
+router.get('/ur-r4/kbv-no-answer/happy-path/what-is-your-mobile-telephone-number', (req, res) => {
+    res.render('ur-r4/kbv-no-answer/happy-path/what-is-your-mobile-telephone-number');
+});
+
+router.post('/ur-r4/kbv-no-answer/happy-path/what-is-your-mobile-telephone-number', (req, res) => {
+    const mobileNumber = (req.body['customer-mobile-tel'] || '').trim();
+
+    // Remove spaces for comparison
+    const normalizedNumber = mobileNumber.replace(/\s+/g, '');
+
+    // Flexible check: must match 07123456789 exactly after removing spaces
+    if (normalizedNumber === '07123456789') {
+        // ✅ Correct mobile number → success page
+        return res.redirect('/ur-r4/kbv-no-answer/happy-path/identity-verified');
+    } else {
+        // ❌ Incorrect mobile number → failure page
+        return res.redirect('/ur-r4/kbv-no-answer/happy-path/identity-not-verified');
+    }
+});

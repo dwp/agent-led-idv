@@ -8,39 +8,37 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
 
-    <h1 class="govuk-heading-l">
-      You have not passed the security questions and I need to end the call
+    <div class="govuk-panel govuk-panel--confirmation custom-red-panel">
+    <h1 class="govuk-panel__title">
+      Identity check complete
     </h1>
-    {# Page heading explaining the purpose of the task #}
+    <div class="govuk-panel__body">
+      You have not verified your identity
+    </div>
+  </div>
 
-    <h2 class="govuk-heading-m">
-      You can try to prove your identity another way
-      </h2>
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
 
-    <p class="govuk-body">You can either:</p>
+  <p class="govuk-body">
+    You have not answered the security questions successfully. I cannot continue with your request and need to end the call.
+  </p>
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li>call back when you have access to the correct information and try again, or</li>
-        <li>send identity documents to DWP in the post.</li>
-      </ul>
+  <div class="govuk-inset-text colour-blue">
+    Do not tell the customer which of the KBV questions they passed or failed.
+  </div>
 
-      <div class="govuk-warning-text">
-        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-        <strong class="govuk-warning-text__text">
-          <span class="govuk-visually-hidden">Warning</span>
-          Identity at risk flag on customer record.
-        </strong>
-      </div>
+  <h2 class="govuk-heading-m">
+    You can try to prove your identity another way
+    </h2>
 
-      <div class="govuk-inset-text colour-blue">
-        <h2 class="govuk-heading-s">
-          What you should do next
-        </h2>
-        <ol class="govuk-list govuk-list--number">
-          <li> Check your service line instructions for any actions to take.</li>
-          <li>  Do not tell the customer about the identity at risk flag.</li>
-        </ol>
-      </div>
+  <p>
+    You can either:
+  </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>call back when you have access to the correct information and try again, <strong>or</strong></li>
+      <li>you can send identity documents to DWP in the post.</li>
+    </ul>
 
       <!--
 
