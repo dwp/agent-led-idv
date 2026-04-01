@@ -1,0 +1,56 @@
+{% extends "layouts/main_matching_noflag.html" %}
+
+{% block pageTitle %}
+  No matches for that National Insurance number – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <h1 class="govuk-heading-l">
+      There were no matches for that National Insurance number
+    </h1>
+
+
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-width-one-half">
+      National Insurance number
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data['nationalinsurancenumber'] }}
+    </dd>
+  </div>
+</dl>
+
+
+    <div class="govuk-inset-text colour-blue">
+
+      <h2 class="govuk-heading-m">
+        What you should do next
+      </h2>
+
+      <p class="govuk-body">You can:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>search again with the National Insurance number</li>
+        <li>search with full name, date of birth and postcode</li>
+      </ul>
+
+    </div>
+
+    {{ govukButton({
+      text: "Search again",
+      href: "establish-your-identity-nino"
+    }) }}
+
+    <p class="govuk-body">
+      <a href="try-another-way" class="govuk-link">I cannot find the customer record</a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}

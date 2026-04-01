@@ -1,0 +1,70 @@
+{% extends "layouts/main_matching.html" %}
+
+{% block pageTitle %}
+  Confirm correct record open – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <h1 class="govuk-heading-l">
+        What is your full name, date of birth and postcode?
+      </h1>
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m">Personal details</caption>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Name</th>
+            <td class="govuk-table__cell">Albus Dumbledore</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">National Insurance number</th>
+            <td class="govuk-table__cell">QQ 12 34 56 C</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Date of birth</th>
+            <td class="govuk-table__cell">5 January 1978</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Postcode</th>
+            <td class="govuk-table__cell">PE1 6AN</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form class="form" action="/correct-record-r5" method="post">
+
+      {{ govukRadios({
+        name: "correctrecord",
+        value: data['correctrecord'],
+        fieldset: {
+          legend: {
+            text: "Is this the correct customer record?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+</div>
+
+{% endblock %}

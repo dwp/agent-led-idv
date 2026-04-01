@@ -1,0 +1,96 @@
+{% extends "layouts/main_matching.html" %}
+
+{% block pageTitle %}
+  Name another benefit you have previously applied for? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <div class="govuk-error-summary" data-module="govuk-error-summary">
+            <div role="alert">
+              <h2 class="govuk-error-summary__title">
+                There is a problem
+              </h2>
+              <div class="govuk-error-summary__body">
+                <ul class="govuk-list govuk-error-summary__list">
+                  <li>
+                    <a href="#anotherbenefit">Select a another benefit previously applied for</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+      <form class="form" action="/ur-r5/flag/another-benefit-you-have-previously-applied-for" method="post">
+      <div class="govuk-form-group govuk-form-group--error">
+        <span class="govuk-caption-l">Question 1</span>
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Name another benefit you have previously applied for?
+            </h1>
+          </legend>
+          <p id="anotherbenefit" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select a another benefit previously applied for
+          </p>
+          <div id="another-benefit-hint" class="govuk-hint">
+            You do not have to have been paid the benefit.
+          </div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="anotherBenefit" name="anotherBenefit" type="radio" value="job-seekers-allowance">
+              <label class="govuk-label govuk-radios__label" for="anotherBenefit">
+                Jobseeker's Allowance (JSA)
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="anotherBenefit-2" name="anotherBenefit" type="radio" value="tax-credits">
+              <label class="govuk-label govuk-radios__label" for="anotherBenefit-2">
+                Tax Credits
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="anotherBenefit-3" name="anotherBenefit" type="radio" value="universal-credit">
+              <label class="govuk-label govuk-radios__label" for="anotherBenefit-3">
+                Universal Credit (UC)
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="anotherBenefit-4" name="anotherBenefit" type="radio" value="personal-independence-payment">
+              <label class="govuk-label govuk-radios__label" for="anotherBenefit-4">
+                Personal Independence Payment (PIP)
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="anotherBenefit-5" name="anotherBenefit" type="radio" value="employment-support-allowance">
+              <label class="govuk-label govuk-radios__label" for="anotherBenefit-5">
+                Employment and Support Allowance (ESA)
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="anotherBenefit-6" name="anotherBenefit" type="radio" value="income-support">
+              <label class="govuk-label govuk-radios__label" for="anotherBenefit-6">
+                Income Support
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-button-group">
+        <a href="/ur-r5/flag/when-did-you-receive-your-last-pension-payment" role="button" class="govuk-button">
+          Continue
+        </a>
+        <a class="govuk-link" href="when-did-you-receive-your-last-pension-payment">Customer cannot answer</a>
+      </div>
+
+      </form>
+
+        </div>
+      </div>
+
+
+{% endblock %}

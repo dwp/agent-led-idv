@@ -662,3 +662,436 @@ router.post('/ur-r4/kbv-no-answer/happy-path/what-is-your-mobile-telephone-numbe
         return res.redirect('/ur-r4/kbv-no-answer/happy-path/identity-not-verified');
     }
 });
+
+////////// UR-r5 - MVP Routing //////////
+
+////////// FLAG PATH //////////
+
+// ---------------------------------
+// UR-R5 -Establish Identity NINO matching
+// ---------------------------------
+
+router.post('/nino-answer-r5', function (request, response) {
+    var nino = request.session.data['nationalinsurancenumber']
+
+    if (!nino || nino.length === 0) {
+        // Missing input → error page
+        response.redirect('/ur-r5/flag/establish-identity-match-nino-error')
+
+    } else if (
+        nino.includes("QQ 12 34 56 C") ||
+        nino === "qq123456c" ||
+        nino === "QQ123456C"
+    ) {
+        // Known correct match
+        response.redirect("/ur-r5/flag/confirm-correct-record")
+
+    } else if (
+        nino.includes("AB 12 34 56 C") ||
+        nino === "ab123456c" ||
+        nino === "AB123456C"
+    ) {
+        // ✅ New explicit no‑match NINO route
+        response.redirect('/ur-r5/flag/no-match-nino')
+
+    } else {
+        // Default fallback → also no match
+        response.redirect('/ur-r5/flag/no-match-nino')
+    }
+})
+
+// ---------------------------------------------------------
+// UR-R5 - Establish Identity Name, DOB, postcode, all should match
+// ---------------------------------------------------------
+
+router.post('/name-dob-postcode-answer-r5', function (req, res) {
+
+  // Pull correct session field names
+  const firstname = req.session.data['firstname'];
+  const lastname = req.session.data['lastname'];
+  const day = req.session.data['date-of-birth-day'];
+  const month = req.session.data['date-of-birth-month'];
+  const year = req.session.data['date-of-birth-year'];
+  const postcode = req.session.data['addressPostcode'];
+
+  // Build full name
+  const name = `${firstname} ${lastname}`.trim();
+
+  // Normalise
+  const cleanName = name ? name.toUpperCase() : "";
+  const cleanPostcode = postcode ? postcode.replace(/\s+/g, '').toUpperCase() : "";
+  const dob = `${day}-${month}-${year}`;
+
+  // Missing values → error page
+  if (!cleanName || !day || !month || !year || !cleanPostcode) {
+    return res.redirect('/ur-r5/flag/establish-your-identity-name-dob-postcode-error');
+  }
+
+  // ✅ Exact match
+  if (
+    cleanName === "ALBUS DUMBLEDORE" &&
+    dob === "5-1-1978" &&
+    cleanPostcode === "PE16AN"
+  ) {
+    return res.redirect('/ur-r5/flag/confirm-correct-record-short');
+  }
+
+  // ❌ Everything else → no match
+  return res.redirect('/ur-r5/flag/no-match-name-dob-postcode');
+});
+
+// ---------------------------------------------------------
+// UR-R5 - Confirm record yes or no
+// ---------------------------------------------------------
+
+router.post('/correct-record-r5', function (request, response) {
+    var correctrecord = request.session.data['correctrecord']
+    if (correctrecord == "yes") {
+        response.redirect("/ur-r5/flag/counter-fraud-flag-found")
+    } else {
+        response.redirect("/ur-r5/flag/establish-your-identity-nino")
+    }
+})
+
+
+// ✅ Store the last page on every GET request
+
+router.get('*', function (req, res, next) {
+    // Don't overwrite previousPage when you're ON the end-session page
+    if (!req.originalUrl.includes('/end-session')) {
+        req.session.data.prevPage = req.originalUrl;
+    }
+
+    next();
+});
+
+// -----------------------------------------------------------------
+// UR-R5 - Q1: Name another benefit you have previously applied for?
+// -----------------------------------------------------------------
+
+// No routing for Q1 for now
+
+
+// ---------------------------------------------------------
+// UR-R5 - Q2: When did you receive your last pension payment?
+// ---------------------------------------------------------
+
+// GET – normal page
+router.get('/ur-r5/flag/when-did-you-receive-your-last-pension-payment', (req, res) => {
+    res.render('ur-r5/flag/when-did-you-receive-your-last-pension-payment');
+});
+
+// POST – blank check + correct date check
+router.post('/ur-r5/flag/when-did-you-receive-your-last-pension-payment', (req, res) => {
+    const day = (req.body['pension-received-day'] || '').trim();
+    const month = (req.body['pension-received-month'] || '').trim();
+    const year = (req.body['pension-received-year'] || '').trim();
+
+    // ✅ If any field is blank → error page
+    if (!day || !month || !year) {
+        return res.redirect('/ur-r5/flag/when-did-you-receive-your-last-pension-payment-error');
+    }
+
+    const enteredDate = `${day}-${month}-${year}`;
+
+    // ✅ Correct date → identity verified
+    if (enteredDate === '25-10-2025') {
+        return res.redirect('/ur-r5/flag/identity-verified-flag-found');
+    }
+
+    // ❌ Wrong date → return to mobile question
+    return res.redirect('/ur-r5/flag/what-is-your-mobile-telephone-number');
+});
+
+// GET – error page
+router.get('/ur-r5/flag/when-did-you-receive-your-last-pension-payment-error', (req, res) => {
+    res.render('ur-r5/flag/when-did-you-receive-your-last-pension-payment-error');
+});
+
+// --------------------
+// Q3: What is your mobile telephone number?
+// --------------------
+// -------------------------------------------------------------
+// MOBILE TELEPHONE NUMBER ROUTES (all in one)
+// -------------------------------------------------------------
+
+// GET – normal page
+router.get('/ur-r5/flag/what-is-your-mobile-telephone-number', (req, res) => {
+  res.render('ur-r5/flag/what-is-your-mobile-telephone-number');
+});
+
+// POST – validation + routing
+router.post('/ur-r5/flag/what-is-your-mobile-telephone-number', (req, res) => {
+  const mobile = (req.body['customer-mobile-tel-r5'] || '').trim();
+
+  // Blank → go to error page
+  if (!mobile) {
+    return res.redirect('/ur-r5/flag/what-is-your-mobile-telephone-number-error');
+  }
+
+  // Correct number → identity verified
+  if (mobile === '07123456789') {
+    return res.redirect('/ur-r5/flag/identity-verified-flag-found');
+  }
+
+  // ❌ Wrong answer → identity NOT verified (Q2 no longer repeats)
+  return res.redirect('/ur-r5/flag/identity-not-verified-flag-found');
+});
+
+// GET – error page
+router.get('/ur-r5/flag/what-is-your-mobile-telephone-number-error', (req, res) => {
+  res.render('ur-r5/flag/what-is-your-mobile-telephone-number-error');
+});
+
+// ---------------------------------------------------------
+// UR-R5 - End session - kbv
+// ---------------------------------------------------------
+
+
+router.post('/end-session', function (req, res) {
+    const choice = req.session.data['endsession'];
+
+    if (choice && choice.toLowerCase() === "yes") {
+        return res.redirect("/ur-r5/flag/establish-your-identity-nino");
+    }
+
+    const previous = req.session.data.prevPage || "/";
+    return res.redirect(previous);
+});
+
+
+// ---------------------------------------------------------
+// UR-R5 - End session - matching
+// ---------------------------------------------------------
+
+router.post('/end-session-matching', function (req, res) {
+    const choice = req.session.data['endsessionmatching'];
+
+    console.log("Submitted (matching):", choice);
+
+    if (choice === "yes") {
+        return res.redirect("/ur-r5/flag/establish-your-identity-nino");
+        // Change this to wherever YES should go
+    }
+
+    // NO → go back to last GET page
+    const previous = req.session.data.prevPage || "/";
+    return res.redirect(previous);
+});
+
+
+////////// UR-r5 - MVP Routing //////////
+
+////////// NO FLAG FOUND PATH //////////
+
+// ---------------------------------
+// UR-R5 -Establish Identity NINO matching
+// ---------------------------------
+
+router.post('/nino-answer-r5-noflag', function (request, response) {
+    var nino = request.session.data['nationalinsurancenumber']
+
+    if (!nino || nino.length === 0) {
+        // Missing input → error page
+        response.redirect('/ur-r5/no-flag/establish-identity-match-nino-error')
+
+    } else if (
+        nino.includes("QQ 12 34 56 C") ||
+        nino === "qq123456c" ||
+        nino === "QQ123456C"
+    ) {
+        // Known correct match
+        response.redirect("/ur-r5/no-flag/confirm-correct-record")
+
+    } else if (
+        nino.includes("AB 12 34 56 C") ||
+        nino === "ab123456c" ||
+        nino === "AB123456C"
+    ) {
+        // ✅ New explicit no‑match NINO route
+        response.redirect('/ur-r5/no-flag/no-match-nino')
+
+    } else {
+        // Default fallback → also no match
+        response.redirect('/ur-r5/no-flag/no-match-nino')
+    }
+})
+
+// ---------------------------------------------------------
+// UR-R5 - Establish Identity Name, DOB, postcode, all should match
+// ---------------------------------------------------------
+
+router.post('/name-dob-postcode-answer-r5-noflag', function (req, res) {
+
+  // Pull correct session field names
+  const firstname = req.session.data['firstname'];
+  const lastname = req.session.data['lastname'];
+  const day = req.session.data['date-of-birth-day'];
+  const month = req.session.data['date-of-birth-month'];
+  const year = req.session.data['date-of-birth-year'];
+  const postcode = req.session.data['addressPostcode'];
+
+  // Build full name
+  const name = `${firstname} ${lastname}`.trim();
+
+  // Normalise
+  const cleanName = name ? name.toUpperCase() : "";
+  const cleanPostcode = postcode ? postcode.replace(/\s+/g, '').toUpperCase() : "";
+  const dob = `${day}-${month}-${year}`;
+
+  // Missing values → error page
+  if (!cleanName || !day || !month || !year || !cleanPostcode) {
+    return res.redirect('/ur-r5/no-flag/establish-your-identity-name-dob-postcode-error');
+  }
+
+  // ✅ Exact match
+  if (
+    cleanName === "ALBUS DUMBLEDORE" &&
+    dob === "5-1-1978" &&
+    cleanPostcode === "PE16AN"
+  ) {
+    return res.redirect('/ur-r5/no-flag/confirm-correct-record-short');
+  }
+
+  // ❌ Everything else → no match
+  return res.redirect('/ur-r5/no-flag/no-match-name-dob-postcode');
+});
+
+// ---------------------------------------------------------
+// UR-R5 - Confirm record yes or no
+// ---------------------------------------------------------
+
+router.post('/correct-record-r5-noflag', function (request, response) {
+    var correctrecord = request.session.data['correctrecord']
+    if (correctrecord == "yes") {
+        response.redirect("/ur-r5/no-flag/another-benefit-you-have-previously-applied-for")
+    } else {
+        response.redirect("/ur-r5/no-flag/establish-your-identity-nino")
+    }
+})
+
+
+// ✅ Store the last page on every GET request
+
+router.get('*', function (req, res, next) {
+    // Don't overwrite previousPage when you're ON the end-session page
+    if (!req.originalUrl.includes('/end-session')) {
+        req.session.data.prevPage = req.originalUrl;
+    }
+
+    next();
+});
+
+// -----------------------------------------------------------------
+// UR-R5 - Q1: Name another benefit you have previously applied for?
+// -----------------------------------------------------------------
+
+// No routing for Q1 for now
+
+
+// ---------------------------------------------------------
+// UR-R5 - Q2: When did you receive your last pension payment?
+// ---------------------------------------------------------
+
+// GET – normal page
+router.get('/ur-r5/no-flag/when-did-you-receive-your-last-pension-payment', (req, res) => {
+    res.render('ur-r5/no-flag/when-did-you-receive-your-last-pension-payment');
+});
+
+// POST – blank check + correct date check
+router.post('/ur-r5/no-flag/when-did-you-receive-your-last-pension-payment', (req, res) => {
+    const day = (req.body['pension-received-day'] || '').trim();
+    const month = (req.body['pension-received-month'] || '').trim();
+    const year = (req.body['pension-received-year'] || '').trim();
+
+    // ✅ If any field is blank → error page
+    if (!day || !month || !year) {
+        return res.redirect('/ur-r5/no-flag/when-did-you-receive-your-last-pension-payment-error');
+    }
+
+    const enteredDate = `${day}-${month}-${year}`;
+
+    // ✅ Correct date → identity verified
+    if (enteredDate === '25-10-2025') {
+        return res.redirect('/ur-r5/no-flag/identity-verified');
+    }
+
+    // ❌ Wrong date → return to mobile question
+    return res.redirect('/ur-r5/no-flag/what-is-your-mobile-telephone-number');
+});
+
+// GET – error page
+router.get('/ur-r5/no-flag/when-did-you-receive-your-last-pension-payment-error', (req, res) => {
+    res.render('ur-r5/no-flag/when-did-you-receive-your-last-pension-payment-error');
+});
+
+// --------------------
+// Q3: What is your mobile telephone number?
+// --------------------
+// -------------------------------------------------------------
+// MOBILE TELEPHONE NUMBER ROUTES (all in one)
+// -------------------------------------------------------------
+
+// GET – normal page
+router.get('/ur-r5/no-flag/what-is-your-mobile-telephone-number', (req, res) => {
+  res.render('ur-r5/no-flag/what-is-your-mobile-telephone-number');
+});
+
+// POST – validation + routing
+router.post('/ur-r5/no-flag/what-is-your-mobile-telephone-number', (req, res) => {
+  const mobile = (req.body['customer-mobile-tel-r5'] || '').trim();
+
+  // Blank → go to error page
+  if (!mobile) {
+    return res.redirect('/ur-r5/no-flag/what-is-your-mobile-telephone-number-error');
+  }
+
+  // Correct number → identity verified
+  if (mobile === '07123456789') {
+    return res.redirect('/ur-r5/no-flag/identity-verified');
+  }
+
+  // ❌ Wrong answer → identity NOT verified (Q2 no longer repeats)
+  return res.redirect('/ur-r5/no-flag/identity-not-verified');
+});
+
+// GET – error page
+router.get('/ur-r5/flag/what-is-your-mobile-telephone-number-error', (req, res) => {
+  res.render('ur-r5/flag/what-is-your-mobile-telephone-number-error');
+});
+
+// ---------------------------------------------------------
+// UR-R5 - End session - kbv
+// ---------------------------------------------------------
+
+
+router.post('/end-session-noflag', function (req, res) {
+    const choice = req.session.data['endsession'];
+
+    if (choice && choice.toLowerCase() === "yes") {
+        return res.redirect("/ur-r5/no-flag/establish-your-identity-nino");
+    }
+
+    const previous = req.session.data.prevPage || "/";
+    return res.redirect(previous);
+});
+
+
+// ---------------------------------------------------------
+// UR-R5 - End session - matching
+// ---------------------------------------------------------
+
+router.post('/end-session-matching-noflag', function (req, res) {
+    const choice = req.session.data['endsessionmatching'];
+
+    console.log("Submitted (matching):", choice);
+
+    if (choice === "yes") {
+        return res.redirect("/ur-r5/no-flag/establish-your-identity-nino");
+        // Change this to wherever YES should go
+    }
+
+    // NO → go back to last GET page
+    const previous = req.session.data.prevPage || "/";
+    return res.redirect(previous);
+});

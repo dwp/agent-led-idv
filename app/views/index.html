@@ -16,9 +16,121 @@
 
     <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
+    <!-- UR-R5 Testing -->
+
+    <div><strong class="govuk-tag govuk-tag--yellow">UR5</strong> <strong class="govuk-tag govuk-tag--purple">Planned</strong></div>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+    <div>
+        <span class="govuk-caption-m">Spring 2026</span>
+          <h2 class="govuk-heading-m">UR Round 5</h2>
+        </div>
+
+        <p class="govuk-body">Some page content is still be finalised as we prepare for UR-R5.<p>
+
+        <p class="govuk-body"><strong>Specifically we will be looking at:<p></strong>
+
+          <ul class="govuk-list govuk-list--bullet">
+             <li>Postcode input added to alternate match page</li>
+             <li>No match nino and name/dob/postcode pages</li>
+             <li>Signpost page out to Searchlight for advanced search</li>
+             <li>Returning to the notification banner for fraud flags</li>
+             <li>Customer cannot answer link on KBV questions</li>
+             <li>Refined content on IDV failure pages</li>
+             <li>End session link in header with new confirmation check page</li>
+          </ul>
+
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+          <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-visually-hidden">Important</span>
+            Always use the 'clear data' link in the footer in-between testing journey paths.
+          </strong>
+        </div>
+
+        <a href="/ur-r5/flag/establish-your-identity-nino" class="govuk-button" rel="noreferrer noopener" target="_blank">
+          View prototype with flag
+        </a>
+
+        <hr class="govuk-section-break govuk-section-break--s govuk-section-break--invisible">
+
+        <a href="/ur-r5/no-flag/establish-your-identity-nino" class="govuk-button" rel="noreferrer noopener" target="_blank">
+          View prototype without flag
+        </a>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text govuk-!-font-weight-bold">
+              Important instructions for matching dummy data
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <!-- goal -->
+            <h3 class="govuk-heading-s">To match a record successfully by nino</h3>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>QQ 12 34 56 C</li>
+            </ul>
+            <h3 class="govuk-heading-s">To match a record successfully by name, dob, postcode</h3>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Albus Dumbledore</li>
+            </ul>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>05-01-1978</li>
+            </ul>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>PE1 6AN</li>
+            </ul>
+            <h3 class="govuk-heading-s">To get a no match by nino or name, dob, postcode</h3>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>You can just use any other details than above</li>
+            </ul>
+            <h3 class="govuk-heading-s">To get error pages</h3>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Submit without entering any data</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text govuk-!-font-weight-bold">
+              Important instructions for option KBV questions
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <!-- goal -->
+            <h3 class="govuk-heading-s">To view success after two correct questions only</h3>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
+              <li>Q2 - Enter <strong>correct</strong> date 25-10-2025</li>
+              <li>Customer <strong>verified</strong></li>
+            </ul>
+            <h3 class="govuk-heading-s">To view success after two from three correct questions</h3>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
+              <li>Q2 - Enter <strong>incorrect</strong> date such as 12-11-2023</li>
+              <li>Q3 - Enter <strong>correct</strong> mobile number 07123456789 (allows for spaces)</li>
+              <li>Customer <strong>verified</strong></li>
+            </ul>
+            <h3 class="govuk-heading-s">To view failure after two from three incorrect questions</h3>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
+              <li>Q2 - Enter <strong>incorrect</strong> date such as 12-11-2023</li>
+              <li>Q3 - Enter <strong>incorrect</strong> mobile number such as 07581234560 (allows for spaces)</li>
+              <li>Customer <strong>not</strong> verified</li>
+            </ul>
+          </div>
+        </details>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
     <!-- UR-R4 Testing -->
 
-    <div><strong class="govuk-tag govuk-tag--yellow">UR4</strong> <strong class="govuk-tag govuk-tag--purple">Planned</strong></div>
+    <div><strong class="govuk-tag govuk-tag--yellow">UR4</strong> <strong class="govuk-tag govuk-tag--blue">Completed</strong></div>
 
     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
 
@@ -150,7 +262,11 @@
           </div>
         </details>
 
-        <p class="govuk-body">A link to UR2 insights will be added when consolidated and documented.</p>
+        <h3 class="govuk-heading-s">UR Findings</h3>
+
+        <p class="govuk-body">
+          <a href="https://dwpdigital.atlassian.net/wiki/spaces/IDNT/pages/134147345135/Iterative+Testing+R3+findings" class="govuk-link" target="_blank">Iterative Testing UR-R3 findings (Work in progress)</a>
+        </p>
 
      <!-- end of UR-R3 - testing -->
 
@@ -184,8 +300,10 @@
       Start prototype
     </a>
 
+    <h3 class="govuk-heading-s">UR Findings</h3>
+
     <p class="govuk-body">
-      A link to UR2 insights will be added when consolidated and documented.
+      <a href="https://dwpdigital.atlassian.net/wiki/spaces/IDNT/pages/134147899474/Iterative+Testing+R2+findings" class="govuk-link" target="_blank">Iterative Testing UR-R2 findings</a>
     </p>
 
     <!-- end of UR-R2 - testing -->

@@ -1,0 +1,38 @@
+{% extends "layouts/main_idv.html" %}
+
+{% block pageTitle %}
+  The system is bringing up your information – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+           Fraud risk
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+        <h3 class="govuk-heading-s">
+        Identity at risk flag found on customer record.
+          <span class="govuk-body">Further instructions will be given after the security questions.</span>
+        </h3>
+      </div>
+    </div>
+
+    <h1 class="govuk-heading-l">
+      The system is bringing up your information, then I will ask you some security questions
+    </h1>
+
+    {{ govukButton({
+      text: "Continue",
+      href: "another-benefit-you-have-previously-applied-for"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

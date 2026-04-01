@@ -1,0 +1,85 @@
+{% extends "layouts/main_path1.html" %}
+
+{% block pageTitle %}
+  What is your full name and date of birth? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<a href="establish-your-identity-nino" class="govuk-back-link">Back</a>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- /name-dob-answer -->
+
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            I need to search for your details another way
+          </h1>
+        </legend>
+
+        <h2 class="govuk-heading-m">What is your full name?</h2>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="first-name">First name</label>
+          <input class="govuk-input" id="first-name" name="firstname" type="text" autocomplete="off" spellcheck="false">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="last-name">Last name</label>
+          <input class="govuk-input" id="last-name" name="lastname" type="text" autocomplete="off" spellcheck="false">
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-birth-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              What is your date of birth?
+            </legend>
+
+            <div class="govuk-date-input" id="date-of-birth">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="date-of-birth-day">Day</label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-day" name="date-of-birth-day" type="text" inputmode="numeric">
+                </div>
+              </div>
+
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="date-of-birth-month">Month</label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-month" name="date-of-birth-month" type="text" inputmode="numeric">
+                </div>
+              </div>
+
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="date-of-birth-year">Year</label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="date-of-birth-year" name="date-of-birth-year" type="text" inputmode="numeric">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="address-postcode">
+            What is your postcode?
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="address-postcode" name="addressPostcode" type="text" autocomplete="postal-code">
+        </div>
+
+      </fieldset>
+
+      {{ govukButton({
+        text: "Search for customer record",
+        href: '/ur-r4/kbv-no-answer/confirm-correct-record'
+      }) }}
+
+    <!-- </form> -->
+
+  </div>
+</div>
+
+{% endblock %}

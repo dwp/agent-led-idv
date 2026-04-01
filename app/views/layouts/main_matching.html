@@ -1,0 +1,83 @@
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "internal-service-header/macro.njk" import dwpHeader %}
+{% from "internal-service-footer/macro.njk" import dwpFooter %}
+{% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+
+{% block header %}
+
+<header class="dwp-header">
+    <div class="dwp-header__content govuk-width-container">
+      <div class="dwp-header__service-name">
+        <a href="/index" class="dwp-header__link">Identity Checker</a>
+      </div>
+      <div class="dwp-header__service-action">
+      <a href="/ur-r5/flag/end-session-matching" class="dwp-header__link">End session</a>
+    </div>
+  </div>
+  </header>
+
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukPhaseBanner({
+  tag: {
+    text: "Prototype"
+  },
+  html: 'This is a prototype and should not be used as a real service</a>.'
+}) }}
+
+    {% if breadcrumbs == 'true' %}
+        {% include '_includes/breadcrumbs.njk' %}
+    {% endif %}
+
+    {% if backLink == 'true' %}
+        {% include '_includes/back-link.njk' %}
+    {% endif %}
+
+    {% if languageToggle == 'true' %}
+        {% include '_includes/language-toggle.njk' %}
+    {% endif %}
+{% endblock %}
+
+
+
+{% block footer %}
+
+{{
+    dwpFooter({
+        meta: {
+            visuallyHiddenTitle: "About this website",
+            items: [
+            {
+                href: "",
+                text: "Accessibility statement"
+            },
+            {
+              href: "/manage-prototype",
+              text: "Manage prototype"
+            },
+            {
+                href: "",
+                text: "Privacy"
+            },
+            {
+                href: "/manage-prototype/clear-data",
+                text: "Clear data"
+            }
+            ]
+        }
+    })
+}}
+
+    {% endblock %}

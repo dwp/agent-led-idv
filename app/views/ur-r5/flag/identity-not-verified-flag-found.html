@@ -1,0 +1,57 @@
+{% extends "layouts/main_idv_no_end.html" %}
+
+{% block pageTitle %}
+  Identity not verified – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+           Fraud risk
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+        <h3 class="govuk-heading-s">
+        Identity at risk flag found on customer record.
+        </h3>
+      </div>
+    </div>
+
+    <h1 class="govuk-heading-l">
+      You have not passed the security questions and I need to end the call
+    </h1>
+
+    <h2 class="govuk-heading-m">
+      You can try to prove your identity another way
+    </h2>
+
+    <p class="govuk-body">You can either:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>call back when you have access to the information that can help you answer the security questions, or</li>
+      <li>send your request to us in writing, with any relevant identity documents included.</li>
+    </ul>
+
+    <div class="govuk-inset-text colour-blue">
+      <h2 class="govuk-heading-s">
+        What you should do next
+      </h2>
+      <ol class="govuk-list govuk-list--number">
+        <li>Check your service line instructions for any actions to take.</li>
+        <li>Do not tell the customer about the identity at risk flag.</li>
+      </ol>
+    </div>
+
+    {{ govukButton({
+      text: "Reset Identity Checker",
+      href: "establish-your-identity-nino"
+    }) }}
+
+  </div>
+
+</div>
+{% endblock %}
