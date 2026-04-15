@@ -1,7 +1,7 @@
 {% extends "layouts/main_matching.html" %}
 
 {% block pageTitle %}
-  Try to search for your customer record another way – {{ serviceName }} – GOV.UK Prototype Kit
+  I am now going to find some security questions to ask you – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
@@ -10,22 +10,19 @@
     <div class="govuk-grid-column-three-quarters">
 
       <h1 class="govuk-heading-l">
-        I will try to search for your customer record another way
+        I am now going to find some security questions to ask you
       </h1>
 
       <div class="govuk-inset-text colour-blue">
-
+        <p class="govuk-body">There are no security questions available. </p>
         <h2 class="govuk-heading-m">
           What you should do next
         </h2>
-          <ul class="govuk-list govuk-list--number">
-            <li>Use the DWP Person Trace on Searchlight to find the customer record.</li>
-            <li>Come back to the Identity Checker and enter the customer's National Insurance number.</li>
-          </ul>
+        <p class="govuk-body">Find the DWP address the customer needs to send their identity documents to and what they need to include. </p>
       </div>
 
       {{ govukButton({
-        text: "Reset Identity Checker",
+        text: "Continue",
         href: "establish-your-identity-nino"
       }) }}
 

@@ -706,7 +706,6 @@ router.post('/nino-answer-r5', function (request, response) {
 
 router.post('/name-dob-postcode-answer-r5', function (req, res) {
 
-  // Pull correct session field names
   const firstname = req.session.data['firstname'];
   const lastname = req.session.data['lastname'];
   const day = req.session.data['date-of-birth-day'];
@@ -714,20 +713,22 @@ router.post('/name-dob-postcode-answer-r5', function (req, res) {
   const year = req.session.data['date-of-birth-year'];
   const postcode = req.session.data['addressPostcode'];
 
-  // Build full name
-  const name = `${firstname} ${lastname}`.trim();
+  const name = `${firstname} ${lastname}`;
 
-  // Normalise
-  const cleanName = name ? name.toUpperCase() : "";
-  const cleanPostcode = postcode ? postcode.replace(/\s+/g, '').toUpperCase() : "";
+  const cleanName = name
+    ? name.trim().replace(/\s+/g, ' ').toUpperCase()
+    : "";
+
+  const cleanPostcode = postcode
+    ? postcode.trim().replace(/\s+/g, '').toUpperCase()
+    : "";
+
   const dob = `${day}-${month}-${year}`;
 
-  // Missing values → error page
   if (!cleanName || !day || !month || !year || !cleanPostcode) {
     return res.redirect('/ur-r5/flag/establish-your-identity-name-dob-postcode-error');
   }
 
-  // ✅ Exact match
   if (
     cleanName === "ALBUS DUMBLEDORE" &&
     dob === "5-1-1978" &&
@@ -736,9 +737,8 @@ router.post('/name-dob-postcode-answer-r5', function (req, res) {
     return res.redirect('/ur-r5/flag/confirm-correct-record-short');
   }
 
-  // ❌ Everything else → no match
   return res.redirect('/ur-r5/flag/no-match-name-dob-postcode');
-});
+})
 
 // ---------------------------------------------------------
 // UR-R5 - Confirm record yes or no
@@ -923,7 +923,6 @@ router.post('/nino-answer-r5-noflag', function (request, response) {
 
 router.post('/name-dob-postcode-answer-r5-noflag', function (req, res) {
 
-  // Pull correct session field names
   const firstname = req.session.data['firstname'];
   const lastname = req.session.data['lastname'];
   const day = req.session.data['date-of-birth-day'];
@@ -931,20 +930,22 @@ router.post('/name-dob-postcode-answer-r5-noflag', function (req, res) {
   const year = req.session.data['date-of-birth-year'];
   const postcode = req.session.data['addressPostcode'];
 
-  // Build full name
-  const name = `${firstname} ${lastname}`.trim();
+  const name = `${firstname} ${lastname}`;
 
-  // Normalise
-  const cleanName = name ? name.toUpperCase() : "";
-  const cleanPostcode = postcode ? postcode.replace(/\s+/g, '').toUpperCase() : "";
+  const cleanName = name
+    ? name.trim().replace(/\s+/g, ' ').toUpperCase()
+    : "";
+
+  const cleanPostcode = postcode
+    ? postcode.trim().replace(/\s+/g, '').toUpperCase()
+    : "";
+
   const dob = `${day}-${month}-${year}`;
 
-  // Missing values → error page
   if (!cleanName || !day || !month || !year || !cleanPostcode) {
     return res.redirect('/ur-r5/no-flag/establish-your-identity-name-dob-postcode-error');
   }
 
-  // ✅ Exact match
   if (
     cleanName === "ALBUS DUMBLEDORE" &&
     dob === "5-1-1978" &&
@@ -953,9 +954,8 @@ router.post('/name-dob-postcode-answer-r5-noflag', function (req, res) {
     return res.redirect('/ur-r5/no-flag/confirm-correct-record-short');
   }
 
-  // ❌ Everything else → no match
   return res.redirect('/ur-r5/no-flag/no-match-name-dob-postcode');
-});
+})
 
 // ---------------------------------------------------------
 // UR-R5 - Confirm record yes or no
