@@ -1,7 +1,7 @@
 {% extends "layouts/main_path2b.html" %}
 
 {% block pageTitle %}
-  End session – {{ serviceName }} – GOV.UK Prototype Kit
+  Are you sure you want to end this session – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
@@ -17,7 +17,7 @@
   fieldset: {
     legend: {
       text: "Are you sure you want to end this session?",
-      isPageHeading: false,
+      isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
     }
   },
