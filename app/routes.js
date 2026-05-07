@@ -907,32 +907,40 @@ router.post('/end-session-matching', function (req, res) {
 // ---------------------------------
 
 router.post('/nino-answer-r5-noflag', function (request, response) {
-    var nino = request.session.data['nationalinsurancenumber']
+  var nino = request.session.data['nationalinsurancenumber']
 
-    if (!nino || nino.length === 0) {
-        // Missing input → error page
-        response.redirect('/ur-r5/no-flag/establish-identity-match-nino-error')
+  if (!nino || nino.length === 0) {
+    // Missing input → error page
+    response.redirect('/ur-r5/no-flag/establish-identity-match-nino-error')
 
-    } else if (
-        nino.includes("QQ 12 34 56 C") ||
-        nino === "qq123456c" ||
-        nino === "QQ123456C"
-    ) {
-        // Known correct match
-        response.redirect("/ur-r5/no-flag/confirm-correct-record")
+  } else if (
+    nino.includes("QQ 12 34 56 C") ||
+    nino === "qq123456c" ||
+    nino === "QQ123456C"
+  ) {
+    // Known correct match (standard KBV journey)
+    response.redirect('/ur-r5/no-flag/confirm-correct-record')
 
-    } else if (
-        nino.includes("AB 12 34 56 C") ||
-        nino === "ab123456c" ||
-        nino === "AB123456C"
-    ) {
-        // ✅ New explicit no‑match NINO route
-        response.redirect('/ur-r5/no-flag/no-match-nino')
+  } else if (
+    nino.includes("BB 12 34 56 A") ||
+    nino === "bb123456a" ||
+    nino === "BB123456A"
+  ) {
+    // ✅ Correct match → no KBV journey
+    response.redirect('/ur-r5/no-kbv/confirm-correct-record')
 
-    } else {
-        // Default fallback → also no match
-        response.redirect('/ur-r5/no-flag/no-match-nino')
-    }
+  } else if (
+    nino.includes("AB 12 34 56 C") ||
+    nino === "ab123456c" ||
+    nino === "AB123456C"
+  ) {
+    // Explicit no‑match NINO
+    response.redirect('/ur-r5/no-flag/no-match-nino')
+
+  } else {
+    // Default fallback → no match
+    response.redirect('/ur-r5/no-flag/no-match-nino')
+  }
 })
 
 // ---------------------------------------------------------
@@ -1129,4 +1137,57 @@ router.post('/end-session-matching-noflag', function (req, res) {
 
     // Fallback redirect to the homepage if no safe previous page exists
     return res.redirect('/');
+});
+
+
+
+
+// ---------------------------------------------------------
+// NO KBV - UR-R5 - Confirm record yes or no
+// ---------------------------------------------------------
+
+router.post('/correct-record-r5-nokbv', function (request, response) {
+    var correctrecord = request.session.data['correctrecord']
+    if (correctrecord == "yes") {
+        response.redirect("/ur-r5/no-kbv/find-some-security-questions-no-flag")
+    } else {
+        response.redirect("/ur-r5/no-kbv/identity-not-verified")
+    }
+})
+
+
+// ✅ Store the last page on every GET request
+
+router.get('*', function (req, res, next) {
+    // Don't overwrite previousPage when you're ON the end-session page
+    if (!req.originalUrl.includes('/end-session')) {
+        req.session.data.prevPage = req.originalUrl;
+    }
+
+    next();
+});
+
+// ---------------------------------------------------------
+// NO KBV - UR-R5 - Find some security questions
+// ---------------------------------------------------------
+
+router.post('/correct-nokbv', function (request, response) {
+    var correctrecord = request.session.data['correctnokbv']
+    if (correctrecord == "yes") {
+        response.redirect("/ur-r5/no-kbv/identity-verified")
+    } else {
+        response.redirect("/ur-r5/no-kbv/identity-not-verified")
+    }
+})
+
+
+// ✅ Store the last page on every GET request
+
+router.get('*', function (req, res, next) {
+    // Don't overwrite previousPage when you're ON the end-session page
+    if (!req.originalUrl.includes('/end-session')) {
+        req.session.data.prevPage = req.originalUrl;
+    }
+
+    next();
 });

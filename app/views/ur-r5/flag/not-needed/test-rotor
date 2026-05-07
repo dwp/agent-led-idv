@@ -1,0 +1,14 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>VoiceOver H1 test</title>
+</head>
+<body>
+  <main role="main">
+    <h1>Rotor test heading</h1>
+    <p>Test content</p>
+  </main>
+</body>
+</html>

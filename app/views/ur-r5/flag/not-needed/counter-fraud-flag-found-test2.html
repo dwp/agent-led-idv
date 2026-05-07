@@ -1,4 +1,4 @@
-{% extends "layouts/main_idv_quick_reference.html" %}
+{% extends "layouts/main_idv-quick_reference_box.html" %}
 
 {% block pageTitle %}
   The system is bringing up your information – {{ serviceName }} – GOV.UK Prototype Kit
@@ -9,7 +9,22 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
 
-    <div class="govuk-notification-banner-red" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+    <section class="dwp-quick-reference" aria-label="Case information">
+  <dl class="dwp-quick-reference__block">
+    <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+    <dd class="dwp-quick-reference__primary">Jane Doe</dd>
+    <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">National Insurance number:</dt>
+    <dd class="dwp-quick-reference__secondary">QQ 12 34 56 X</dd>
+    <dt class="dwp-quick-reference__label">Claim status:</dt>
+    <dd class="dwp-quick-reference__status">
+      <strong class="govuk-tag govuk-tag--green">
+        Active
+      </strong>
+    </dd>
+  </dl>
+</section>
+
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
           <div class="govuk-notification-banner__header">
           <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
            Fraud risk
@@ -17,7 +32,7 @@
         </div>
         <div class="govuk-notification-banner__content">
         <h3 class="govuk-heading-s">
-        Identity at risk flag on customer record.
+        Identity at risk flag found on customer record.
           <span class="govuk-body">Further instructions will be given after the security questions.</span>
         </h3>
       </div>

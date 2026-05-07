@@ -1,0 +1,116 @@
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "internal-service-header/macro.njk" import dwpHeader %}
+{% from "internal-service-footer/macro.njk" import dwpFooter %}
+{% from "key-details-bar/macro.njk" import dwpKeyDetailsBar %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+{% block header %}
+
+<header class="dwp-header">
+
+  <div class="dwp-header__content govuk-width-container">
+    <div class="dwp-header__service-name">
+      <a href="/index" class="dwp-header__link">
+        Identity Checker
+      </a>
+    </div>
+  </div>
+
+  <!-- FULL-WIDTH BLUE BANNER -->
+  <section
+    class="dwp-quick-reference-custom dwp-quick-reference--alternative"
+    aria-label="Case information">
+
+    <!-- CONTENT CONSTRAINED TO GOV.UK GRID -->
+    <div class="govuk-width-container">
+
+      <dl class="dwp-quick-reference__block">
+        <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+
+
+        <dd class="dwp-quick-reference__primary">
+          <span class="white-text govuk-!-font-size-36 govuk-!-font-weight-bold">
+            Cuthbert Binns
+          </span>
+        </dd>
+
+        <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">National Insurance number:</dt>
+        <dd class="dwp-quick-reference__secondary">BB 12 34 56 A</dd>
+
+      <!--  <dt class="dwp-quick-reference__label govuk-visually-hidden">
+          Channel:
+        </dt>
+
+        <dd class="dwp-quick-reference__secondary">Inbound call</dd>
+        </dl>-->
+
+    </div>
+
+  </section>
+
+</header>
+
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukPhaseBanner({
+  tag: {
+    text: "Prototype"
+  },
+  html: 'This is a prototype and should not be used as a real service</a>.'
+}) }}
+
+    {% if breadcrumbs == 'true' %}
+        {% include '_includes/breadcrumbs.njk' %}
+    {% endif %}
+
+    {% if backLink == 'true' %}
+        {% include '_includes/back-link.njk' %}
+    {% endif %}
+
+    {% if languageToggle == 'true' %}
+        {% include '_includes/language-toggle.njk' %}
+    {% endif %}
+{% endblock %}
+
+
+{% block footer %}
+
+{{
+    dwpFooter({
+        meta: {
+            visuallyHiddenTitle: "About this website",
+            items: [
+            {
+                href: "",
+                text: "Accessibility statement"
+            },
+            {
+              href: "/manage-prototype",
+              text: "Manage prototype"
+            },
+            {
+                href: "",
+                text: "Privacy"
+            },
+            {
+                href: "/manage-prototype/clear-data",
+                text: "Clear data"
+            }
+            ]
+        }
+    })
+}}
+
+    {% endblock %}

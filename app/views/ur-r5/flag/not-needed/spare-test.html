@@ -1,10 +1,12 @@
-{% extends "layouts/main_path1.html" %}
+{% extends "layouts/main_matching_new.html" %}
+{% set backLink = 'true' %}
+{% set phaseBanner = 'true' %}
 
 {% block pageTitle %}
-  What is your full name and date of birth? – {{ serviceName }} – GOV.UK Prototype Kit
+  I need to search for your details another way – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
-{% block content %}
+{% block pageContent %}
 
 <a href="establish-your-identity-nino" class="govuk-back-link">Back</a>
 

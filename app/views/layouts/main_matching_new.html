@@ -1,0 +1,72 @@
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "internal-service-footer/macro.njk" import dwpFooter %}
+
+{# ---------------------------------------
+   HEADER
+---------------------------------------- #}
+{% block header %}
+<header class="dwp-header">
+  <div class="dwp-header__content govuk-width-container">
+    <div class="dwp-header__service-name">
+      <a href="/index" class="dwp-header__link">Identity Checker</a>
+    </div>
+    <div class="dwp-header__service-action">
+      <a href="/ur-r5/flag/end-session-matching" class="dwp-header__link">
+        End session
+      </a>
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{# ---------------------------------------
+   BEFORE CONTENT
+   MUST remain empty (outside <main>)
+---------------------------------------- #}
+{% block beforeContent %}
+{% endblock %}
+
+{# ---------------------------------------
+   MAIN CONTENT (inside <main>)
+---------------------------------------- #}
+{% block content %}
+
+  {% if phaseBanner == 'true' %}
+    {{ govukPhaseBanner({
+      tag: {
+        text: "Prototype"
+      },
+      html: "This is a prototype and should not be used as a real service."
+    }) }}
+  {% endif %}
+
+  {% if backLink == 'true' %}
+    {{ govukBackLink({
+      href: "javascript:history.back()",
+      text: "Back"
+    }) }}
+  {% endif %}
+
+  {% block pageContent %}{% endblock %}
+
+{% endblock %}
+
+{# ---------------------------------------
+   FOOTER
+---------------------------------------- #}
+{% block footer %}
+{{ dwpFooter({
+  meta: {
+    visuallyHiddenTitle: "About this website",
+    items: [
+      { href: "", text: "Accessibility statement" },
+      { href: "/manage-prototype", text: "Manage prototype" },
+      { href: "", text: "Privacy" },
+      { href: "/manage-prototype/clear-data", text: "Clear data" }
+    ]
+  }
+}) }}
+{% endblock %}
