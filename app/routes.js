@@ -4,6 +4,11 @@ const router = govukPrototypeKit.requests.setupRouter()
 // -------------------------
 // Existing routes
 // -------------------------
+function isSafeRedirect(url) {
+    return typeof url === 'string' &&
+      url.startsWith('/') &&
+      !url.startsWith('//');
+  }
 
 router.post('/establish-answer', function (request, response) {
     var matched = request.session.data['matched']
