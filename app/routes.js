@@ -843,60 +843,6 @@ router.get('/ur-r5/flag/what-is-your-mobile-telephone-number-error', (req, res) 
   res.render('ur-r5/flag/what-is-your-mobile-telephone-number-error');
 });
 
-// ---------------------------------------------------------
-// UR-R5 - End session - kbv
-// ---------------------------------------------------------
-
-router.post('/end-session', function (req, res) {
-    // Get the user's answer from session data
-    const choice = req.session.data['endsession'];
-
-    // If the user answered "yes", redirect to the fixed next page (flag journey)
-    if (choice && choice.toLowerCase() === 'yes') {
-        return res.redirect('/ur-r5/flag/establish-your-identity-nino');
-    }
-
-    // Get the previously stored page from the session
-    const previous = req.session.data.prevPage;
-
-    // Only redirect if the previous page is a valid internal path
-    if (previous && previous.startsWith('/')) {
-        return res.redirect(previous);
-    }
-
-    // Fallback redirect to the homepage if no safe previous page exists
-    return res.redirect('/');
-});
-
-
-// ---------------------------------------------------------
-// UR-R5 - End session - matching
-// ---------------------------------------------------------
-
-router.post('/end-session-matching', function (req, res) {
-    // Get the user's answer from session data (matching journey)
-    const choice = req.session.data['endsessionmatching'];
-
-    // Log the submitted answer for debugging purposes
-    console.log('Submitted (matching):', choice);
-
-    // If the user answered "yes", redirect to the fixed next page (flag journey)
-    if (choice === 'yes') {
-        return res.redirect('/ur-r5/flag/establish-your-identity-nino');
-    }
-
-    // Get the previously stored page from the session
-    const previous = req.session.data.prevPage;
-
-    // Only redirect if the previous page is a valid internal path
-    if (previous && previous.startsWith('/')) {
-        return res.redirect(previous);
-    }
-
-    // Fallback redirect to the homepage if no safe previous page exists
-    return res.redirect('/');
-});
-
 
 ////////// UR-r5 - MVP Routing //////////
 
@@ -1086,60 +1032,6 @@ router.get('/ur-r5/flag/what-is-your-mobile-telephone-number-error', (req, res) 
   res.render('ur-r5/flag/what-is-your-mobile-telephone-number-error');
 });
 
-// ---------------------------------------------------------
-// UR-R5 - End session - kbv
-// ---------------------------------------------------------
-
-router.post('/end-session-noflag', function (req, res) {
-    // Get the user's answer from session data
-    const choice = req.session.data['endsession'];
-
-    // If the user answered "yes", redirect to the fixed next page
-    if (choice && choice.toLowerCase() === 'yes') {
-        return res.redirect('/ur-r5/no-flag/establish-your-identity-nino');
-    }
-
-    // Get the previously stored page from the session
-    const previous = req.session.data.prevPage;
-
-    // Only redirect if the previous page is a valid internal path
-    if (previous && previous.startsWith('/')) {
-        return res.redirect(previous);
-    }
-
-    // Fallback redirect to the homepage if no safe previous page exists
-    return res.redirect('/');
-});
-
-// ---------------------------------------------------------
-// UR-R5 - End session - matching
-// ---------------------------------------------------------
-
-router.post('/end-session-matching-noflag', function (req, res) {
-    // Get the user's answer from session data (matching journey)
-    const choice = req.session.data['endsessionmatching'];
-
-    // Log the submitted answer for debugging purposes
-    console.log('Submitted (matching):', choice);
-
-    // If the user answered "yes", redirect to the fixed next page
-    if (choice === 'yes') {
-        return res.redirect('/ur-r5/no-flag/establish-your-identity-nino');
-    }
-
-    // Get the previously stored page from the session
-    const previous = req.session.data.prevPage;
-
-    // Only redirect if the previous page is a valid internal path
-    if (previous && previous.startsWith('/')) {
-        return res.redirect(previous);
-    }
-
-    // Fallback redirect to the homepage if no safe previous page exists
-    return res.redirect('/');
-});
-
-
 
 
 // ---------------------------------------------------------
@@ -1191,3 +1083,11 @@ router.get('*', function (req, res, next) {
 
     next();
 });
+
+// ---------------------------------------------------------
+// UR-R5 - All end session paths
+// ---------------------------------------------------------
+
+// ---------------------------------------------------------
+// End ession routing removed for now
+// ---------------------------------------------------------
