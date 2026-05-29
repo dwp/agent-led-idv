@@ -1,0 +1,122 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Error designs – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">Identity Checker</h1>
+
+<div class="govuk-service-navigation"
+data-module="govuk-service-navigation">
+<div class="govuk-width-container">
+  <div class="govuk-service-navigation__container">
+    <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+      <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
+        Menu
+      </button>
+<ul class="govuk-service-navigation__list" id="navigation">
+  <li class="govuk-service-navigation__item">
+<a class="govuk-service-navigation__link" href="index">
+  Home
+</a>
+</li>
+<li class="govuk-service-navigation__item">
+<a class="govuk-service-navigation__link" href="iterations">
+  Previous iterations
+</a>
+</li>
+<li class="govuk-service-navigation__item govuk-service-navigation__item--active">
+<a class="govuk-service-navigation__link" href="">
+  Error designs
+</a>
+</li>
+<li class="govuk-service-navigation__item">
+<a class="govuk-service-navigation__link" href="design-problems">
+  Design problems
+</a>
+</li>
+<li class="govuk-service-navigation__item">
+<a class="govuk-service-navigation__link" href="dev-ready">
+  Dev ready
+</a>
+</li>
+<li class="govuk-service-navigation__item">
+<a class="govuk-service-navigation__link" href="archived-designs">
+  Archived
+</a>
+</li>
+      </ul>
+    </nav>
+  </div>
+</div>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+<h2 class="govuk-heading-l">Error designs</h2>
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+<h2 class="govuk-heading-m">Input errors</h2>
+
+<p class="govuk-body">
+  These are messages that the user gives information that we are not able to use, such as an invalid National Insurance number or submitting forms with blank field inputs.
+</p>
+
+<p class="govuk-body">
+  Pages below are <strong>suggested</strong> links waiting for design.
+</p>
+
+      <h2 class="govuk-heading-s">
+        Establish identity
+      </h2>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a class="govuk-link" href="/v6/no-flag/establish-identity-match-nino-error">Establish identity nino - Blank field</a></li>
+          <li><a class="govuk-link" href="">Establish identity nino - Incorrect format</a></li>
+          <li><a class="govuk-link" href="">Establish identity name, dob, postcode - Blank field</a></li>
+          <li><a class="govuk-link" href="">Establish identity name, dob, postcode - Incorrect format</a></li>
+          <li><a class="govuk-link" href="">Confirm correct record - No selection made</a></li>
+        </ul>
+          <h2 class="govuk-heading-s">
+            No KBV path
+          </h2>
+            <ul class="govuk-list govuk-list--bullet">
+              <li><a class="govuk-link" href="">Find some security questions no flag - No selection made</a></li>
+              <li><a class="govuk-link" href="">I should have some questions for you soon - No selection made</a></li>
+            </ul>
+            <h2 class="govuk-heading-s">
+              Specific pages
+            </h2>
+              <ul class="govuk-list govuk-list--bullet">
+                <li><a class="govuk-link" href="#">End session - No selection made</a></li>
+              </ul>
+              <h2 class="govuk-heading-s">
+                KBV questions (TBD for MVP)
+              </h2>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li><a class="govuk-link" href="">Any other benefit - No selection made</a></li>
+                  <li><a class="govuk-link" href="">Date last paid - Incorrect format</a></li>
+                  <li><a class="govuk-link" href="">Date last paid - Blank field</a></li>
+                  <li><a class="govuk-link" href="">Mobile phone number - Blank field</a></li>
+                  <li><a class="govuk-link" href="">Mobile phone number - Incorrect format</a></li>
+                </ul>
+
+
+              <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+              <h2 class="govuk-heading-m">Technical errors</h2>
+
+              <p class="govuk-body">
+                These are messages that the user will see if something technical has not happened as expected, such as service unavilable.
+              </p>
+
+                    <h2 class="govuk-heading-s">
+                      Whole journey
+                    </h2>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li><a class="govuk-link" href="/v6/technical-errors/you-cannot-go-back-to-previous-page">You cannot go back to previous page - Back button error</a></li>
+                      </ul>
+
+{% endblock %}

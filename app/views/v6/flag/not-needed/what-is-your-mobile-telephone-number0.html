@@ -1,0 +1,43 @@
+{% extends "layouts/main_idv.html" %}
+
+{% set title = "What is your mobile telephone number?" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+      <form class="form" action="/ur-r5/flag/what-is-your-mobile-telephone-number" method="post" autocomplete="off">
+
+          {% set pageHeadingH1 %}
+            <span class="govuk-caption-l">Question 3</span>
+            {{ title }}
+          {% endset %}
+
+          {{ govukInput({
+              label: {
+                  html: pageHeadingH1,
+                  classes: "govuk-label--l",
+                  isPageHeading: true
+              },
+              hint: {
+                  text: "For example, 07700 900000 or +44 7700 900999."
+              },
+              classes: "govuk-input--width-10",
+              id: "customer-mobile-r5",
+              name: "customer-mobile-tel-r5",
+              autocomplete: "tel"
+          }) }}
+
+          <div class="govuk-button-group">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+            <a class="govuk-link" href="identity-not-verified-flag-found">Customer cannot answer question</a>
+          </div>
+      </form>
+
+  </div>
+</div>
+
+{% endblock %}

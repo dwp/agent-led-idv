@@ -1,0 +1,42 @@
+{% extends "layouts/main_idv_quick_reference.html" %}
+
+{% block pageTitle %}
+  You need to send identity documents to us by post – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <h1 class="govuk-heading-l">
+      You need to send identity documents to us by post
+    </h1>
+
+    <p class="govuk-body">I am unable to complete the security check on this call.</p>
+
+    <p class="govuk-body">You need to send identity documents to us before we can process your request.</p>
+
+    <div class="govuk-inset-text colour-blue">
+
+      <h2 class="govuk-heading-m">
+        What you should do next
+      </h2>
+
+      <ul class="govuk-list govuk-list--number">
+        <li>Find the DWP address that the customer needs to send their identity documents to.</li>
+        <li>Advise the customer on what identity documents to send to us.</li>
+        <li>Tell them to also include details about their original request.</li>
+      </ul>
+
+    </div>
+
+    {{ govukButton({
+      text: "Reset Identity Checker",
+      href: 'establish-your-identity-nino'
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

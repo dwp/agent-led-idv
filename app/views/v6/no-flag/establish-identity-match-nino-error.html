@@ -1,0 +1,74 @@
+{% extends "layouts/main_matching.html" %}
+
+{% block pageTitle %}
+  What is your National Insurance number? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: [
+          {
+            text: "Enter a National Insurance number",
+            href: "#national-insurance-number"
+          }
+        ]
+      }) }}
+
+    <form class="form" action="/v6/no-flag/nino-answer" method="post">
+
+      <fieldset class="govuk-fieldset" aria-describedby="national-insurance-number-hint national-insurance-number-error">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+    <h1 class="govuk-fieldset__heading">
+      What is your National Insurance number?
+    </h1>
+  </legend>
+
+  <div class="govuk-form-group govuk-form-group--error">
+
+    <label class="govuk-label govuk-visually-hidden" for="national-insurance-number">
+      What is your National Insurance number?
+    </label>
+
+    <div id="national-insurance-number-hint" class="govuk-hint">
+      It’s on your National Insurance card, benefit letter, payslip or P60 – for example, 'QQ 12 34 56 C'.
+    </div>
+
+    <p id="national-insurance-number-error" class="govuk-error-message">
+      <span class="govuk-visually-hidden">Error:</span>
+      Enter a National Insurance number
+    </p>
+
+    <input
+      class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing govuk-input--error"
+      id="national-insurance-number"
+      name="nationalinsurancenumber"
+      type="text"
+      autocomplete="off"
+      spellcheck="false"
+      aria-describedby="national-insurance-number-hint national-insurance-number-error"
+
+  </div>
+</fieldset>
+
+
+      {{ govukButton({
+        text: "Search for customer record"
+      }) }}
+
+    </form>
+
+    <p class="govuk-body">
+      <a href="establish-your-identity-name-dob-postcode" class="govuk-link">
+        Search without a National Insurance number
+      </a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}

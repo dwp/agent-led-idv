@@ -1,0 +1,105 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Development ready – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">Identity Checker</h1>
+
+<div class="govuk-service-navigation"
+data-module="govuk-service-navigation">
+<div class="govuk-width-container">
+  <div class="govuk-service-navigation__container">
+    <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+      <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
+        Menu
+      </button>
+<ul class="govuk-service-navigation__list" id="navigation">
+  <li class="govuk-service-navigation__item">
+<a class="govuk-service-navigation__link" href="index">
+  Home
+</a>
+</li>
+<li class="govuk-service-navigation__item">
+<a class="govuk-service-navigation__link" href="iterations">
+  Previous iterations
+</a>
+</li>
+<li class="govuk-service-navigation__item">
+<a class="govuk-service-navigation__link" href="error-designs">
+  Error designs
+</a>
+</li>
+<li class="govuk-service-navigation__item">
+<a class="govuk-service-navigation__link" href="design-problems">
+  Design problems
+</a>
+</li>
+<li class="govuk-service-navigation__item govuk-service-navigation__item--active">
+<a class="govuk-service-navigation__link" href="">
+  Dev ready
+</a>
+</li>
+<li class="govuk-service-navigation__item">
+<a class="govuk-service-navigation__link" href="archived-designs">
+  Archived
+</a>
+</li>
+      </ul>
+    </nav>
+  </div>
+</div>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+<h2 class="govuk-heading-l">Development ready pages</h2>
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+<p class="govuk-body">
+  These pages have been signed off by the team and are considered ready for development.
+</p>
+
+      <h2 class="govuk-heading-s">
+        Establish identity
+      </h2>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a class="govuk-link" href="">Pages will be listed here when ready</a></li>
+        </ul>
+        <h2 class="govuk-heading-s">
+          No match pages
+        </h2>
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a class="govuk-link" href="">Pages will be listed here when ready</a></li>
+          </ul>
+        <h2 class="govuk-heading-s">
+          KBV questions (TBD for MVP)
+        </h2>
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a class="govuk-link" href="">Pages will be listed here when ready</a></li>
+          </ul>
+          <h2 class="govuk-heading-s">
+            IDV outcomes
+          </h2>
+            <ul class="govuk-list govuk-list--bullet">
+              <li><a class="govuk-link" href="">Pages will be listed here when ready</a></li>
+            </ul>
+          <h2 class="govuk-heading-s">
+            No KBV path
+          </h2>
+            <ul class="govuk-list govuk-list--bullet">
+              <li><a class="govuk-link" href="">Pages will be listed here when ready</a></li>
+            </ul>
+            <h2 class="govuk-heading-s">
+              Specific pages
+            </h2>
+              <ul class="govuk-list govuk-list--bullet">
+                <li><a class="govuk-link" href="">Pages will be listed here when ready</a></li>
+              </ul>
+
+              <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+{% endblock %}

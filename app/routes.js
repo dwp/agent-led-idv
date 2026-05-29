@@ -2,6 +2,15 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
 // -------------------------
+// Call v6 routes
+// -------------------------
+
+const routesV6 = require('./routes-v6');
+
+routesV6(router);
+
+
+// -------------------------
 // Existing routes
 // -------------------------
 function isSafeRedirect(url) {
@@ -154,10 +163,10 @@ router.post('/another-benefit-you-have-previously-applied-for', (req, res) => {
     const anotherBenefit = (req.body.anotherBenefit || '').trim();
 
     if (anotherBenefit === 'job-seekers-allowance') {
-        // ✅ Correct answer → go to next question
+        // Correct answer → go to next question
         return res.redirect('/when-did-you-receive-your-last-state-pension-payment');
     } else {
-        // ❌ Incorrect answer → show error page
+        // Incorrect answer → show error page
         return res.redirect('/ur-r1/kbv-no-answer/when-did-you-receive-your-last-pension-payment');
     }
 });
@@ -177,10 +186,10 @@ router.post('/when-did-you-receive-your-last-state-pension-payment', (req, res) 
     const enteredDate = `${day}-${month}-${year}`;
 
     if (enteredDate === '25-10-2025') {
-        // ✅ Both Q1 and Q2 correct → go to success page
+        // Both Q1 and Q2 correct → go to success page
         return res.redirect('/ur-r1/kbv-no-answer/identity-verified');
     } else {
-        // ❌ Incorrect date → show error page
+        // Incorrect date → show error page
         return res.redirect('/ur-r1/kbv-no-answer/what-is-your-mobile-telephone-number');
     }
 });
@@ -201,10 +210,10 @@ router.post('/what-is-your-mobile-telephone-number', (req, res) => {
 
     // Flexible check: must match 07123456789 exactly after removing spaces
     if (normalizedNumber === '07123456789') {
-        // ✅ Correct mobile number → success page
+        // Correct mobile number → success page
         return res.redirect('/ur-r1/kbv-no-answer/identity-verified');
     } else {
-        // ❌ Incorrect mobile number → failure page
+        // Incorrect mobile number → failure page
         return res.redirect('/ur-r1/kbv-no-answer/identity-not-verified');
     }
 });
@@ -524,10 +533,10 @@ router.post('/ur-r3/kbv-no-answer/when-did-you-receive-your-last-pension-payment
     const enteredDate = `${day}-${month}-${year}`;
 
     if (enteredDate === '25-10-2025') {
-        // ✅ Both Q1 and Q2 correct → go to success page
+        // Both Q1 and Q2 correct → go to success page
         return res.redirect('/ur-r3/kbv-no-answer/identity-verified-flag-found');
     } else {
-        // ❌ Incorrect date → show error page
+        // Incorrect date → show error page
         return res.redirect('/ur-r3/kbv-no-answer/what-is-your-mobile-telephone-number');
     }
 });
@@ -548,10 +557,10 @@ router.post('/ur-r3/kbv-no-answer/what-is-your-mobile-telephone-number', (req, r
 
     // Flexible check: must match 07123456789 exactly after removing spaces
     if (normalizedNumber === '07123456789') {
-        // ✅ Correct mobile number → success page
+        // Correct mobile number → success page
         return res.redirect('/ur-r3/kbv-no-answer/identity-verified-flag-found');
     } else {
-        // ❌ Incorrect mobile number → failure page
+        // Incorrect mobile number → failure page
         return res.redirect('/ur-r3/kbv-no-answer/identity-not-verified-flag-found');
     }
 });
@@ -604,10 +613,10 @@ router.post('/ur-r4/kbv-no-answer/what-is-your-mobile-telephone-number', (req, r
 
     // Flexible check: must match 07123456789 exactly after removing spaces
     if (normalizedNumber === '07123456789') {
-        // ✅ Correct mobile number → success page
+        // Correct mobile number → success page
         return res.redirect('/ur-r4/kbv-no-answer/identity-verified-flag-found');
     } else {
-        // ❌ Incorrect mobile number → failure page
+        // Incorrect mobile number → failure page
         return res.redirect('/ur-r4/kbv-no-answer/identity-not-verified-flag-found');
     }
 });
@@ -636,10 +645,10 @@ router.post('/ur-r4/kbv-no-answer/happy-path/when-did-you-receive-your-last-pens
     const enteredDate = `${day}-${month}-${year}`;
 
     if (enteredDate === '25-10-2025') {
-        // ✅ Both Q1 and Q2 correct → go to success page
+        // Both Q1 and Q2 correct → go to success page
         return res.redirect('/ur-r4/kbv-no-answer/happy-path/identity-verified');
     } else {
-        // ❌ Incorrect date → show error page
+        // Incorrect date → show error page
         return res.redirect('/ur-r4/kbv-no-answer/happy-path/what-is-your-mobile-telephone-number');
     }
 });
@@ -660,10 +669,10 @@ router.post('/ur-r4/kbv-no-answer/happy-path/what-is-your-mobile-telephone-numbe
 
     // Flexible check: must match 07123456789 exactly after removing spaces
     if (normalizedNumber === '07123456789') {
-        // ✅ Correct mobile number → success page
+        // Correct mobile number → success page
         return res.redirect('/ur-r4/kbv-no-answer/happy-path/identity-verified');
     } else {
-        // ❌ Incorrect mobile number → failure page
+        // Incorrect mobile number → failure page
         return res.redirect('/ur-r4/kbv-no-answer/happy-path/identity-not-verified');
     }
 });
@@ -696,7 +705,7 @@ router.post('/nino-answer-r5', function (request, response) {
         nino === "ab123456c" ||
         nino === "AB123456C"
     ) {
-        // ✅ New explicit no‑match NINO route
+        // New explicit no‑match NINO route
         response.redirect('/ur-r5/flag/no-match-nino')
 
     } else {
@@ -759,7 +768,7 @@ router.post('/correct-record-r5', function (request, response) {
 })
 
 
-// ✅ Store the last page on every GET request
+// Store the last page on every GET request
 
 router.get('*', function (req, res, next) {
     // Don't overwrite previousPage when you're ON the end-session page
@@ -792,19 +801,19 @@ router.post('/ur-r5/flag/when-did-you-receive-your-last-pension-payment', (req, 
     const month = (req.body['pension-received-month'] || '').trim();
     const year = (req.body['pension-received-year'] || '').trim();
 
-    // ✅ If any field is blank → error page
+    // If any field is blank → error page
     if (!day || !month || !year) {
         return res.redirect('/ur-r5/flag/when-did-you-receive-your-last-pension-payment-error');
     }
 
     const enteredDate = `${day}-${month}-${year}`;
 
-    // ✅ Correct date → identity verified
+    // Correct date → identity verified
     if (enteredDate === '25-10-2025') {
         return res.redirect('/ur-r5/flag/identity-verified-flag-found');
     }
 
-    // ❌ Wrong date → return to mobile question
+    // Wrong date → return to mobile question
     return res.redirect('/ur-r5/flag/what-is-your-mobile-telephone-number');
 });
 
@@ -839,7 +848,7 @@ router.post('/ur-r5/flag/what-is-your-mobile-telephone-number', (req, res) => {
     return res.redirect('/ur-r5/flag/identity-verified-flag-found');
   }
 
-  // ❌ Wrong answer → identity NOT verified (Q2 no longer repeats)
+  // Wrong answer → identity NOT verified (Q2 no longer repeats)
   return res.redirect('/ur-r5/flag/identity-not-verified-flag-found');
 });
 
@@ -877,7 +886,7 @@ router.post('/nino-answer-r5-noflag', function (request, response) {
     nino === "bb123456a" ||
     nino === "BB123456A"
   ) {
-    // ✅ Correct match → no KBV journey
+    // Correct match → no KBV journey
     response.redirect('/ur-r5/no-kbv/confirm-correct-record')
 
   } else if (
@@ -948,7 +957,7 @@ router.post('/correct-record-r5-noflag', function (request, response) {
 })
 
 
-// ✅ Store the last page on every GET request
+// Store the last page on every GET request
 
 router.get('*', function (req, res, next) {
     // Don't overwrite previousPage when you're ON the end-session page
@@ -981,19 +990,19 @@ router.post('/ur-r5/no-flag/when-did-you-receive-your-last-pension-payment', (re
     const month = (req.body['pension-received-month'] || '').trim();
     const year = (req.body['pension-received-year'] || '').trim();
 
-    // ✅ If any field is blank → error page
+    // If any field is blank → error page
     if (!day || !month || !year) {
         return res.redirect('/ur-r5/no-flag/when-did-you-receive-your-last-pension-payment-error');
     }
 
     const enteredDate = `${day}-${month}-${year}`;
 
-    // ✅ Correct date → identity verified
+    // Correct date → identity verified
     if (enteredDate === '25-10-2025') {
         return res.redirect('/ur-r5/no-flag/identity-verified');
     }
 
-    // ❌ Wrong date → return to mobile question
+    // Wrong date → return to mobile question
     return res.redirect('/ur-r5/no-flag/what-is-your-mobile-telephone-number');
 });
 
@@ -1028,7 +1037,7 @@ router.post('/ur-r5/no-flag/what-is-your-mobile-telephone-number', (req, res) =>
     return res.redirect('/ur-r5/no-flag/identity-verified');
   }
 
-  // ❌ Wrong answer → identity NOT verified (Q2 no longer repeats)
+  // Wrong answer → identity NOT verified (Q2 no longer repeats)
   return res.redirect('/ur-r5/no-flag/identity-not-verified');
 });
 
@@ -1038,12 +1047,11 @@ router.get('/ur-r5/flag/what-is-your-mobile-telephone-number-error', (req, res) 
 });
 
 
-
 // ---------------------------------------------------------
 // NO KBV - UR-R5 - Confirm record yes or no
 // ---------------------------------------------------------
 
-router.post('/correct-record-r5-nokbv', function (request, response) {
+router.post('/correct-record-rv6-nokbv', function (request, response) {
     var correctrecord = request.session.data['correctrecord']
     if (correctrecord == "yes") {
         response.redirect("/ur-r5/no-kbv/find-some-security-questions-no-flag")
@@ -1053,7 +1061,7 @@ router.post('/correct-record-r5-nokbv', function (request, response) {
 })
 
 
-// ✅ Store the last page on every GET request
+// Store the last page on every GET request
 
 router.get('*', function (req, res, next) {
     // Don't overwrite previousPage when you're ON the end-session page
@@ -1078,7 +1086,7 @@ router.post('/correct-nokbv', function (request, response) {
 })
 
 
-// ✅ Store the last page on every GET request
+// Store the last page on every GET request
 
 router.get('*', function (req, res, next) {
     // Don't overwrite previousPage when you're ON the end-session page

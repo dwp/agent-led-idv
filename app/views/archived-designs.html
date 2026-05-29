@@ -1,0 +1,132 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Archived designs – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">Identity Checker</h1>
+
+<div class="govuk-service-navigation"
+data-module="govuk-service-navigation">
+<div class="govuk-width-container">
+  <div class="govuk-service-navigation__container">
+    <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+      <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
+        Menu
+      </button>
+<ul class="govuk-service-navigation__list" id="navigation">
+  <li class="govuk-service-navigation__item">
+<a class="govuk-service-navigation__link" href="index">
+  Home
+</a>
+</li>
+<li class="govuk-service-navigation__item">
+<a class="govuk-service-navigation__link" href="iterations">
+  Previous iterations
+</a>
+</li>
+<li class="govuk-service-navigation__item">
+<a class="govuk-service-navigation__link" href="error-designs">
+  Error designs
+</a>
+</li>
+<li class="govuk-service-navigation__item">
+<a class="govuk-service-navigation__link" href="design-problems">
+  Design problems
+</a>
+</li>
+<li class="govuk-service-navigation__item">
+<a class="govuk-service-navigation__link" href="dev-ready">
+  Dev ready
+</a>
+</li>
+<li class="govuk-service-navigation__item govuk-service-navigation__item--active">
+<a class="govuk-service-navigation__link" href="">
+  Archived
+</a>
+</li>
+      </ul>
+    </nav>
+  </div>
+</div>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+<h2 class="govuk-heading-l">Archived designs</h2>
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+<div>
+  <span class="govuk-caption-m">September 2025</span>
+  <h2 class="govuk-heading-m">Light touch guided UI</h2>
+</div>
+
+<p class="govuk-body">
+  It became apparent during in Alpha that building in effect a digital version of the existing guidance wasn't going to give any real value to the agent compared to their current process.
+</p>
+
+<!-- Prototype journey list view v1.0 -->
+
+<p class="govuk-body">
+Looking back our design thinking started with how a stand alone light touch guided UI could support compliance with the IDV operational instructions.
+</p>
+
+<h2 class="govuk-heading-s">Features</h2>
+<ul class="govuk-list govuk-list--bullet">
+<li>Linear checklist view of the IDV process broken into sequential stages</li>
+<li>Explain what is matching or establishing identity</li>
+<li>Static text guidance for what to do step by step</li>
+<li>Embedded policy reminders or tooltips that reinforce importance of IDV</li>
+<li>Guidance links for more complex scenarios (not in scope V1.0)</li>
+<li>Checkboxes for personal tracking to remind that each stage is done (but not stored)</li>
+<li>Critical messaging to the users, interruption pages or notifications</li>
+</ul>
+
+{{ govukButton({
+text: "Start prototype",
+href: '/path1/start'
+}) }}
+
+<!-- End of prototype journey list view v1.0 -->
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+<div>
+  <span class="govuk-caption-m">December 2025</span>
+  <h2 class="govuk-heading-m">KBV show answers</h2>
+</div>
+
+<p class="govuk-body">
+  We had two options for how KBVs would be implemented in the UI. One was to show both the question and answer to the agent and one which showed the answers only. Although showing the answers did have some benefits in supporting agents to apply their tolerance and expereince in accepting answers.
+</p>
+
+<p class="govuk-body">
+  But after successive UR it became obvious that the more secure 'Full fat' version, with the question only was the preferred option which in addition better aligned with KBVaaS online One Login journey.
+</p>
+
+{{ govukButton({
+text: "Start prototype",
+href: '#'
+}) }}
+
+<p class="govuk-body">
+<a class="govuk-service-navigation__link" href="https://dwpdigital.atlassian.net/wiki/spaces/IDNT/pages/134065260298/How+do+we+display+KBVs">
+  KBV options document background
+</a>
+</p>
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+<div>
+  <span class="govuk-caption-m">February 2026</span>
+  <h2 class="govuk-heading-m">Warning text component</h2>
+</div>
+
+<p class="govuk-body">
+    Our original fraud notification banner wasn't always performing as expected so we tried the Warning Text component as an alternative. It became obvious very quickly during UR this was inaffective at commuicating important fraud markers and was eventually descoped in favour of the previous approach.
+</p>
+
+{% endblock %}

@@ -67,11 +67,6 @@
     background-color: #ca3535;
 }
 
-.govuk-notification-banner-red2 {
-    border: 5px solid #ca3535;
-    background-color: #ca3535;
-}
-
 .govuk-notification-banner-orange {
     font-family: Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -82,4 +77,14 @@
     margin-bottom: 50px;
     border: 5px solid #f47738;
     background-color: #f47738;
+}
+
+.govuk-service-navigation__container {
+  padding-left: 12px;
+}
+
+.govuk-notification-banner__heading {
+  font-size: 20px; /* or whatever size you want */
+  line-height: 1.4;
+  margin-bottom: 6px;
 }

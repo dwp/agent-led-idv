@@ -1,0 +1,31 @@
+{% extends "layouts/main_matching.html" %}
+
+{% block pageTitle %}
+  I am now going to find some security questions to ask you – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <h1 class="govuk-heading-l">
+        I am now going to find some security questions to ask you
+      </h1>
+
+      <div class="govuk-inset-text colour-blue">
+        <p class="govuk-body">There are no security questions available. </p>
+        <h2 class="govuk-heading-m">
+          What you should do next
+        </h2>
+        <p class="govuk-body">Find the DWP address the customer needs to send their identity documents to and what they need to include. </p>
+      </div>
+
+      {{ govukButton({
+        text: "Continue",
+        href: "establish-your-identity-nino"
+      }) }}
+
+</div>
+
+{% endblock %}

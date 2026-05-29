@@ -1,0 +1,67 @@
+{% extends "layouts/main_matching_nokbv.html" %}
+
+{% block pageTitle %}
+  Need to check that I have found the correct record – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <h1 class="govuk-heading-l">
+        I need to check that I have found the correct record
+      </h1>
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m">Personal details</caption>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Name</th>
+            <td class="govuk-table__cell">Cuthbert Binns</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">National Insurance number</th>
+            <td class="govuk-table__cell">BB 12 34 56 A</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Date of birth</th>
+            <td class="govuk-table__cell">24 June 1925</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Postcode</th>
+            <td class="govuk-table__cell">XT4 4VB</td>
+          </tr>
+        </tbody>
+      </table>
+
+      {{ govukRadios({
+        name: "correctrecord",
+        value: data['correctrecord'],
+        fieldset: {
+          legend: {
+            text: "Is this the correct customer record?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue",
+        href: 'find-some-security-questions-no-flag'
+      }) }}
+
+</div>
+
+{% endblock %}

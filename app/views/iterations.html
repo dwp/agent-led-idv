@@ -1,0 +1,664 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">Identity Checker
+      </h1>
+
+      <div class="govuk-service-navigation"
+      data-module="govuk-service-navigation">
+      <div class="govuk-width-container">
+        <div class="govuk-service-navigation__container">
+          <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+            <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
+              Menu
+            </button>
+            <ul class="govuk-service-navigation__list" id="navigation">
+              <li class="govuk-service-navigation__item">
+      <a class="govuk-service-navigation__link" href="index">
+        Home
+      </a>
+      </li>
+      <li class="govuk-service-navigation__item govuk-service-navigation__item--active">
+      <a class="govuk-service-navigation__link" href="">
+        Previous iterations
+      </a>
+      </li>
+      <li class="govuk-service-navigation__item">
+      <a class="govuk-service-navigation__link" href="error-designs">
+        Error designs
+      </a>
+      </li>
+      <li class="govuk-service-navigation__item">
+      <a class="govuk-service-navigation__link" href="design-problems">
+        Design problems
+      </a>
+      </li>
+      <li class="govuk-service-navigation__item">
+      <a class="govuk-service-navigation__link" href="dev-ready">
+        Dev ready
+      </a>
+      </li>
+      <li class="govuk-service-navigation__item">
+      <a class="govuk-service-navigation__link" href="archived-designs">
+        Archived
+      </a>
+      </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+      <h2 class="govuk-heading-l">Previous iterations</h2>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <!-- UR-R5 Testing -->
+
+      <div><strong class="govuk-tag govuk-tag--purple">Iteration 5</strong><strong class="govuk-tag govuk-tag--yellow">UR</strong> <strong class="govuk-tag govuk-tag--blue">Completed</strong></div>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+      <div>
+          <span class="govuk-caption-m">Spring 2026</span>
+            <h2 class="govuk-heading-m">UR Round 5 - Refining the journey </h2>
+          </div>
+
+          <p class="govuk-body"><strong>Updates to test:<p></strong>
+
+            <ul class="govuk-list govuk-list--bullet">
+               <li>Postcode input added to alternate match page</li>
+               <li>No match nino and name/dob/postcode pages</li>
+               <li>Signpost page out to Searchlight for advanced search</li>
+
+               <li>Customer cannot answer link on KBV questions</li>
+               <li>Refined content on IDV failure pages</li>
+               <li>End session link in header with new confirmation check page</li>
+            </ul>
+
+            <p class="govuk-body"><strong>Also included in UR5 later sessions:<p></strong>
+
+              <ul class="govuk-list govuk-list--bullet">
+                 <li>Fraud notification banner changed to red with 'found' word removed</li>
+                 <li>Multiple flag notification banner</li>
+                 <li>No KBV available journey included</li>
+                 <li>Customer banner component updated to 'Quick reference'</li>
+              </ul>
+
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+            <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-visually-hidden">Important</span>
+              Always use the 'clear data' link in the footer in-between testing journey paths.
+            </strong>
+          </div>
+
+          <a href="/ur-r5/flag/establish-your-identity-nino" class="govuk-button" rel="noreferrer noopener" target="_blank">
+            View prototype with flag
+          </a>
+
+          <hr class="govuk-section-break govuk-section-break--s govuk-section-break--invisible">
+
+          <a href="/ur-r5/no-flag/establish-your-identity-nino" class="govuk-button" rel="noreferrer noopener" target="_blank">
+            View prototype without flag
+          </a>
+
+          <hr class="govuk-section-break govuk-section-break--s govuk-section-break--invisible">
+
+          <a href="/ur-r5/no-kbv/establish-your-identity-nino" class="govuk-button" rel="noreferrer noopener" target="_blank">
+            View prototype with no KBVs
+          </a>
+
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text govuk-!-font-weight-bold">
+                Important instructions for matching dummy data
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <!-- goal -->
+              <h3 class="govuk-heading-s">To match a record successfully by nino</h3>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>QQ 12 34 56 C</li>
+              </ul>
+              <h3 class="govuk-heading-s">Nino for no KBV path only</h3>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>BB 12 34 56 A</li>
+              </ul>
+              <h3 class="govuk-heading-s">To match a record successfully by name, dob, postcode</h3>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Albus Dumbledore</li>
+              </ul>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>05-01-1978</li>
+              </ul>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>PE1 6AN</li>
+              </ul>
+              <h3 class="govuk-heading-s">To get a no match by nino or name, dob, postcode</h3>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>You can just use any other details than above</li>
+              </ul>
+              <h3 class="govuk-heading-s">To get error pages</h3>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Submit without entering any data</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text govuk-!-font-weight-bold">
+                Important instructions for option KBV questions
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <!-- goal -->
+              <h3 class="govuk-heading-s">To view success after two correct questions only</h3>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
+                <li>Q2 - Enter <strong>correct</strong> date 25-10-2025</li>
+                <li>Customer <strong>verified</strong></li>
+              </ul>
+              <h3 class="govuk-heading-s">To view success after two from three correct questions</h3>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
+                <li>Q2 - Enter <strong>incorrect</strong> date such as 12-11-2023</li>
+                <li>Q3 - Enter <strong>correct</strong> mobile number 07123456789 (allows for spaces)</li>
+                <li>Customer <strong>verified</strong></li>
+              </ul>
+              <h3 class="govuk-heading-s">To view failure after two from three incorrect questions</h3>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
+                <li>Q2 - Enter <strong>incorrect</strong> date such as 12-11-2023</li>
+                <li>Q3 - Enter <strong>incorrect</strong> mobile number such as 07581234560 (allows for spaces)</li>
+                <li>Customer <strong>not</strong> verified</li>
+              </ul>
+            </div>
+          </details>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+      <!-- UR-R4 Testing -->
+
+      <div><strong class="govuk-tag govuk-tag--purple">Iteration 4</strong><strong class="govuk-tag govuk-tag--yellow">UR</strong> <strong class="govuk-tag govuk-tag--blue">Completed</strong></div>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+      <div>
+              <span class="govuk-caption-m">February 2026</span>
+            <h2 class="govuk-heading-m">UR Round 4 - Fraud makers and related pages</h2>
+          </div>
+
+          <p class="govuk-body">
+               This round of testing will focus on an IDV journey where a fraud marker is found on the customer record.<p>
+
+          <p class="govuk-body"><strong>Updates to test:<p></strong>
+
+            <ul class="govuk-list govuk-list--bullet">
+               <li>KBV start page with fraud message in warning text component</li>
+               <li>Updated page for IDV success with fraud flag held</li>
+               <li>Updated page for IDV fail with fraud flag held</li>
+               <li>Also, post code now added to confirm correct record page</li>
+            </ul>
+
+          <h2 class="govuk-heading-s">Agent is shown KBV question only (blind check)</h2>
+
+          <p class="govuk-body">
+            Agent is tasked with asking questions of the customer then selecting or inputting the answers given. The system will then decide on accuracy. Please refer to the instructions below for dummy input data.
+          </p>
+
+          <a href="/ur-r4/kbv-no-answer/establish-your-identity-nino" class="govuk-button" rel="noreferrer noopener" target="_blank">
+            View prototype with flag
+          </a>
+
+          <hr class="govuk-section-break govuk-section-break--s govuk-section-break--invisible">
+
+          <a href="/ur-r4/kbv-no-answer/happy-path/establish-your-identity-nino" class="govuk-button" rel="noreferrer noopener" target="_blank">
+            View prototype without flag
+          </a>
+
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text govuk-!-font-weight-bold">
+                Important instructions for this KBV flow
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <!-- goal -->
+              <h3 class="govuk-heading-s">To view success after two correct questions only</h3>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
+                <li>Q2 - Enter <strong>correct</strong> date 25-10-2025</li>
+                <li>Customer <strong>verified</strong></li>
+              </ul>
+              <h3 class="govuk-heading-s">To view failure after two from three incorrect questions</h3>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
+                <li>Q2 - Enter <strong>incorrect</strong> date such as 12-11-2023</li>
+                <li>Q3 - Enter <strong>incorrect</strong> mobile number such as 07581234560 (allows for spaces)</li>
+                <li>Customer <strong>not</strong> verified</li>
+              </ul>
+            </div>
+          </details>
+
+       <!-- end of UR-R4 - testing -->
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <!-- UR-R3 Testing -->
+
+      <div><strong class="govuk-tag govuk-tag--purple">Iteration 3</strong><strong class="govuk-tag govuk-tag--yellow">UR</strong> <strong class="govuk-tag govuk-tag--blue">Completed</strong></div>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+      <div>
+              <span class="govuk-caption-m">February 2026</span>
+            <h2 class="govuk-heading-m">UR Round 3 - Matching, flags and both KBV options</h2>
+          </div>
+
+          <p class="govuk-body"><strong>
+               We will focus our testing on:</strong></p>
+
+            <ul class="govuk-list govuk-list--bullet">
+              <li>More testing on KBV options</li>
+               <li>Establish identity by Nino page</li>
+               <li>Establish identity by full name and date of birth</li>
+               <li>Confirm correct record page</li>
+               <li>Date of death fraud marker found notification banner (in option A)</li>
+               <li>Identity at risk fraud marker found notification banner (in option B)</li>
+            </ul>
+
+          <h2 class="govuk-heading-s">Option A - Agent is shown question and answer</h2>
+
+          <p class="govuk-body">
+            Agent is tasked with asking questions of the customer. Then comparing their responses and accuracy against the answers shown. Prototype will give both sucess and fail outcomes based on selections.
+          </p>
+
+          <a href="/ur-r3/kbv-answer/establish-your-identity-nino" class="govuk-button" rel="noreferrer noopener" target="_blank">
+            View prototype option A
+          </a>
+
+          <h2 class="govuk-heading-s">Option B - Agent is shown question only (blind check)</h2>
+
+          <p class="govuk-body">
+            Agent is tasked with asking questions of the customer then selecting or inputting the answers given. The system will then decide on accuracy. Please refer to the instructions below before using prototype option B.
+          </p>
+
+          <a href="/ur-r3/kbv-no-answer/establish-your-identity-nino" class="govuk-button" rel="noreferrer noopener" target="_blank">
+            View prototype option B
+          </a>
+
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text govuk-!-font-weight-bold">
+                Important instructions for option B flow
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <!-- goal -->
+              <h3 class="govuk-heading-s">To view success after two correct questions only</h3>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
+                <li>Q2 - Enter <strong>correct</strong> date 25-10-2025</li>
+                <li>Customer <strong>verified</strong></li>
+              </ul>
+              <h3 class="govuk-heading-s">To view failure after two from three incorrect questions</h3>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
+                <li>Q2 - Enter <strong>incorrect</strong> date such as 12-11-2023</li>
+                <li>Q3 - Enter <strong>incorrect</strong> mobile number such as 07581234560 (allows for spaces)</li>
+                <li>Customer <strong>not</strong> verified</li>
+              </ul>
+            </div>
+          </details>
+
+          <h3 class="govuk-heading-s">UR Findings</h3>
+
+          <p class="govuk-body">
+            <a href="https://dwpdigital.atlassian.net/wiki/spaces/IDNT/pages/134147345135/Iterative+Testing+R3+findings" class="govuk-link" target="_blank">Iterative Testing UR-R3 findings (Work in progress)</a>
+          </p>
+
+       <!-- end of UR-R3 - testing -->
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+     <!-- UR-R2 Testing -->
+
+     <div><strong class="govuk-tag govuk-tag--purple">Iteration 2</strong><strong class="govuk-tag govuk-tag--yellow">UR</strong> <strong class="govuk-tag govuk-tag--blue">Completed</strong></div>
+
+     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+     <div>
+             <span class="govuk-caption-m">January 2026</span>
+           <h2 class="govuk-heading-m">UR Round 2 - Matching and flags</h2>
+         </div>
+
+     <p class="govuk-body">
+       We are planning to further test how our initial matching pages work with agents, both by Nino as well as by name and DOB. We will also be looking closely how agents react to a sample fraud flag being surfaced after matching has taken place.</p>
+
+    <p class="govuk-body"><strong>
+         We will focus our testing on:</strong></p>
+
+      <ul class="govuk-list govuk-list--bullet">
+         <li>Establish identity by Nino page</li>
+         <li>Establish identity by full name and date of birth</li>
+         <li>Confirm correct record page</li>
+         <li>Fraud marker found notification banner (Date of death used as example)</li>
+      </ul>
+
+      <a href="/ur-r2/establish-your-identity-nino" class="govuk-button" rel="noreferrer noopener" target="_blank">
+        Start prototype
+      </a>
+
+      <h3 class="govuk-heading-s">UR Findings</h3>
+
+      <p class="govuk-body">
+        <a href="https://dwpdigital.atlassian.net/wiki/spaces/IDNT/pages/134147899474/Iterative+Testing+R2+findings" class="govuk-link" target="_blank">Iterative Testing UR-R2 findings</a>
+      </p>
+
+      <!-- end of UR-R2 - testing -->
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <!-- Later Life - KBV prototype testing -->
+
+      <div><strong class="govuk-tag govuk-tag--purple">Iteration 1</strong><strong class="govuk-tag govuk-tag--yellow">UR</strong><strong class="govuk-tag govuk-tag--blue">Completed</strong></div>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+      <div>
+              <span class="govuk-caption-m">December 2025</span>
+            <h2 class="govuk-heading-m">UR Round 1 - KBV options testing</h2>
+          </div>
+
+      <p class="govuk-body">
+        Focused prototype testing with the Later Life Team to look at two alternatives on how we surface KBV questions.
+      </p>
+
+      <h2 class="govuk-heading-s">Option A - Agent is shown question and answer</h2>
+
+      <p class="govuk-body">
+        Agent is tasked with asking questions of the customer. Then comparing their responses and accuracy against the answers shown.
+      </p>
+
+      <p class="govuk-body">Prototype will give both sucess and fail outcomes based on selections.
+      </p>
+
+      <a href="/ur-r1/kbv-answer/establish-identity-match" class="govuk-button" rel="noreferrer noopener" target="_blank">
+        View prototype option A
+      </a>
+
+      <h2 class="govuk-heading-s">Option B - Agent is shown question only (blind check)</h2>
+
+      <p class="govuk-body">
+        Agent is tasked with asking questions of the customer then selecting or inputting the answers given. The system will then decide on accuracy.
+      </p>
+      <div>
+
+      <p class="govuk-body">
+        Please refer to the instructions below before using prototype option B.
+      </p>
+
+
+        <a href="/ur-r1/kbv-no-answer/establish-identity-match" class="govuk-button" rel="noreferrer noopener" target="_blank">
+          View prototype option B
+        </a>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text govuk-!-font-weight-bold">
+              Important instructions for option B flow
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <!-- goal -->
+            <h3 class="govuk-heading-s">To view success after two correct questions only</h3>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
+              <li>Q2 - Enter <strong>correct</strong> date 25-10-2025</li>
+              <li>Customer <strong>verified</strong></li>
+            </ul>
+            <h3 class="govuk-heading-s">To view success after two from three correct questions</h3>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
+              <li>Q2 - Enter <strong>incorrect</strong> date such as 12-11-2023</li>
+              <li>Q3 - Enter <strong>correct</strong> mobile number 07123456789 (allows for spaces)</li>
+              <li>Customer <strong>verified</strong></li>
+            </ul>
+            <h3 class="govuk-heading-s">To view failure after two from three incorrect questions</h3>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
+              <li>Q2 - Enter <strong>incorrect</strong> date such as 12-11-2023</li>
+              <li>Q3 - Enter <strong>incorrect</strong> mobile number such as 07581234560 (allows for spaces)</li>
+              <li>Customer <strong>not</strong> verified</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="govuk-details govuk-!-margin-bottom-0">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text govuk-!-font-weight-bold">
+              UR insights from this round
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <!-- goal -->
+            <p class="govuk-body">In this round of UR we wanted to get even more understanding from agents around the two proposed KBV options. We will post the results here after the analysis is completed.</p>
+            <h3 class="govuk-heading-m">Research goal</h3>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Understand agent reaction to typing in name and NINO to match</li>
+              <li>Understand if agent spots the Important banner for counter fraud checks</li>
+              <li>IDV fail and IDV pass screens</li>
+            </ul>
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Lucid flows
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <a class="govuk-link" href="https://lucid.app/lucidspark/c778426e-692f-4fb2-af06-cc31939b148b/edit?view_items=d1Y-MQAyCbbk&page=0_0&invitationId=inv_2be28a14-5c93-4b64-ba1d-f5edd25fb611" rel="noreferrer noopener" target="_blank">Screens on lucid</a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Design documentation
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <a class="govuk-link" href="https://dwpdigital.atlassian.net/wiki/spaces/IDNT/pages/134000214878#UR-Workshop-2" target="_blank">User Research Round 1</a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Research documents
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <a class="govuk-link" href="https://dwpdigital.atlassian.net/wiki/x/0I-WOB8" rel="noreferrer noopener" target="_blank">Workshop insights</a>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+
+          <!-- End of Later Life - KBV prototype testing -->
+
+          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <!-- Workshop 2 -->
+
+      <div><strong class="govuk-tag govuk-tag--purple">KBV</strong><strong class="govuk-tag govuk-tag--yellow">Workshop 2</strong> <strong class="govuk-tag govuk-tag--blue">Completed</strong></div>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+      <div>
+              <span class="govuk-caption-m">October and November 2025</span>
+            <h2 class="govuk-heading-m">Workshop 2 - KBV journey options</h2>
+          </div>
+
+      <p class="govuk-body">
+        Research on how KBVs are presented to DWP agents.
+      </p>
+
+          <details class="govuk-details govuk-!-margin-bottom-0">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text govuk-!-font-weight-bold">
+                UR reports and design documents
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <!-- goal -->
+              <h3 class="govuk-heading-m">Research goal</h3>
+              <!-- <p class="govuk-body">We researched with ESA Agents, PIP case workers, Assistive Technology team DWP colleagues</p> -->
+              <p class="govuk-body">In this round, we wanted learn more about these options:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Specific KBV questions presented for agents to type in customer responses</li>
+                <li>Specific KBV question and answers show for agents to decided on outcome </li>
+                <li>KBV questions shown in list format for agents to pick from to ask </li>
+                <li>The balance between system enforced compliance and agent based flexibility</li>
+              </ul>
+              <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Lucid flows
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <a class="govuk-link" href="https://lucid.app/lucidspark/c778426e-692f-4fb2-af06-cc31939b148b/edit?view_items=HHZV6jeHIYKD&page=0_0" rel="noreferrer noopener" target="_blank">Screens on lucid</a>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Design documentation
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <a class="govuk-link" href="https://dwpdigital.atlassian.net/wiki/spaces/IDNT/pages/134000214878#UR-Workshop-2" target="_blank">UR Workshop 2</a>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Research documents
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <a class="govuk-link" href="https://dwpdigital.atlassian.net/wiki/spaces/IDNT/pages/134062082152/Workshop+Analysis" rel="noreferrer noopener" target="_blank">Workshop insights</a>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </details>
+
+          <!-- End of workshop 2 -->
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <!-- Workshop 1 -->
+
+      <div><strong class="govuk-tag govuk-tag--purple">Guided UI</strong><strong class="govuk-tag govuk-tag--yellow">Workshop 1</strong> <strong class="govuk-tag govuk-tag--blue">Completed</strong></div>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+      <div>
+              <span class="govuk-caption-m">September 2025</span>
+            <h2 class="govuk-heading-m">Workshop 1 - Concepts</h2>
+          </div>
+
+      <p class="govuk-body">
+        Usability workshops with DWP agents.
+      </p>
+
+          <details class="govuk-details govuk-!-margin-bottom-0">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text govuk-!-font-weight-bold">
+                UR reports and design documents
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <!-- goal -->
+              <h3 class="govuk-heading-m">Research goal</h3>
+              <!-- <p class="govuk-body">We researched with ESA Agents, PIP case workers, Assistive Technology team DWP colleagues</p> -->
+              <p class="govuk-body">In this round, we wanted to understand if:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Whether the concept of a guided user interface could/would be used by agents in live work.</li>
+                <li>Test perceived value for consistency, compliance and the overall usefulness of such a tool.</li>
+                <li>Understand work set-ups and systems to inform how this tool could fit into their workflow.</li>
+                <li>Explore current behaviour around fraud indicators and risk.</li>
+              </ul>
+              <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Lucid flows
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <a class="govuk-link" href="https://lucid.app/lucidspark/b985d532-1e77-4f34-aa8c-670dd0d2d9aa/edit?view_items=5eTQGV5uihh7&invitationId=inv_a753613e-c34b-4df6-9401-b723617cb020" rel="noreferrer noopener" target="_blank">Screenshot on lucid<span class="govuk-visually-hidden"> of prototype flow</span></a>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Design documentation
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <a class="govuk-link" href="https://dwpdigital.atlassian.net/wiki/spaces/IDNT/pages/134000214878/Design+decisions#UR-workshops-log">UR Workshop 1<span class="govuk-visually-hidden"> of prototype flow</span></a>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Research documents
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <a class="govuk-link" href="https://dwpdigital.atlassian.net/wiki/spaces/IDNT/pages/134000674576/Guided+UI+V1+-+Concept+Research+Results">Guided UI V1 - Concept Research Results<span class="govuk-visually-hidden"> of prototype flow</span></a>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </details>
+
+          <!-- End of workshop 1 -->
+
+          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+          <!-- Prototype journey list view v1.0 -->
+
+          <div><strong class="govuk-tag govuk-tag--purple">Guided UI</strong><strong class="govuk-tag govuk-tag--yellow">Design</strong> <strong class="govuk-tag govuk-tag--blue">Completed</strong></div>
+
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+        <div>
+            <span class="govuk-caption-m">September 2025</span>
+            <h2 class="govuk-heading-m">Light touch guided UI</h2>
+          </div>
+
+        <p class="govuk-body">
+          Our design thinking has started with how a stand alone light touch guided UI can support compliance with the IDV operational instructions. Work is ongoing whether this journey will be iterated or that we will move onto a more feature rich tool.
+        </p>
+
+        <h2 class="govuk-heading-s">We will focusing on the following:</h2>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Linear checklist view of the IDV process broken into sequential stages</li>
+          <li>Explain what is matching or establishing identity</li>
+          <li>Static text guidance for what to do step by step</li>
+          <li>Embedded policy reminders or tooltips that reinforce importance of IDV</li>
+          <li>Guidance links for more complex scenarios (not in scope V1.0)</li>
+          <li>Checkboxes for personal tracking to remind that each stage is done (but not stored)</li>
+          <li>Critical messaging to the users, interruption pages or notifications</li>
+        </ul>
+
+      {{ govukButton({
+        text: "Start prototype",
+        href: '/path1/start'
+      }) }}
+
+      <!-- End of prototype journey list view v1.0 -->
+
+{% endblock %}
