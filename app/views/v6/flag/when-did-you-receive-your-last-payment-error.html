@@ -1,7 +1,7 @@
 {% extends "layouts/main_idv_quick_reference.html" %}
 
 {% block pageTitle %}
-  When did you receive your last payment? – {{ serviceName }} – GOV.UK Prototype Kit
+  Error: When did you receive your last payment? – {{ serviceName }}
 {% endblock %}
 
 {% block content %}
@@ -9,17 +9,27 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
 
-    {{ govukErrorSummary({
-      titleText: "There is a problem",
-      errorList: [
-        {
-          text: "Enter the date the customer received their last payment",
-          href: "#pension-received-day"
-        }
-      ]
-    }) }}
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+  <div role="alert">
 
-    <form class="form" action="/ur-r5/flag/when-did-you-receive-your-last-pension-payment" method="post">
+    <h2 class="govuk-error-summary__title">
+      There is a problem
+    </h2>
+
+    <div class="govuk-error-summary__body">
+      <ul class="govuk-list govuk-error-summary__list">
+        <li>
+          <a href="#pension-received-day">
+            Enter the date the customer received their last payment
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    <form class="form" action="/v6/flag/when-did-you-receive-your-last-payment" method="post">
 
       <div class="govuk-form-group govuk-form-group--error">
 
@@ -29,7 +39,7 @@
 
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              Enter the date the customer received their last payment
+              When did you receive your last payment?
             </h1>
           </legend>
 

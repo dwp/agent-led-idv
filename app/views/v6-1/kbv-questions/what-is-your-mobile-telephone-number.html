@@ -1,0 +1,56 @@
+{% extends "v6-1/layouts/main_idv_quick_reference.html" %}
+
+{% block pageTitle %}
+  What is your mobile telephone number? – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <form action="/v6-1/kbv-questions/what-is-your-mobile-telephone-number" method="post" class="form">
+
+      <div class="govuk-form-group">
+        <span class="govuk-caption-l">Question 3</span>
+
+        <fieldset class="govuk-fieldset" aria-describedby="mobile-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What is your mobile telephone number?
+            </h1>
+          </legend>
+
+          <div id="mobile-hint" class="govuk-hint">
+            For example, 07700 900000 or +44 7700 900999.
+          </div>
+
+          <input
+            class="govuk-input govuk-input--width-10"
+            id="customer-mobile-v6"
+            name="customer-mobile-tel-v6"
+            type="tel"
+            autocomplete="tel"
+          >
+        </fieldset>
+      </div>
+
+      <div class="govuk-button-group">
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        <!-- Optional fallback -->
+        <a class="govuk-link" href="/v6-1/idv-outcomes/you-have-not-proved-your-identity">
+          Customer cannot answer question
+        </a>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

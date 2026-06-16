@@ -1,62 +1,79 @@
 {% extends "layouts/main_idv_quick_reference.html" %}
 
-{% set title = "What is your mobile telephone number?" %}
+{% block pageTitle %}
+  Error: What is your mobile telephone number? – {{ serviceName }}
+{% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
 
+    <!-- Error summary -->
     <div class="govuk-error-summary" data-module="govuk-error-summary">
       <div role="alert">
+
         <h2 class="govuk-error-summary__title">
           There is a problem
         </h2>
+
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
             <li>
-              <a href="#customer-mobile-r5">Enter a valid customer mobile telephone number</a>
+              <a href="#customer-mobile-v6">
+                Enter a valid customer mobile telephone number
+              </a>
             </li>
           </ul>
         </div>
+
       </div>
     </div>
 
-      <form class="form" action="/ur-r5/flag/what-is-your-mobile-telephone-number" method="post" autocomplete="off">
+    <form class="form" action="/v6/flag/what-is-your-mobile-telephone-number" method="post" autocomplete="off">
 
-          {% set pageHeadingH1 %}
-            <span class="govuk-caption-l">Question 3</span>
-            {{ title }}
-          {% endset %}
+      <div class="govuk-form-group govuk-form-group--error">
+        <span class="govuk-caption-l">Question 3</span>
 
-          {{ govukInput({
-              label: {
-                  html: pageHeadingH1,
-                  classes: "govuk-label--l",
-                  isPageHeading: true
-              },
-              hint: {
-                  text: "For example, 07700 900000 or +44 7700 900999."
-              },
-              errorMessage: {
-                text: "Enter a valid customer mobile telephone number"
-              },
-              classes: "govuk-input--width-10",
-              id: "customer-mobile-r5",
-              name: "customer-mobile-tel-r5",
-              autocomplete: "tel"
-          }) }}
+        <fieldset class="govuk-fieldset" aria-describedby="mobile-hint mobile-error">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading govuk-!-margin-bottom-3">
+              What is your mobile telephone number?
+            </h1>
+          </legend>
 
-          {% from "govuk/components/error-message/macro.njk" import govukErrorMessage %}
+          <!-- Error message -->
+          <p id="mobile-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span>
+            Enter a valid customer mobile telephone number
+          </p>
 
-
-          <div class="govuk-button-group">
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-              Continue
-            </button>
-            <a class="govuk-link" href="identity-not-verified-flag-found">Customer cannot answer question</a>
+          <!-- Hint -->
+          <div id="mobile-hint" class="govuk-hint">
+            For example, 07700 900000 or +44 7700 900999.
           </div>
-      </form>
+
+          <!-- Input -->
+          <input
+            class="govuk-input govuk-input--width-10 govuk-input--error"
+            id="customer-mobile-v6"
+            name="customer-mobile-tel-v6"
+            type="tel"
+            autocomplete="tel"
+          >
+        </fieldset>
+      </div>
+
+      <div class="govuk-button-group">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+        <a class="govuk-link" href="identity-not-verified-flag-found">
+          Customer cannot answer question
+        </a>
+      </div>
+
+    </form>
 
   </div>
 </div>

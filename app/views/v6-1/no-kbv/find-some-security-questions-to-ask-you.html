@@ -1,0 +1,69 @@
+{% extends "v6-1/layouts/main_idv_quick_reference.html" %}
+
+{% block pageTitle %}
+  Find some security questions to ask you – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <h1 class="govuk-heading-l">
+      I am now going to find some security questions to ask you
+    </h1>
+
+    <div class="govuk-inset-text colour-blue">
+
+      <p class="govuk-body">There are no security questions available.</p>
+
+      <h2 class="govuk-heading-m">
+        What you should do next
+      </h2>
+
+      <ul class="govuk-list govuk-list--number">
+        <li>Use DWP systems to help you ask security questions.</li>
+        <li>Come back to this page and select if the customer correctly answered enough security questions.</li>
+        <li>When you update your notes, include if the customer passed or failed and that the Identity Checker was unavailable.</li>
+      </ul>
+
+    </div>
+
+    <form class="form" action="/correct-nokbv" method="post">
+
+    {{ govukRadios({
+      name: "correctnokbv",
+      value: data['correctnokbv'],
+      fieldset: {
+        legend: {
+          text: "Did the customer answer enough questions to pass security?",
+          isPageHeading: false,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Yes"
+        },
+        {
+          value: "no",
+          text: "No"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+  </form>
+
+  <p class="govuk-body">
+    <a href="send-identity-documents" class="govuk-link">Not enough information to ask security questions</a>
+  </p>
+
+  </div>
+</div>
+
+{% endblock %}

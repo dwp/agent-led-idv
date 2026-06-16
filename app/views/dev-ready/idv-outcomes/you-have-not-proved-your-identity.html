@@ -1,0 +1,49 @@
+{% extends "layouts/main_idv_quick_reference_end.html" %}
+
+{% block pageTitle %}
+  You have not proved your identity – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <div class="govuk-panel govuk-panel--confirmation custom-red-panel">
+      <h1 class="govuk-panel__title">
+        You have not proved your identity
+      </h1>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+    <p class="govuk-body">
+      You have not answered the security questions successfully. I cannot continue with your request and need to end the call.
+    </p>
+
+    <h2 class="govuk-heading-m">
+      You can try to prove your identity another way
+    </h2>
+
+    <p class="govuk-body">
+      You can either:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        call back when you have access to the information that can help you answer the security questions, or
+      </li>
+      <li>
+        send your request to us in writing, with any relevant identity documents included
+      </li>
+    </ul>
+
+    {{ govukButton({
+      text: "Reset Identity Checker",
+      href: "/v6/no-flag/establish-your-identity-nino"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

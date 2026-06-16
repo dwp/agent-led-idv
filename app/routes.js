@@ -9,6 +9,22 @@ const routesV6 = require('./routes-v6');
 
 routesV6(router);
 
+// =========================================
+// V6-1 BRIDGE
+// =========================================
+
+const routesV61 = require('./routes-v6-1');
+routesV61(router);
+
+
+// BRIDGE ROUTE (IMPORTANT)
+router.post('/v6-1-bridge/nino-answer', function (req, res) {
+
+  // ✅ DO NOT MODIFY DATA HERE
+  return res.redirect(307, '/v6-1/establish-identity/what-is-your-national-insurance-number');
+
+});
+``
 
 // -------------------------
 // Existing routes

@@ -1,0 +1,88 @@
+{% extends "v6-1/layouts/main_idv_quick_reference.html" %}
+
+{% block pageTitle %}
+  When did you receive your last payment? – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <form action="/v6-1/kbv-questions/when-did-you-receive-your-last-payment" method="post">
+
+      <div class="govuk-form-group">
+        <span class="govuk-caption-l">Question 2</span>
+
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="payment-received-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              When did you receive your last payment?
+            </h1>
+          </legend>
+
+          <div id="payment-received-hint" class="govuk-hint">
+            You can find this on your bank statement. For example 27 3 2024.
+          </div>
+
+          <div class="govuk-date-input" id="payment-received">
+
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="payment-received-day">
+                  Day
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                  id="payment-received-day"
+                  name="payment-received-day"
+                  type="text" inputmode="numeric">
+              </div>
+            </div>
+
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="payment-received-month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                  id="payment-received-month"
+                  name="payment-received-month"
+                  type="text" inputmode="numeric">
+              </div>
+            </div>
+
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="payment-received-year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4"
+                  id="payment-received-year"
+                  name="payment-received-year"
+                  type="text" inputmode="numeric">
+              </div>
+            </div>
+
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-button-group">
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        <!-- optional fallback link -->
+        <a class="govuk-link" href="/v6-1/kbv-questions/what-is-your-mobile-telephone-number">
+          Customer cannot answer question
+        </a>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

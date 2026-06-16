@@ -1,7 +1,7 @@
 {% extends "layouts/main_matching.html" %}
 
 {% block pageTitle %}
-  I have found your customer record – {{ serviceName }} – GOV.UK Prototype Kit
+  I have found your customer record – {{ serviceName }}
 {% endblock %}
 
 {% block content %}
@@ -34,36 +34,6 @@
           </tr>
         </tbody>
       </table>
-
-    <!--  <form class="form" action="/correct-record-r5" method="post">
-
-      {{ govukRadios({
-        name: "correctrecord",
-        value: data['correctrecord'],
-        fieldset: {
-          legend: {
-            text: "Is this the correct customer record?",
-            isPageHeading: false,
-            classes: "govuk-fieldset__legend--m"
-          }
-        },
-        items: [
-          {
-            value: "yes",
-            text: "Yes"
-          },
-          {
-            value: "no",
-            text: "No"
-          }
-        ]
-      }) }}
-
-      {{ govukButton({
-        text: "Continue"
-      }) }}
-
-    </form> -->
 
     {{ govukButton({
       text: "Continue",

@@ -1,0 +1,48 @@
+{% extends "layouts/main_matching.html" %}
+
+{% block pageTitle %}
+  I have found your customer record – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <h1 class="govuk-heading-l">
+        I have found your customer record
+      </h1>
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m">Personal details</caption>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Name</th>
+            <td class="govuk-table__cell">{{ data['customerName'] }}</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">National Insurance number</th>
+            <td class="govuk-table__cell">{{ data['nationalinsurancenumberFormatted'] }}</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Date of birth</th>
+            <td class="govuk-table__cell">{{ data['customerDob'] }}</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Postcode</th>
+            <td class="govuk-table__cell">{{ data['customerPostcode'] }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form action="/v6-1/establish-identity/found-your-customer-record" method="post">
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+
+</div>
+
+{% endblock %}

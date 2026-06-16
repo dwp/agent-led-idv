@@ -1,7 +1,7 @@
 {% extends "layouts/main_matching.html" %}
 
 {% block pageTitle %}
-  I am now going to find some security questions to ask you – {{ serviceName }} – GOV.UK Prototype Kit
+  I am now going to find some security questions to ask you – {{ serviceName }}
 {% endblock %}
 
 {% block content %}
@@ -14,11 +14,15 @@
       </h1>
 
       <div class="govuk-inset-text colour-blue">
-        <p class="govuk-body">There are no security questions available. </p>
+        <p class="govuk-body">There are no security questions available.</p>
+
         <h2 class="govuk-heading-m">
           What you should do next
         </h2>
-        <p class="govuk-body">Find the DWP address the customer needs to send their identity documents to and what they need to include. </p>
+
+        <p class="govuk-body">
+          Find the DWP address the customer needs to send their identity documents to and what they need to include.
+        </p>
       </div>
 
       {{ govukButton({
@@ -26,6 +30,7 @@
         href: "establish-your-identity-nino"
       }) }}
 
-</div>
+    </div>
+  </div>
 
 {% endblock %}

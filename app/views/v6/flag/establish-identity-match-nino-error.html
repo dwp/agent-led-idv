@@ -1,7 +1,7 @@
 {% extends "layouts/main_matching.html" %}
 
 {% block pageTitle %}
-  What is your National Insurance number? – {{ serviceName }} – GOV.UK Prototype Kit
+  Error: What is your National Insurance number? – {{ serviceName }}
 {% endblock %}
 
 {% block content %}
@@ -10,51 +10,50 @@
   <div class="govuk-grid-column-two-thirds">
 
     {{ govukErrorSummary({
-        titleText: "There is a problem",
-        errorList: [
-          {
-            text: "Enter a National Insurance number",
-            href: "#national-insurance-number"
-          }
-        ]
-      }) }}
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "Enter a National Insurance number",
+          href: "#national-insurance-number"
+        }
+      ]
+    }) }}
 
     <form class="form" action="/v6/flag/nino-answer" method="post">
 
       <fieldset class="govuk-fieldset" aria-describedby="national-insurance-number-hint national-insurance-number-error">
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-    <h1 class="govuk-fieldset__heading">
-      What is your National Insurance number?
-    </h1>
-  </legend>
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            What is your National Insurance number?
+          </h1>
+        </legend>
 
-  <div class="govuk-form-group govuk-form-group--error">
+        <div class="govuk-form-group govuk-form-group--error">
 
-    <label class="govuk-label govuk-visually-hidden" for="national-insurance-number">
-      What is your National Insurance number?
-    </label>
+          <label class="govuk-label govuk-visually-hidden" for="national-insurance-number">
+            What is your National Insurance number?
+          </label>
 
-    <div id="national-insurance-number-hint" class="govuk-hint">
-      It’s on your National Insurance card, benefit letter, payslip or P60 – for example, 'QQ 12 34 56 C'.
-    </div>
+          <div id="national-insurance-number-hint" class="govuk-hint">
+            It’s on your National Insurance card, benefit letter, payslip or P60 – for example, 'QQ 12 34 56 C'.
+          </div>
 
-    <p id="national-insurance-number-error" class="govuk-error-message">
-      <span class="govuk-visually-hidden">Error:</span>
-      Enter a National Insurance number
-    </p>
+          <p id="national-insurance-number-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span>
+            Enter a National Insurance number
+          </p>
 
-    <input
-      class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing govuk-input--error"
-      id="national-insurance-number"
-      name="nationalinsurancenumber"
-      type="text"
-      autocomplete="off"
-      spellcheck="false"
-      aria-describedby="national-insurance-number-hint national-insurance-number-error"
+          <input
+            class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing govuk-input--error"
+            id="national-insurance-number"
+            name="nationalinsurancenumber"
+            type="text"
+            autocomplete="off"
+            spellcheck="false"
+            aria-describedby="national-insurance-number-hint national-insurance-number-error"
 
-  </div>
-</fieldset>
-
+        </div>
+      </fieldset>
 
       {{ govukButton({
         text: "Search for customer record"

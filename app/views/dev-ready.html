@@ -1,56 +1,49 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Development ready – {{ serviceName }} – GOV.UK Prototype Kit
+  Development ready – {{ serviceName }}
 {% endblock %}
 
 {% block content %}
 
 <h1 class="govuk-heading-xl">Identity Checker</h1>
 
-<div class="govuk-service-navigation"
-data-module="govuk-service-navigation">
-<div class="govuk-width-container">
-  <div class="govuk-service-navigation__container">
-    <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
-      <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
-        Menu
-      </button>
-<ul class="govuk-service-navigation__list" id="navigation">
-  <li class="govuk-service-navigation__item">
-<a class="govuk-service-navigation__link" href="index">
-  Home
-</a>
-</li>
-<li class="govuk-service-navigation__item">
-<a class="govuk-service-navigation__link" href="iterations">
-  Previous iterations
-</a>
-</li>
-<li class="govuk-service-navigation__item">
-<a class="govuk-service-navigation__link" href="error-designs">
-  Error designs
-</a>
-</li>
-<li class="govuk-service-navigation__item">
-<a class="govuk-service-navigation__link" href="design-problems">
-  Design problems
-</a>
-</li>
-<li class="govuk-service-navigation__item govuk-service-navigation__item--active">
-<a class="govuk-service-navigation__link" href="">
-  Dev ready
-</a>
-</li>
-<li class="govuk-service-navigation__item">
-<a class="govuk-service-navigation__link" href="archived-designs">
-  Archived
-</a>
-</li>
-      </ul>
-    </nav>
+<div class="govuk-service-navigation" data-module="govuk-service-navigation">
+  <div class="govuk-width-container">
+    <div class="govuk-service-navigation__container">
+      <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+        <button type="button"
+          class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle"
+          aria-controls="navigation"
+          hidden
+          aria-hidden="true">
+          Menu
+        </button>
+
+        <ul class="govuk-service-navigation__list" id="navigation">
+          <li class="govuk-service-navigation__item">
+            <a class="govuk-service-navigation__link" href="index">Home</a>
+          </li>
+          <li class="govuk-service-navigation__item">
+            <a class="govuk-service-navigation__link" href="iterations">Previous iterations</a>
+          </li>
+          <li class="govuk-service-navigation__item">
+            <a class="govuk-service-navigation__link" href="error-designs">Error designs</a>
+          </li>
+          <li class="govuk-service-navigation__item">
+            <a class="govuk-service-navigation__link" href="design-problems">Design problems</a>
+          </li>
+          <li class="govuk-service-navigation__item govuk-service-navigation__item--active">
+            <a class="govuk-service-navigation__link" href="">Dev ready</a>
+          </li>
+          <li class="govuk-service-navigation__item">
+            <a class="govuk-service-navigation__link" href="archived-designs">Archived</a>
+          </li>
+        </ul>
+
+      </nav>
+    </div>
   </div>
-</div>
 </div>
 
 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
@@ -63,43 +56,138 @@ data-module="govuk-service-navigation">
   These pages have been signed off by the team and are considered ready for development.
 </p>
 
-      <h2 class="govuk-heading-s">
-        Establish identity
-      </h2>
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a class="govuk-link" href="">Pages will be listed here when ready</a></li>
-        </ul>
-        <h2 class="govuk-heading-s">
-          No match pages
-        </h2>
-          <ul class="govuk-list govuk-list--bullet">
-            <li><a class="govuk-link" href="">Pages will be listed here when ready</a></li>
-          </ul>
-        <h2 class="govuk-heading-s">
-          KBV questions (TBD for MVP)
-        </h2>
-          <ul class="govuk-list govuk-list--bullet">
-            <li><a class="govuk-link" href="">Pages will be listed here when ready</a></li>
-          </ul>
-          <h2 class="govuk-heading-s">
-            IDV outcomes
-          </h2>
-            <ul class="govuk-list govuk-list--bullet">
-              <li><a class="govuk-link" href="">Pages will be listed here when ready</a></li>
-            </ul>
-          <h2 class="govuk-heading-s">
-            No KBV path
-          </h2>
-            <ul class="govuk-list govuk-list--bullet">
-              <li><a class="govuk-link" href="">Pages will be listed here when ready</a></li>
-            </ul>
-            <h2 class="govuk-heading-s">
-              Specific pages
-            </h2>
-              <ul class="govuk-list govuk-list--bullet">
-                <li><a class="govuk-link" href="">Pages will be listed here when ready</a></li>
-              </ul>
+<!-- Establish identity -->
+<h2 class="govuk-heading-s">Establish identity</h2>
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    <a class="govuk-link" href="/dev-ready/establish-identity/what-is-your-national-insurance-number.html">
+      What is your National Insurance number?
+    </a>
+  </li>
+  <li>
+    <a class="govuk-link" href="/dev-ready/establish-identity/check-correct-record.html">
+      I need to check that I have found the correct record
+    </a>
+  </li>
+  <li>
+    <a class="govuk-link" href="/dev-ready/establish-identity/found-your-customer-record.html">
+      I have found your correct record
+    </a>
+  </li>
+  <li>
+    <a class="govuk-link" href="/dev-ready/establish-identity/no-customer-record-found.html">
+      No customer record found
+    </a>
+  </li>
+  <li>
+    <a class="govuk-link" href="/dev-ready/establish-identity/found-your-customer-record.html">
+      I have found your correct record
+    </a>
+  </li>
+  <li>
+    <a class="govuk-link" href="/dev-ready/establish-identity/no-customer-record-found.html">
+      No customer record found
+    </a>
+  </li>
+  <li>
+    <a class="govuk-link" href="/dev-ready/establish-identity/no-match-found.html">
+      No match found
+    </a>
+  </li>
+  <li>
+    <a class="govuk-link" href="/dev-ready/establish-identity/search-for-your-customer-record-another-way.html">
+      I will try to search for your customer record another way
+    </a>
+  </li>
+</ul>
 
-              <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+<!-- Counter fraud -->
+<h2 class="govuk-heading-s">Counter fraud checks</h2>
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    <a class="govuk-link" href="/dev-ready/counter-fraud-checks/bring-up-some-security-questions-single.html">
+      I am just waiting for the system to bring up some security questions (single flag)
+    </a>
+  </li>
+  <li>
+    <a class="govuk-link" href="/dev-ready/counter-fraud-checks/bring-up-some-security-questions-multiple.html">
+      I am just waiting for the system to bring up some security questions (multiple flags)
+    </a>
+  </li>
+</ul>
+
+<!-- KBV -->
+<h2 class="govuk-heading-s">KBV questions (TBD for MVP)</h2>
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    <a class="govuk-link" href="/dev-ready/kbv-questions/another-benefit-you-have-previously-applied-for">
+      Can you name another benefit you have previously applied for?
+    </a>
+  </li>
+  <li>
+    <a class="govuk-link" href="/dev-ready/kbv-questions/when-did-you-receive-your-last-payment">
+      When did you receive your last payment?
+    </a>
+  </li>
+  <li>
+    <a class="govuk-link" href="/dev-ready/kbv-questions/what-is-your-mobile-telephone-number">
+      What is your mobile telephone number?
+    </a>
+  </li>
+</ul>
+
+
+<!-- IDV outcomes -->
+<h2 class="govuk-heading-s">IDV outcomes</h2>
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    <a class="govuk-link" href="/dev-ready/idv-outcomes/you-have-proved-your-identity">
+      You have proved your identity
+    </a>
+  </li>
+  <li>
+    <a class="govuk-link" href="/dev-ready/idv-outcomes/you-have-not-proved-your-identity">
+      You have not proved your identity
+    </a>
+  </li>
+  <li>
+    <a class="govuk-link" href="/dev-ready/idv-outcomes/you-have-answered-the-security-questions">
+      You have answered the security questions and I can now look into your request
+    </a>
+  </li>
+  <li>
+    <a class="govuk-link" href="/dev-ready/idv-outcomes/you-have-not-passed-the-security-questions">
+      You have not passed the security questions and I need to end the call
+    </a>
+  </li>
+</ul>
+
+
+<!-- No KBV -->
+<h2 class="govuk-heading-s">No KBV path</h2>
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    <a class="govuk-link" href="/dev-ready/no-kbv/find-some-security-questions-to-ask-you">
+      I am now going to find some security questions to ask you
+    </a>
+  </li>
+  <li>
+    <a class="govuk-link" href="/dev-ready/no-kbv/i-should-have-some-questions-for-you-soon">
+      The system is a little slow, I should have some questions for you soon
+    </a>
+  </li>
+</ul>
+
+<!-- Other pages -->
+<h2 class="govuk-heading-s">Other pages</h2>
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    <a class="govuk-link" href="">
+      Pages will be listed here when ready
+    </a>
+  </li>
+</ul>
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
 {% endblock %}

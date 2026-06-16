@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Error designs – {{ serviceName }} – GOV.UK Prototype Kit
+  Error designs – {{ serviceName }}
 {% endblock %}
 
 {% block content %}
@@ -59,50 +59,62 @@ data-module="govuk-service-navigation">
 
 <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-<h2 class="govuk-heading-m">Input errors</h2>
-
 <p class="govuk-body">
   These are messages that the user gives information that we are not able to use, such as an invalid National Insurance number or submitting forms with blank field inputs.
 </p>
 
 <p class="govuk-body">
-  Pages below are <strong>suggested</strong> links waiting for design.
+  For now please refer to Confluence for all information regarding errors.
 </p>
 
-      <h2 class="govuk-heading-s">
+<h2 class="govuk-heading-m">Input errors</h2>
+
+<p class="govuk-body">
+  <a class="govuk-link" href="https://dwpdigital.atlassian.net/wiki/spaces/IDNT/pages/134243844758/Validation+errors+in+progress" target="_blank">Confluence page listing input errors</a>
+</p>
+
+<h2 class="govuk-heading-m">Technical errors</h2>
+
+<p class="govuk-body">
+  <a class="govuk-link" href="https://dwpdigital.atlassian.net/wiki/spaces/IDNT/pages/134225332325/Back+button+error" target="_blank">Confluence page listing technical errors (only back button error at present)</a>
+</p>
+
+<!--
+      <h3 class="govuk-heading-s">
         Establish identity
-      </h2>
+      </h3>
         <ul class="govuk-list govuk-list--bullet">
-          <li><a class="govuk-link" href="/v6/no-flag/establish-identity-match-nino-error">Establish identity nino - Blank field</a></li>
-          <li><a class="govuk-link" href="">Establish identity nino - Incorrect format</a></li>
-          <li><a class="govuk-link" href="">Establish identity name, dob, postcode - Blank field</a></li>
-          <li><a class="govuk-link" href="">Establish identity name, dob, postcode - Incorrect format</a></li>
-          <li><a class="govuk-link" href="">Confirm correct record - No selection made</a></li>
+          <li><a class="govuk-link" href="">What is your National Insurance number? - Empty</a></li>
+          <li><a class="govuk-link" href="">What is your National Insurance number? - Invalid</a></li>
+          <li><a class="govuk-link" href="">What is your National Insurance number? - Length</a></li>
+          <li><a class="govuk-link" href="">I need to check that I have found the correct record - No selection made</a></li>
+          <li><a class="govuk-link" href="">I need to search for your details another way - Empty all fields</a></li>
+          <li><a class="govuk-link" href="">I need to search for your details another way - Invalid - future dob</a></li>
         </ul>
-          <h2 class="govuk-heading-s">
+          <h3 class="govuk-heading-s">
             No KBV path
-          </h2>
+          </h3>
             <ul class="govuk-list govuk-list--bullet">
-              <li><a class="govuk-link" href="">Find some security questions no flag - No selection made</a></li>
-              <li><a class="govuk-link" href="">I should have some questions for you soon - No selection made</a></li>
+              <li><a class="govuk-link" href="">I am now going to find some security questions to ask you soon - No selection made</a></li>
+              <li><a class="govuk-link" href="">The system is a little slow, I should have some questions for you soon - No selection made</a></li>
             </ul>
-            <h2 class="govuk-heading-s">
-              Specific pages
-            </h2>
-              <ul class="govuk-list govuk-list--bullet">
-                <li><a class="govuk-link" href="#">End session - No selection made</a></li>
-              </ul>
-              <h2 class="govuk-heading-s">
+
+              <h3 class="govuk-heading-s">
                 KBV questions (TBD for MVP)
-              </h2>
+              </h3>
                 <ul class="govuk-list govuk-list--bullet">
-                  <li><a class="govuk-link" href="">Any other benefit - No selection made</a></li>
-                  <li><a class="govuk-link" href="">Date last paid - Incorrect format</a></li>
-                  <li><a class="govuk-link" href="">Date last paid - Blank field</a></li>
-                  <li><a class="govuk-link" href="">Mobile phone number - Blank field</a></li>
+                  <li><a class="govuk-link" href="">Can you name another benefit you have previously applied for? - No selection made</a></li>
+                  <li><a class="govuk-link" href="">When did you receive your last payment? - Empty all fields</a></li>
+                  <li><a class="govuk-link" href="">When did you receive your last payment? - Invalid - year has too few numbers</a></li>
+                  <li><a class="govuk-link" href="">What is your mobile telephone number?- Empty</a></li>
                   <li><a class="govuk-link" href="">Mobile phone number - Incorrect format</a></li>
                 </ul>
 
+                <h3 class="govuk-heading-s">Other</h3>
+
+                <ul class="govuk-list govuk-list--bullet">
+                <li><a class="govuk-link" href="">Are you sure you want to end this session? - No selection made</a></li>
+                </ul>
 
               <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
@@ -112,11 +124,12 @@ data-module="govuk-service-navigation">
                 These are messages that the user will see if something technical has not happened as expected, such as service unavilable.
               </p>
 
-                    <h2 class="govuk-heading-s">
+                    <h3 class="govuk-heading-s">
                       Whole journey
-                    </h2>
+                    </h3>
                       <ul class="govuk-list govuk-list--bullet">
-                        <li><a class="govuk-link" href="/v6/technical-errors/you-cannot-go-back-to-previous-page">You cannot go back to previous page - Back button error</a></li>
-                      </ul>
+                        <li><a class="govuk-link" href="/error-notifications/technical-errors/you-cannot-go-back-to-previous-page">You cannot go back to previous page - Back button error</a></li>
+                        <li><a class="govuk-link" href="">End session - No selection made</a></li>
+                      </ul> -->
 
 {% endblock %}

@@ -1,0 +1,86 @@
+{% extends "layouts/main_matching.html" %}
+
+{% block pageTitle %}
+  Test journeys – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <h1 class="govuk-heading-l">
+      Test journey mapping
+    </h1>
+
+    <p class="govuk-body">
+      Use these National Insurance numbers to test different journeys in this prototype.
+    </p>
+
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">
+        Journey scenarios
+      </caption>
+
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header">National Insurance number</th>
+          <th class="govuk-table__header">Journey type</th>
+          <th class="govuk-table__header">Behaviour</th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">QQ 12 34 56 C</td>
+          <td class="govuk-table__cell">Standard</td>
+          <td class="govuk-table__cell">
+            Record found → confirm details → KBV questions → identity outcome
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">QQ 11 11 11 C</td>
+          <td class="govuk-table__cell">No customer record</td>
+          <td class="govuk-table__cell">
+            No record found page
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">QQ 22 22 22 C</td>
+          <td class="govuk-table__cell">No match</td>
+          <td class="govuk-table__cell">
+            Record not matched → alternative search
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">QQ 33 33 33 C</td>
+          <td class="govuk-table__cell">No KBV</td>
+          <td class="govuk-table__cell">
+            Skips KBV → manual checks → identity outcome
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">QQ 44 44 44 C</td>
+          <td class="govuk-table__cell">Fraud risk (flagged)</td>
+          <td class="govuk-table__cell">
+            Record found → fraud banner → KBV → flagged outcome screens
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    {{ govukButton({
+      text: "Start journey",
+      href: "/v6.1/establish-identity/what-is-your-national-insurance-number"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

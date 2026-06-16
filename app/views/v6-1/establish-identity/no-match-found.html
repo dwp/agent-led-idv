@@ -1,0 +1,74 @@
+{% extends "layouts/main_matching.html" %}
+
+{% block pageTitle %}
+  No match found – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <h1 class="govuk-heading-l">
+        No match found
+      </h1>
+
+      <dl class="govuk-summary-list">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Albus Dumbledore
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            5 January 1978
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Postcode
+          </dt>
+          <dd class="govuk-summary-list__value">
+            PE1 6AN
+          </dd>
+        </div>
+
+      </dl>
+
+      <div class="govuk-inset-text colour-blue">
+
+        <h2 class="govuk-heading-m">
+          What you should do next
+        </h2>
+
+        <p class="govuk-body">You can:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>search again</li>
+          <li>ask the customer to call back with their National Insurance number </li>
+        </ul>
+
+      </div>
+
+      {{ govukButton({
+        text: "Search again",
+        href: "establish-your-identity-name-dob-postcode"
+      }) }}
+
+      <p class="govuk-body">
+        <a href="try-another-way" class="govuk-link">I cannot find the customer record</a>
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "v6-1/layouts/main_idv_quick_reference.html" %}
+{% set hideEndSession = true %}
+
+{% block pageTitle %}
+  Customer identity verified – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        You have proved your identity
+      </h1>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+
+    <h2 class="govuk-heading-m">
+      The identity check is complete
+    </h2>
+
+    <p>
+      I can now continue with your request.
+    </p>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      text: "Reset Identity Checker",
+      href: "/v6-1/establish-identity/what-is-your-national-insurance-number"
+    }) }}
+
+  </div>
+
+{% endblock %}

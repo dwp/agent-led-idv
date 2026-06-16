@@ -1,7 +1,7 @@
 {% extends "layouts/main_path2b.html" %}
 
 {% block pageTitle %}
-  Are you sure you want to end this session – {{ serviceName }} – GOV.UK Prototype Kit
+  Are you sure you want to end this session? – {{ serviceName }}
 {% endblock %}
 
 {% block content %}
@@ -9,36 +9,37 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters">
 
-      <form class="form" action="/end-session-noflag" method="post">
+  <!--    <form class="form" action="/end-session-noflag" method="post"> -->
 
         {{ govukRadios({
-  name: "endsession",
-  value: (data['endsession'] | default('')),
-  fieldset: {
-    legend: {
-      text: "Are you sure you want to end this session?",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--l"
-    }
-  },
-  items: [
-    {
-      value: "yes",
-      text: "Yes"
-    },
-    {
-      value: "no",
-      text: "No"
-    }
-  ]
-}) }}
+          name: "endsession",
+          value: (data['endsession'] | default('')),
+          fieldset: {
+            legend: {
+              text: "Are you sure you want to end this session?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
 
-      {{ govukButton({
-        text: "Continue"
-      }) }}
+        {{ govukButton({
+          text: "Continue"
+        }) }}
 
-    </form>
+  <!--    </form>   -->
 
-</div>
+    </div>
+  </div>
 
 {% endblock %}
