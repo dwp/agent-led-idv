@@ -1,4 +1,4 @@
-{% extends "layouts/main_matching.html" %}
+{% extends "v6-1/layouts/main_matching.html" %}
 
 {% block pageTitle %}
   No customer record found – {{ serviceName }}
@@ -40,11 +40,12 @@
     </div>
 
     {{ govukButton({
-      text: "Search again"
+      text: "Search again",
+      href: "what-is-your-national-insurance-number"
     }) }}
 
     <p class="govuk-body">
-      <a href="" class="govuk-link">I cannot find the customer record</a>
+      <a href="search-for-your-customer-record-another-way" class="govuk-link">I cannot find the customer record</a>
     </p>
 
   </div>

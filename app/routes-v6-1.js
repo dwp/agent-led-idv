@@ -5,6 +5,11 @@ module.exports = function (router) {
   // =========================================
 
   router.get('/v6-1/establish-identity/what-is-your-national-insurance-number', (req, res) => {
+
+    if (req.query.nationalinsurancenumber) {
+      req.session.data.nationalinsurancenumber = req.query.nationalinsurancenumber;
+    }
+
     res.render('v6-1/establish-identity/what-is-your-national-insurance-number');
   });
 
@@ -24,16 +29,8 @@ module.exports = function (router) {
     res.render('v6-1/establish-identity/no-match-found');
   });
 
-  router.get('/v6-1/establish-identity/search-for-your-customer-record-another-way', (req, res) => {
-    res.render('v6-1/establish-identity/search-for-your-customer-record-another-way');
-  });
-
   router.get('/v6-1/no-kbv/find-some-security-questions-to-ask-you', (req, res) => {
     res.render('v6-1/no-kbv/find-some-security-questions-to-ask-you');
-  });
-
-  router.get('/v6-1/counter-fraud-checks/bring-up-some-security-questions-single', (req, res) => {
-    res.render('v6-1/counter-fraud-checks/bring-up-some-security-questions-single');
   });
 
   router.get('/v6-1/kbv-questions/another-benefit-you-have-previously-applied-for', (req, res) => {
@@ -48,10 +45,12 @@ module.exports = function (router) {
     res.render('v6-1/kbv-questions/what-is-your-mobile-telephone-number');
   });
 
-  // =========================================
-  // END SESSION (GET)
-  // =========================================
+  // ✅ ✅ ADDED: FRAUD PAGE (Severus)
+  router.get('/v6-1/counter-fraud-checks/bring-up-some-security-questions-single', (req, res) => {
+    res.render('v6-1/counter-fraud-checks/bring-up-some-security-questions-single');
+  });
 
+  // ✅ END SESSION GET
   router.get('/v6-1/end/end-session', (req, res) => {
 
     const referer = req.get('Referrer');
@@ -63,21 +62,21 @@ module.exports = function (router) {
     res.render('v6-1/end/end-session');
   });
 
-
-
   // =========================================
-  // NINO ENTRY
+  // NINO ENTRY ✅
   // =========================================
 
   router.post('/v6-1/establish-identity/what-is-your-national-insurance-number', (req, res) => {
 
     const raw = req.session.data['nationalinsurancenumber'] || '';
+
+    if (!raw.trim()) {
+      return res.redirect('/v6-1/errors/input-errors/missing-nino');
+    }
+
     const cleaned = raw.replace(/\s/g, '').toUpperCase();
 
-    let formatted = cleaned;
-    if (cleaned.length === 9) {
-      formatted = cleaned.replace(/^(.{2})(.{2})(.{2})(.{2})(.{1})$/, '$1 $2 $3 $4 $5');
-    }
+    const formatted = cleaned.replace(/^(.{2})(.{2})(.{2})(.{2})(.{1})$/, '$1 $2 $3 $4 $5');
 
     const journeys = {
       'QQ123456C': { type: 'standard', name: 'Albus Dumbledore', dob: '5/1/1978', postcode: 'PE1 6AN' },
@@ -88,12 +87,22 @@ module.exports = function (router) {
     const journey = journeys[cleaned];
 
     if (journey) {
+
       req.session.data.journey = { type: journey.type };
       req.session.data.customerName = journey.name;
-      req.session.data.customerDob = journey.dob;
       req.session.data.customerPostcode = journey.postcode;
+
       req.session.data.nationalinsurancenumber = cleaned;
       req.session.data.nationalinsurancenumberFormatted = formatted;
+
+      const [d, m, y] = journey.dob.split('/');
+      const date = new Date(y, m - 1, d);
+
+      req.session.data.customerDob = date.toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
 
       return res.redirect('/v6-1/establish-identity/check-correct-record');
     }
@@ -101,174 +110,205 @@ module.exports = function (router) {
     return res.redirect('/v6-1/establish-identity/no-customer-record-found');
   });
 
-
-
   // =========================================
-  // NAME SEARCH
+  // NAME SEARCH ✅
   // =========================================
 
   router.post('/v6-1/establish-identity/name-dob-postcode-answer', (req, res) => {
 
     const firstName = req.body.firstname;
     const lastName = req.body.lastname;
-
-    const day = parseInt(req.body['date-of-birth-day']);
-    const month = parseInt(req.body['date-of-birth-month']);
+    const day = req.body['date-of-birth-day'];
+    const month = req.body['date-of-birth-month'];
     const year = req.body['date-of-birth-year'];
+    const postcode = req.body.addressPostcode;
 
-    const postcode = req.body.addressPostcode.toUpperCase().replace(/\s/g, '');
-
-    const dob = `${day}/${month}/${year}`;
-    const fullName = `${firstName} ${lastName}`.toLowerCase();
+    if (
+      !firstName?.trim() ||
+      !lastName?.trim() ||
+      !day?.trim() ||
+      !month?.trim() ||
+      !year?.trim() ||
+      !postcode?.trim()
+    ) {
+      return res.redirect('/v6-1/errors/input-errors/missing-details');
+    }
 
     const customers = [
-      { name: 'Albus Dumbledore', dob: '5/1/1978', postcode: 'PE1 6AN', nino: 'QQ123456C', type: 'standard' },
-      { name: 'Severus Snape', dob: '9/1/1960', postcode: 'SW1A 1AA', nino: 'QQ444444C', type: 'flagged' },
-      { name: 'Romilda Vane', dob: '13/2/1981', postcode: 'M1 1AA', nino: 'QQ333333C', type: 'no-kbv' }
+      { name: 'Albus Dumbledore', dob: '5/1/1978', postcode: 'PE1 6AN', type: 'standard' },
+      { name: 'Severus Snape', dob: '9/1/1960', postcode: 'SW1A 1AA', type: 'flagged' },
+      { name: 'Romilda Vane', dob: '13/2/1981', postcode: 'M1 1AA', type: 'no-kbv' }
     ];
 
-    const match = customers.find(person => {
-      const [d, m, y] = person.dob.split('/');
+    const fullName = `${firstName} ${lastName}`
+      .trim()
+      .replace(/\s+/g, ' ')
+      .toLowerCase();
+
+    const dob = `${parseInt(day)}/${parseInt(month)}/${year}`;
+    const cleanedPostcode = postcode.toUpperCase().replace(/\s/g, '');
+
+    const match = customers.find(p => {
+
+      const [d, m, y] = p.dob.split('/');
       const storedDob = `${parseInt(d)}/${parseInt(m)}/${y}`;
 
       return (
-        person.name.toLowerCase() === fullName &&
+        p.name.toLowerCase() === fullName &&
         storedDob === dob &&
-        person.postcode.replace(/\s/g, '') === postcode
+        p.postcode.replace(/\s/g, '') === cleanedPostcode
       );
     });
 
     if (match) {
 
-      const formatted = match.nino.replace(/^(.{2})(.{2})(.{2})(.{2})(.{1})$/, '$1 $2 $3 $4 $5');
-
       req.session.data.journey = { type: match.type };
       req.session.data.customerName = match.name;
-      req.session.data.customerDob = match.dob;
       req.session.data.customerPostcode = match.postcode;
-      req.session.data.nationalinsurancenumber = match.nino;
-      req.session.data.nationalinsurancenumberFormatted = formatted;
+
+      const [d, m, y] = match.dob.split('/');
+      const date = new Date(y, m - 1, d);
+
+      req.session.data.customerDob = date.toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
 
       return res.redirect('/v6-1/establish-identity/found-your-customer-record');
     }
 
+    req.session.data.customerName = `${firstName} ${lastName}`;
+    req.session.data.customerDob = `${day} ${month} ${year}`;
+    req.session.data.customerPostcode = postcode;
+
     return res.redirect('/v6-1/establish-identity/no-match-found');
+
   });
 
-
-
   // =========================================
-  // FOUND RECORD ROUTE
-  // =========================================
-
-  router.post('/v6-1/establish-identity/found-your-customer-record', (req, res) => {
-    return routeFromJourney(req.session.data.journey, res);
-  });
-
-
-
-  // =========================================
-  // CHECK RECORD ROUTE
+  // CHECK CORRECT RECORD ✅
   // =========================================
 
   router.post('/v6-1/establish-identity/check-correct-record', (req, res) => {
 
-    const answer = req.session.data.correctrecord;
+    const answer = req.body.correctrecord;
+
+    if (!answer) {
+      return res.redirect('/v6-1/errors/input-errors/missing-selection');
+    }
 
     if (answer === 'no') {
-      return res.redirect('/v6-1/establish-identity/what-is-your-national-insurance-number');
+      return res.redirect('/v6-1/establish-identity/no-match-found');
     }
 
     return routeFromJourney(req.session.data.journey, res);
+
   });
 
-
-
   // =========================================
-  // KBV - PAYMENT DATE ✅
-  // =========================================
-
-  router.post('/v6-1/kbv-questions/when-did-you-receive-your-last-payment', (req, res) => {
-
-  const day = req.body['payment-received-day'];
-  const month = req.body['payment-received-month'];
-  const year = req.body['payment-received-year'];
-
-  // ❌ blank
-  if (!day || !month || !year) {
-    return res.redirect('/v6-1/errors/input-errors/missing-date');
-  }
-
-  // ✅ correct answer → SUCCESS
-  if (day === '25' && month === '10' && year === '2025') {
-    return res.redirect('/v6-1/idv-outcomes/you-have-proved-your-identity');
-  }
-
-  // ❌ wrong → go to Q3
-  return res.redirect('/v6-1/kbv-questions/what-is-your-mobile-telephone-number');
-});
-
-
-
-
-  // =========================================
-  // ✅ KBV - MOBILE NUMBER (YOUR FIX)
-  // =========================================
-
-  router.post('/v6-1/kbv-questions/what-is-your-mobile-telephone-number', (req, res) => {
-
-  const mobile = req.body['customer-mobile-tel-v6'];
-
-  // ❌ blank
-  if (!mobile) {
-    return res.redirect('/v6-1/errors/input-errors/missing-phone');
-  }
-
-  // ✅ correct → SUCCESS
-  if (mobile === '07700 900000') {
-    return res.redirect('/v6-1/idv-outcomes/you-have-proved-your-identity');
-  }
-
-  // ❌ wrong → FAIL
-  return res.redirect('/v6-1/idv-outcomes/you-have-not-proved-your-identity');
-});
-
-
-
-  // =========================================
-  // SHARED JOURNEY ROUTING
+  // ROUTING FUNCTION ✅ (FIXED)
   // =========================================
 
   function routeFromJourney(journey, res) {
+
+    if (!journey) {
+      return res.redirect('/v6-1/establish-identity/what-is-your-national-insurance-number');
+    }
 
     if (journey.type === 'no-kbv') {
       return res.redirect('/v6-1/no-kbv/find-some-security-questions-to-ask-you');
     }
 
+    // ✅ FIX: Severus now goes to fraud page
     if (journey.type === 'flagged') {
       return res.redirect('/v6-1/counter-fraud-checks/bring-up-some-security-questions-single');
     }
 
     return res.redirect('/v6-1/kbv-questions/another-benefit-you-have-previously-applied-for');
+
   }
 
+  // =========================================
+  // KBV LOGIC ✅
+  // =========================================
 
+  router.post('/v6-1/kbv-questions/when-did-you-receive-your-last-payment', (req, res) => {
+
+    const day = req.body['payment-received-day'];
+    const month = req.body['payment-received-month'];
+    const year = req.body['payment-received-year'];
+
+    if (!day || !month || !year) {
+      return res.redirect('/v6-1/errors/input-errors/missing-date');
+    }
+
+    if (day === '25' && month === '10' && year === '2025') {
+      return res.redirect('/v6-1/idv-outcomes/you-have-proved-your-identity');
+    }
+
+    return res.redirect('/v6-1/kbv-questions/what-is-your-mobile-telephone-number');
+  });
+
+  router.post('/v6-1/kbv-questions/what-is-your-mobile-telephone-number', (req, res) => {
+
+    const mobile = req.body['customer-mobile-tel-v6'];
+
+    if (!mobile || mobile.trim() === '') {
+      return res.redirect('/v6-1/errors/input-errors/missing-phone');
+    }
+
+    if (mobile === '07700 900000') {
+      return res.redirect('/v6-1/idv-outcomes/you-have-proved-your-identity');
+    }
+
+    return res.redirect('/v6-1/idv-outcomes/you-have-not-proved-your-identity');
+  });
 
   // =========================================
-  // END SESSION POST
+  // END SESSION ✅
   // =========================================
 
   router.post('/v6-1/end/end-session', (req, res) => {
 
-    const answer = req.session.data['endSession'];
-    const back = req.session.data.previousPage;
+    const answer = req.body.endSession;
+
+    if (!answer) {
+      return res.redirect('/v6-1/errors/input-errors/missing-selection');
+    }
 
     if (answer === 'yes') {
       req.session.data = {};
       return res.redirect('/v6-1/establish-identity/what-is-your-national-insurance-number');
     }
 
+    const back = req.session.data.previousPage;
+
     return res.redirect(back || '/v6-1/establish-identity/check-correct-record');
+
   });
+
+  // =========================================
+// NO KBV ✅
+// =========================================
+
+router.post('/v6-1/no-kbv/find-some-security-questions-to-ask-you', (req, res) => {
+
+  const answer = req.body.correctnokbv;
+
+  // ❌ nothing selected
+  if (!answer) {
+    return res.redirect('/v6-1/errors/input-errors/missing-selection');
+  }
+
+  // ✅ YES → pass
+  if (answer === 'yes') {
+    return res.redirect('/v6-1/idv-outcomes/you-have-proved-your-identity');
+  }
+
+  // ❌ NO → fail
+  return res.redirect('/v6-1/idv-outcomes/you-have-not-proved-your-identity');
+
+});
 
 };

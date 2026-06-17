@@ -1,4 +1,4 @@
-{% extends "layouts/main_matching.html" %}
+{% extends "v6-1/layouts/main_matching.html" %}
 
 {% block pageTitle %}
   Try to search for your customer record another way – {{ serviceName }}
@@ -25,7 +25,8 @@
       </div>
 
       {{ govukButton({
-        text: "Reset Identity Checker"
+        text: "Reset Identity Checker",
+        href: "what-is-your-national-insurance-number"
       }) }}
 
 </div>

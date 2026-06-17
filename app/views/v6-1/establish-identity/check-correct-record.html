@@ -18,19 +18,19 @@
         <tbody class="govuk-table__body">
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Name</th>
-            <td class="govuk-table__cell">{{ data['customerName'] }}</td>
+            <td class="govuk-table__cell">{{ data['customerName'] or "Albus Dumbledore" }}</td>
           </tr>
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">National Insurance number</th>
-            <td class="govuk-table__cell">{{ data['nationalinsurancenumberFormatted'] }}</td
+            <td class="govuk-table__cell">{{ data['nationalinsurancenumberFormatted'] or "QQ 12 34 56 C" }}</td
           </tr>
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Date of birth</th>
-            <td class="govuk-table__cell">{{ data['customerDob'] }}</td>
+            <td class="govuk-table__cell">{{ data['customerDob'] or "5 January 1978" }}</td>
           </tr>
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Postcode</th>
-            <td class="govuk-table__cell">{{ data['customerPostcode'] }}</td>
+            <td class="govuk-table__cell">{{ data['customerPostcode'] or "PE1 6AN" }}</td>
           </tr>
         </tbody>
       </table>

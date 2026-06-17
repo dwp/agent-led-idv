@@ -1,4 +1,4 @@
-{% extends "layouts/main_matching.html" %}
+{% extends "v6-1/layouts/main_matching.html" %}
 
 {% block pageTitle %}
   No match found – {{ serviceName }}
@@ -20,7 +20,7 @@
             Name
           </dt>
           <dd class="govuk-summary-list__value">
-            Albus Dumbledore
+            {{ data['customerName'] or "Albus Dumbledore" }}
           </dd>
         </div>
 
@@ -29,7 +29,7 @@
             Date of birth
           </dt>
           <dd class="govuk-summary-list__value">
-            5 January 1978
+            {{ data['customerDob'] or "5 January 1978" }}
           </dd>
         </div>
 
@@ -38,7 +38,7 @@
             Postcode
           </dt>
           <dd class="govuk-summary-list__value">
-            PE1 6AN
+            {{ data['customerPostcode'] or "PE1 6AN" }}
           </dd>
         </div>
 
@@ -61,11 +61,11 @@
 
       {{ govukButton({
         text: "Search again",
-        href: "establish-your-identity-name-dob-postcode"
+        href: "what-is-your-national-insurance-number"
       }) }}
 
       <p class="govuk-body">
-        <a href="try-another-way" class="govuk-link">I cannot find the customer record</a>
+        <a href="search-for-your-customer-record-another-way" class="govuk-link">I cannot find the customer record</a>
       </p>
 
     </div>

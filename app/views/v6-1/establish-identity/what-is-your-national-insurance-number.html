@@ -10,7 +10,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="/v6-1-bridge/nino-answer" method="post" class="form">
+    <form action="/v6-1/establish-identity/what-is-your-national-insurance-number" method="post" class="form">
 
       <fieldset class="govuk-fieldset" aria-describedby="national-insurance-number-hint">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -29,10 +29,12 @@
           </div>
 
           <input
+          <input
             class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing"
             id="national-insurance-number"
             name="nationalinsurancenumber"
             type="text"
+            value="{{ data['nationalinsurancenumber'] }}"
             autocomplete="off"
             spellcheck="false"
             aria-describedby="national-insurance-number-hint">

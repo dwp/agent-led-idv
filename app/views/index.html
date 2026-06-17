@@ -71,118 +71,118 @@
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-      <!-- Iteration v6 for MVP Testing -->
+      <!-- Iteration v6-1 for MVP -->
 
-      <div><strong class="govuk-tag govuk-tag--purple">Iteration 6</strong><strong class="govuk-tag govuk-tag--orange">MVP</strong> <strong class="govuk-tag govuk-tag--blue">In progress</strong></div>
+      <h3 class="govuk-heading-m">Latest prototype version</h3>
 
-      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+      <p class="govuk-body">
+        The prototype below represents our MVP canident. Please follow the accompanying instructions on how to simulate different versions of the IDV flow. Success or fail will be determined by how you answer the questions using the dummy data.
+      </p>
 
-      <div>
-          <span class="govuk-caption-m">June 2026</span>
-            <h2 class="govuk-heading-m">Latest prototype - Iteration V6 </h2>
-          </div>
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text govuk-!-font-weight-bold">
+            Important instructions for matching dummy data
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <!-- goal -->
+          <h3 class="govuk-heading-s">Nino for standard IDV path</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>QQ 12 34 56 C</li>
+          </ul>
+          <h3 class="govuk-heading-s">Nino for fraud flag found path</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>QQ 44 44 44 C</li>
+          </ul>
+          <h3 class="govuk-heading-s">Nino for no KBV path</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>QQ 33 33 33 C</li>
+          </ul>
+          <h3 class="govuk-heading-s">To match a record successfully by name, dob, postcode</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Albus Dumbledore, Severus Snape, Romilda Vane</li>
+          </ul>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>5-1-1978, 9-1-1960, 13-2-1981</li>
+          </ul>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>PE1 6AN, SW1 1AA, M1 1AA</li>
+          </ul>
+          <h3 class="govuk-heading-s">To get a no match by nino or name, dob, postcode</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>You can just use any other details than above</li>
+          </ul>
+          <h3 class="govuk-heading-s">To get error pages</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Submit without entering any data</li>
+          </ul>
+        </div>
+      </details>
 
-          <p class="govuk-body">Taking feedback from our last round of UR and a recent Accessibility Clinic, we are focusing on further refining the journey with additional updates, and are now looking to confirm and finalise which features will be included in the candidate MVP.<p>
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text govuk-!-font-weight-bold">
+            Important instructions for option KBV questions
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <!-- goal -->
+          <h3 class="govuk-heading-s">To view success after two correct questions only</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
+            <li>Q2 - Enter <strong>correct</strong> date 25-10-2025</li>
+            <li>Customer <strong>verified</strong></li>
+          </ul>
+          <h3 class="govuk-heading-s">To view success after two from three correct questions</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
+            <li>Q2 - Enter <strong>incorrect</strong> date such as 12-11-2023</li>
+            <li>Q3 - Enter <strong>correct</strong> mobile number 07123456789 (allows for spaces)</li>
+            <li>Customer <strong>verified</strong></li>
+          </ul>
+          <h3 class="govuk-heading-s">To view failure after two from three incorrect questions</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
+            <li>Q2 - Enter <strong>incorrect</strong> date such as 12-11-2023</li>
+            <li>Q3 - Enter <strong>incorrect</strong> mobile number such as 07581234560 (allows for spaces)</li>
+            <li>Customer <strong>not</strong> verified</li>
+          </ul>
+        </div>
+      </details>
 
-            <p class="govuk-body"><strong>Updates and changes:<p></strong>
+      <a href="/v6-1/establish-identity/what-is-your-national-insurance-number" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+        Start prototype v6.1
+        <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+        </svg>
+      </a>
 
-              <ul class="govuk-list govuk-list--bullet">
-                 <li>Amended headings for no match pages</li>
-                 <li>Amended heading for KBV question 1</li>
-                 <li>Fraud notification banner now red only</li>
-                 <li>Search by Nino page amended to have one heading only</li>
-              </ul>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-              <hr class="govuk-section-break govuk-section-break--m govuk-section-break--invisible">
+      <h3 class="govuk-heading-s">Protoype quick links</h3>
 
-            <a href="/v6/flag/establish-your-identity-nino" class="govuk-button" rel="noreferrer noopener" target="_blank">
-              View prototype with fraud flag
-            </a>
-            <a href="/v6/no-flag/establish-your-identity-nino" class="govuk-button" rel="noreferrer noopener" target="_blank">
-              View prototype without fraud flag
-            </a>
+      <p class="govuk-body">
+        You can pre-fill the nino input on the start page using the links below.
+      </p>
 
-            <p class="govuk-body">
-              The no KBV journey has some functionality missing and exists only to demonstrate the fallback journey path to success or failure of IDV.
-            </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a class="govuk-link" href="/v6-1/establish-identity/what-is-your-national-insurance-number?nationalinsurancenumber=QQ123456C">Standard IDV path - Albus Dumbledore - QQ 12 34 56 C</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="/v6-1/establish-identity/what-is-your-national-insurance-number?nationalinsurancenumber=QQ444444C">Fraud flag found - Severus Snape - QQ 44 44 44 C</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="/v6-1/establish-identity/what-is-your-national-insurance-number?nationalinsurancenumber=QQ333333C">No KBVs available - Romilda Vane - QQ 33 33 33 C</a>
+        </li>
+      </ul>
 
-            <a href="/v6/no-kbv/establish-your-identity-nino" class="govuk-button" rel="noreferrer noopener" target="_blank">
-              View prototype with no KBVs
-            </a>
-
-            <details class="govuk-details">
-              <summary class="govuk-details__summary">
-                <span class="govuk-details__summary-text govuk-!-font-weight-bold">
-                  Important instructions for matching dummy data
-                </span>
-              </summary>
-              <div class="govuk-details__text">
-                <!-- goal -->
-                <h3 class="govuk-heading-s">To match a record successfully by nino</h3>
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>QQ 12 34 56 C</li>
-                </ul>
-                <h3 class="govuk-heading-s">Nino for no KBV path only</h3>
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>BB 12 34 56 A</li>
-                </ul>
-                <h3 class="govuk-heading-s">To match a record successfully by name, dob, postcode</h3>
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>Albus Dumbledore</li>
-                </ul>
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>05-01-1978</li>
-                </ul>
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>PE1 6AN</li>
-                </ul>
-                <h3 class="govuk-heading-s">To get a no match by nino or name, dob, postcode</h3>
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>You can just use any other details than above</li>
-                </ul>
-                <h3 class="govuk-heading-s">To get error pages</h3>
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>Submit without entering any data</li>
-                </ul>
-              </div>
-            </details>
-
-            <details class="govuk-details">
-              <summary class="govuk-details__summary">
-                <span class="govuk-details__summary-text govuk-!-font-weight-bold">
-                  Important instructions for option KBV questions
-                </span>
-              </summary>
-              <div class="govuk-details__text">
-                <!-- goal -->
-                <h3 class="govuk-heading-s">To view success after two correct questions only</h3>
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
-                  <li>Q2 - Enter <strong>correct</strong> date 25-10-2025</li>
-                  <li>Customer <strong>verified</strong></li>
-                </ul>
-                <h3 class="govuk-heading-s">To view success after two from three correct questions</h3>
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
-                  <li>Q2 - Enter <strong>incorrect</strong> date such as 12-11-2023</li>
-                  <li>Q3 - Enter <strong>correct</strong> mobile number 07123456789 (allows for spaces)</li>
-                  <li>Customer <strong>verified</strong></li>
-                </ul>
-                <h3 class="govuk-heading-s">To view failure after two from three incorrect questions</h3>
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>Q1 - Select <strong>correct</strong> benefit, Job seekers allowance</li>
-                  <li>Q2 - Enter <strong>incorrect</strong> date such as 12-11-2023</li>
-                  <li>Q3 - Enter <strong>incorrect</strong> mobile number such as 07581234560 (allows for spaces)</li>
-                  <li>Customer <strong>not</strong> verified</li>
-                </ul>
-              </div>
-            </details>
-
-            <!-- End of V6 -->
+    <!-- End of V6-1 -->
 
     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-      <h3 class="govuk-heading-s">Useful links</h3>
+      <h3 class="govuk-heading-s">Other project artefacts</h3>
 
       <ul class="govuk-list">
         <li>
