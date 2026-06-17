@@ -4,8 +4,10 @@ module.exports = function (router) {
   // GET PAGES
   // =========================================
 
+
   router.get('/v6-1/establish-identity/what-is-your-national-insurance-number', (req, res) => {
 
+    // ✅ Only handle quick links
     if (req.query.nationalinsurancenumber) {
       req.session.data.nationalinsurancenumber = req.query.nationalinsurancenumber;
     }
@@ -135,10 +137,10 @@ module.exports = function (router) {
     }
 
     const customers = [
-      { name: 'Albus Dumbledore', dob: '5/1/1978', postcode: 'PE1 6AN', type: 'standard' },
-      { name: 'Severus Snape', dob: '9/1/1960', postcode: 'SW1A 1AA', type: 'flagged' },
-      { name: 'Romilda Vane', dob: '13/2/1981', postcode: 'M1 1AA', type: 'no-kbv' }
-    ];
+  { name: 'Albus Dumbledore', dob: '5/1/1978', postcode: 'PE1 6AN', nino: 'QQ123456C', type: 'standard' },
+  { name: 'Severus Snape', dob: '9/1/1960', postcode: 'SW1A 1AA', nino: 'QQ444444C', type: 'flagged' },
+  { name: 'Romilda Vane', dob: '13/2/1981', postcode: 'M1 1AA', nino: 'QQ333333C', type: 'no-kbv' }
+];
 
     const fullName = `${firstName} ${lastName}`
       .trim()
@@ -165,6 +167,11 @@ module.exports = function (router) {
       req.session.data.journey = { type: match.type };
       req.session.data.customerName = match.name;
       req.session.data.customerPostcode = match.postcode;
+
+      const formatted = match.nino.replace(/^(.{2})(.{2})(.{2})(.{2})(.{1})$/, '$1 $2 $3 $4 $5');
+
+      req.session.data.nationalinsurancenumber = match.nino;
+      req.session.data.nationalinsurancenumberFormatted = formatted;
 
       const [d, m, y] = match.dob.split('/');
       const date = new Date(y, m - 1, d);
@@ -199,7 +206,7 @@ module.exports = function (router) {
     }
 
     if (answer === 'no') {
-      return res.redirect('/v6-1/establish-identity/no-match-found');
+      return res.redirect('/v6-1/reset-session');
     }
 
     return routeFromJourney(req.session.data.journey, res);
@@ -308,6 +315,45 @@ router.post('/v6-1/no-kbv/find-some-security-questions-to-ask-you', (req, res) =
 
   // ❌ NO → fail
   return res.redirect('/v6-1/idv-outcomes/you-have-not-proved-your-identity');
+
+});
+
+// =========================================
+// FOUND ONLY ROUTE
+// =========================================
+
+router.get('/v6-1/establish-identity/route-from-found', (req, res) => {
+
+  const journey = req.session.data.journey;
+
+  if (!journey) {
+    return res.redirect('/v6-1/establish-identity/what-is-your-national-insurance-number');
+  }
+
+  // ✅ Romilda
+  if (journey.type === 'no-kbv') {
+    return res.redirect('/v6-1/no-kbv/find-some-security-questions-to-ask-you');
+  }
+
+  // ✅ Severus
+  if (journey.type === 'flagged') {
+    return res.redirect('/v6-1/counter-fraud-checks/bring-up-some-security-questions-single');
+  }
+
+  // ✅ Albus
+  return res.redirect('/v6-1/kbv-questions/another-benefit-you-have-previously-applied-for');
+
+});
+
+// =========================================
+// CLEAR SESSION
+// =========================================
+
+router.get('/v6-1/reset-session', (req, res) => {
+
+  req.session.destroy(() => {
+    res.redirect('/v6-1/establish-identity/what-is-your-national-insurance-number');
+  });
 
 });
 
