@@ -242,6 +242,8 @@ module.exports = function (router) {
 
   router.post('/v6-1/kbv-questions/when-did-you-receive-your-last-payment', (req, res) => {
 
+    const journey = req.session.data.journey;
+
     const day = req.body['payment-received-day'];
     const month = req.body['payment-received-month'];
     const year = req.body['payment-received-year'];
@@ -251,26 +253,54 @@ module.exports = function (router) {
     }
 
     if (day === '25' && month === '10' && year === '2025') {
-      return res.redirect('/v6-1/idv-outcomes/you-have-proved-your-identity');
-    }
 
-    return res.redirect('/v6-1/kbv-questions/what-is-your-mobile-telephone-number');
+  // ✅ Severus (flagged)
+  if (journey.type === 'flagged') {
+    return res.redirect('/v6-1/idv-outcomes/you-have-answered-the-security-questions');
+  }
+
+  // ✅ Everyone else
+  return res.redirect('/v6-1/idv-outcomes/you-have-proved-your-identity');
+}
+
+// ✅ Severus wrong Q2 → go to Q3
+if (journey.type === 'flagged') {
+  return res.redirect('/v6-1/kbv-questions/what-is-your-mobile-telephone-number');
+}
+
+// ✅ Others continue KBV
+return res.redirect('/v6-1/kbv-questions/what-is-your-mobile-telephone-number');
   });
 
   router.post('/v6-1/kbv-questions/what-is-your-mobile-telephone-number', (req, res) => {
 
-    const mobile = req.body['customer-mobile-tel-v6'];
+  const journey = req.session.data.journey;
+  const mobile = req.body['customer-mobile-tel-v6'];
 
-    if (!mobile || mobile.trim() === '') {
-      return res.redirect('/v6-1/errors/input-errors/missing-phone');
+  if (!mobile || mobile.trim() === '') {
+    return res.redirect('/v6-1/errors/input-errors/missing-phone');
+  }
+
+  const isCorrect = (mobile === '07700 900000');
+
+  // ✅ Severus (flagged)
+  if (journey.type === 'flagged') {
+
+    if (isCorrect) {
+      return res.redirect('/v6-1/idv-outcomes/you-have-answered-the-security-questions');
     }
 
-    if (mobile === '07700 900000') {
-      return res.redirect('/v6-1/idv-outcomes/you-have-proved-your-identity');
-    }
+    return res.redirect('/v6-1/idv-outcomes/you-have-not-passed-the-security-questions');
+  }
 
-    return res.redirect('/v6-1/idv-outcomes/you-have-not-proved-your-identity');
-  });
+  // ✅ Everyone else (Albus)
+  if (isCorrect) {
+    return res.redirect('/v6-1/idv-outcomes/you-have-proved-your-identity');
+  }
+
+  return res.redirect('/v6-1/idv-outcomes/you-have-not-proved-your-identity');
+
+});
 
   // =========================================
   // END SESSION ✅

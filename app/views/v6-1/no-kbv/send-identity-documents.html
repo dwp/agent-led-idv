@@ -1,4 +1,5 @@
 {% extends "v6-1/layouts/main_idv_quick_reference.html" %}
+{% set hideEndSession = true %}
 
 {% block pageTitle %}
   You need to send identity documents to us by post – {{ serviceName }}
@@ -33,7 +34,7 @@
 
     {{ govukButton({
       text: "Reset Identity Checker",
-      href: '/v6-1/establish-identity/what-is-your-national-insurance-number'
+      href: "/v6-1/reset-session"
     }) }}
 
   </div>
