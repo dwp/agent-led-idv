@@ -319,9 +319,16 @@ return res.redirect('/v6-1/kbv-questions/what-is-your-mobile-telephone-number');
       return res.redirect('/v6-1/establish-identity/what-is-your-national-insurance-number');
     }
 
+
     const back = req.session.data.previousPage;
 
-    return res.redirect(back || '/v6-1/establish-identity/check-correct-record');
+    // ✅ Allow internal URLs only
+    if (back && (back.includes('/v6-1/') || back.startsWith('/v6-1/'))) {
+      return res.redirect(back);
+    }
+
+    // ✅ Safe fallback
+    return res.redirect('/v6-1/establish-identity/check-correct-record');
 
   });
 
