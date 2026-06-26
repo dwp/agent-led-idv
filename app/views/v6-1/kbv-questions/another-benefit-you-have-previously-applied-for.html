@@ -1,7 +1,7 @@
 {% extends "v6-1/layouts/main_idv_quick_reference.html" %}
 
 {% block pageTitle %}
-  Name another benefit you have previously applied for? – {{ serviceName }}
+  Name another benefit you have previously applied for – {{ serviceName }}
 {% endblock %}
 
 {% block content %}
@@ -75,9 +75,25 @@
           <a href="when-did-you-receive-your-last-payment" role="button" class="govuk-button">
             Continue
           </a>
-          <a class="govuk-link" href="when-did-you-receive-your-last-payment">
+          <a class="govuk-link" href="#">
             Customer cannot answer
           </a>
+        </div>
+
+        <div class="govuk-grid-row grey-row">
+          <div class="govuk-grid-column-full">
+            <p class="govuk-body">
+              <strong>Use guide</strong>
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>
+                Move to Q2 : select JSA
+              </li>
+              <li>
+                Customer cannot answer : Link disabled
+              </li>
+            </ul>
+          </div>
         </div>
 
     </div>

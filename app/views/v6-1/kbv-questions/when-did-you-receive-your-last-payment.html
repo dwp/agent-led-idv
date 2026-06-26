@@ -1,7 +1,7 @@
 {% extends "v6-1/layouts/main_idv_quick_reference.html" %}
 
 {% block pageTitle %}
-  When did you receive your last payment? – {{ serviceName }}
+  When did you receive your last payment – {{ serviceName }}
 {% endblock %}
 
 {% block content %}
@@ -74,13 +74,32 @@
         }) }}
 
         <!-- optional fallback link -->
-        <a class="govuk-link" href="/v6-1/kbv-questions/what-is-your-mobile-telephone-number">
-          Customer cannot answer question
+        <a class="govuk-link" href="#">
+          Customer cannot answer
         </a>
 
       </div>
 
     </form>
+
+    <div class="govuk-grid-row grey-row">
+      <div class="govuk-grid-column-full">
+        <p class="govuk-body">
+          <strong>Use guide</strong>
+        </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            IDV pass at Q2 : enter 25-10-2025
+          </li>
+          <li>
+            Move to Q3 : enter any other date
+          </li>
+          <li>
+            Customer cannot answer : Link disabled
+          </li>
+        </ul>
+      </div>
+    </div>
 
   </div>
 </div>

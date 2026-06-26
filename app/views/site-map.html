@@ -53,7 +53,7 @@
 <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
 <p class="govuk-body">
-  These pages have been signed off by the team and are considered ready for development. The links below are to actual pages in the journey so may not work as expected from here, but gives direct access to each page UI.
+  These pages have been signed off by the team and are considered ready for development.
 </p>
 
 <p class="govuk-body">
@@ -64,6 +64,10 @@
   <a class="govuk-link" href="https://dwpdigital.atlassian.net/wiki/spaces/IDNT/pages/134269699045/Content+record" target="_blank">Confluence content record</a>
 </p>
 
+<div class="govuk-inset-text">
+  Please use these links for reference only and use the main prototype journey from the homepage to explore the Identity Checker journeys.
+</div>
+
 <!-- Establish identity -->
 <h2 class="govuk-heading-s">Establish identity</h2>
 <ul class="govuk-list govuk-list--bullet">
@@ -72,24 +76,19 @@
       What is your National Insurance number?
     </a>
   </li>
-  <li>
+    <li>
+      <a class="govuk-link" href="/v6-1/establish-identity/search-for-your-details-another-way">
+        I need to search for your details (name, dob, postcode)
+      </a>
+    </li>
+    <li>
     <a class="govuk-link" href="/v6-1/establish-identity/check-correct-record.html">
       I need to check that I have found the correct record
     </a>
   </li>
   <li>
     <a class="govuk-link" href="/v6-1/establish-identity/found-your-customer-record.html">
-      I have found your correct record
-    </a>
-  </li>
-  <li>
-    <a class="govuk-link" href="/v6-1/establish-identity/no-customer-record-found.html">
-      No customer record found
-    </a>
-  </li>
-  <li>
-    <a class="govuk-link" href="/v6-1/establish-identity/found-your-customer-record.html">
-      I have found your correct record
+      I have found your customer record
     </a>
   </li>
   <li>
@@ -103,8 +102,8 @@
     </a>
   </li>
   <li>
-    <a class="govuk-link" href="/v6-1/establish-identity/search-for-your-customer-record-another-way.html">
-      I will try to search for your customer record another way
+    <a class="govuk-link" href="/v6-1/establish-identity/search-for-your-customer-record.html">
+      I will try to search for your customer record
     </a>
   </li>
 </ul>
@@ -113,13 +112,13 @@
 <h2 class="govuk-heading-s">Counter fraud checks</h2>
 <ul class="govuk-list govuk-list--bullet">
   <li>
-    <a class="govuk-link" href="/v6-1/counter-fraud-checks/bring-up-some-security-questions-single.html">
-      I am just waiting for the system to bring up some security questions (single flag)
+    <a class="govuk-link" href="/v6-1/counter-fraud-checks/bring-up-security-questions-single.html">
+      Waiting for the system to bring up security questions (single flag)
     </a>
   </li>
   <li>
-    <a class="govuk-link" href="/v6-1/counter-fraud-checks/bring-up-some-security-questions-multiple.html">
-      I am just waiting for the system to bring up some security questions (multiple flags)
+    <a class="govuk-link" href="/v6-1/counter-fraud-checks/bring-up-security-questions-multiple.html">
+      Waiting for the system to bring up security questions (multiple flags)
     </a>
   </li>
 </ul>
@@ -160,12 +159,12 @@
   </li>
   <li>
     <a class="govuk-link" href="/v6-1/idv-outcomes/you-have-answered-the-security-questions">
-      You have answered the security questions and I can now look into your request
+      You have answered the security questions
     </a>
   </li>
   <li>
     <a class="govuk-link" href="/v6-1/idv-outcomes/you-have-not-passed-the-security-questions">
-      You have not passed the security questions and I need to end the call
+      You have not passed the security questions
     </a>
   </li>
 </ul>
@@ -176,17 +175,12 @@
 <ul class="govuk-list govuk-list--bullet">
   <li>
     <a class="govuk-link" href="/v6-1/no-kbv/find-some-security-questions-to-ask-you">
-      I am now going to find some security questions to ask you
+      I am now going to find some security questions
     </a>
   </li>
   <li>
     <a class="govuk-link" href="/v6-1/no-kbv/i-should-have-some-questions-for-you-soon">
-      The system is a little slow, I should have some questions for you soon
-    </a>
-  </li>
-  <li>
-    <a class="govuk-link" href="/v6-1/no-kbv/send-identity-documents">
-      You need to send identity documents to us by post
+      I should have some questions for you soon
     </a>
   </li>
 </ul>
@@ -195,15 +189,17 @@
 <h2 class="govuk-heading-s">Other pages</h2>
 <ul class="govuk-list govuk-list--bullet">
   <li>
-    <a class="govuk-link" href="/v6-1/errors/technical-errors/you-cannot-go-back-to-previous-page">You cannot go back to the previous page (back button error)</a>
+    <a class="govuk-link" href="/v6-1/end/end-session">Are you sure you want to end this session?</a>
   </li>
-  <li>
-    <a class="govuk-link" href="">
-      Two calls in 24 hours (page not yet designed)
-    </a>
-  </li>
+    <li>
+      <a class="govuk-link" href="/v6-1/errors/technical-errors/you-cannot-go-back-to-previous-page">You cannot go back to the previous page (back button error)</a>
+    </li>
+    <li>
+      <a class="govuk-link" href="/v6-1/no-kbv/unable-to-complete-the-security-check">
+        I am unable to complete the security check
+      </a>
+    </li>
 </ul>
 
-<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
 {% endblock %}

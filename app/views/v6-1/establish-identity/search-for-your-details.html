@@ -2,7 +2,7 @@
 {% set backLink = 'true' %}
 
 {% block pageTitle %}
-  I need to search for your details another way – {{ serviceName }}
+  I need to search for your details – {{ serviceName }}
 {% endblock %}
 
 {% block content %}
@@ -108,6 +108,28 @@
       }) }}
 
     </form>
+
+    <div class="govuk-grid-row grey-row">
+      <div class="govuk-grid-column-full">
+        <p class="govuk-body">
+          <strong>Use guide</strong>
+        </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            Standard IDV path - Albus Dumbledore, 5-1-1978, PE1 6AN
+          </li>
+          <li>
+            Fraud flag found - Severus Snape, 9-1-1960, SW1A 1AA
+          </li>
+          <li>
+            No KBVs available - Romilda Vane, 13-2-1981, M1 1AA
+          </li>
+          <li>
+            No match path - Any other data
+          </li>
+        </ul>
+      </div>
+    </div>
 
   </div>
 </div>

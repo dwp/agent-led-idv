@@ -1,7 +1,7 @@
 {% extends "v6-1/layouts/main_idv_quick_reference.html" %}
 
 {% block pageTitle %}
-  What is your mobile telephone number? – {{ serviceName }}
+  What is your mobile telephone number – {{ serviceName }}
 {% endblock %}
 
 {% block content %}
@@ -42,13 +42,32 @@
         }) }}
 
         <!-- Optional fallback -->
-        <a class="govuk-link" href="/v6-1/idv-outcomes/you-have-not-proved-your-identity">
-          Customer cannot answer question
+        <a class="govuk-link" href="#">
+          Customer cannot answer
         </a>
 
       </div>
 
     </form>
+
+    <div class="govuk-grid-row grey-row">
+      <div class="govuk-grid-column-full">
+        <p class="govuk-body">
+          <strong>Use guide</strong>
+        </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            IDV pass at Q3 : enter 07700 900000
+          </li>
+          <li>
+            IDV Fail at Q3 : enter any other number
+          </li>
+          <li>
+            Customer cannot answer : Link disabled
+          </li>
+        </ul>
+      </div>
+    </div>
 
   </div>
 </div>

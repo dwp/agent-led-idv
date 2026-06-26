@@ -1,7 +1,7 @@
 {% extends "v6-1/layouts/main_idv_quick_reference.html" %}
 
 {% block pageTitle %}
-  Find some security questions to ask you – {{ serviceName }}
+  I am going to find some security questions – {{ serviceName }}
 {% endblock %}
 
 {% block content %}
@@ -29,7 +29,7 @@
 
     </div>
 
-    <form class="form" action="/v6-1/no-kbv/find-some-security-questions-to-ask-you" method="post">
+    <form class="form" action="/v6-1/no-kbv/find-some-security-questions" method="post">
 
     {{ govukRadios({
       name: "correctnokbv",
@@ -60,7 +60,7 @@
   </form>
 
   <p class="govuk-body">
-    <a href="send-identity-documents" class="govuk-link">Not enough information to ask security questions</a>
+    <a href="unable-to-complete-the-security-check" class="govuk-link">Not enough information to ask security questions</a>
   </p>
 
   </div>

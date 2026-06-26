@@ -31,8 +31,22 @@ module.exports = function (router) {
     res.render('v6-1/establish-identity/no-match-found');
   });
 
+
+  router.get('/v6-1/establish-identity/search-for-your-details', (req, res) => {
+    res.render('v6-1/establish-identity/search-for-your-details');
+  });
+
+
+  router.get('/v6-1/establish-identity/search-for-your-details-another-way', (req, res) => {
+    res.redirect('/v6-1/establish-identity/search-for-your-details');
+  });
+
+  router.get('/v6-1/no-kbv/find-some-security-questions', (req, res) => {
+    res.render('v6-1/no-kbv/find-some-security-questions');
+  });
+
   router.get('/v6-1/no-kbv/find-some-security-questions-to-ask-you', (req, res) => {
-    res.render('v6-1/no-kbv/find-some-security-questions-to-ask-you');
+    res.redirect('/v6-1/no-kbv/find-some-security-questions');
   });
 
   router.get('/v6-1/kbv-questions/another-benefit-you-have-previously-applied-for', (req, res) => {
@@ -48,21 +62,31 @@ module.exports = function (router) {
   });
 
   // ✅ ✅ ADDED: FRAUD PAGE (Severus)
-  router.get('/v6-1/counter-fraud-checks/bring-up-some-security-questions-single', (req, res) => {
-    res.render('v6-1/counter-fraud-checks/bring-up-some-security-questions-single');
+  router.get('/v6-1/counter-fraud-checks/bring-up-security-questions-single', (req, res) => {
+    res.render('v6-1/counter-fraud-checks/bring-up-security-questions-single');
   });
 
+  router.get('/v6-1/counter-fraud-checks/bring-up-some-security-questions-single', (req, res) => {
+      res.redirect('/v6-1/counter-fraud-checks/bring-up-security-questions-single');
+  });
+
+
   // ✅ END SESSION GET
-  router.get('/v6-1/end/end-session', (req, res) => {
+  router.get('/v6-1/end/end-this-session', (req, res) => {
 
     const referer = req.get('Referrer');
 
-    if (referer && !referer.includes('/v6-1/end/end-session')) {
+    if (referer && !referer.includes('/v6-1/end/end-this-session')) {
       req.session.data.previousPage = referer;
     }
 
-    res.render('v6-1/end/end-session');
+    res.render('v6-1/end/end-this-session');
   });
+
+  router.get('/v6-1/end/end-session', (req, res) => {
+    res.redirect('/v6-1/end/end-this-session');
+  });
+
 
   // =========================================
   // NINO ENTRY ✅
@@ -79,6 +103,9 @@ module.exports = function (router) {
     const cleaned = raw.replace(/\s/g, '').toUpperCase();
 
     const formatted = cleaned.replace(/^(.{2})(.{2})(.{2})(.{2})(.{1})$/, '$1 $2 $3 $4 $5');
+
+    req.session.data.nationalinsurancenumber = cleaned;
+    req.session.data.nationalinsurancenumberFormatted = formatted;
 
     const journeys = {
       'QQ123456C': { type: 'standard', name: 'Albus Dumbledore', dob: '5/1/1978', postcode: 'PE1 6AN' },
@@ -224,12 +251,12 @@ module.exports = function (router) {
     }
 
     if (journey.type === 'no-kbv') {
-      return res.redirect('/v6-1/no-kbv/find-some-security-questions-to-ask-you');
+      return res.redirect('/v6-1/no-kbv/find-some-security-questions');
     }
 
     // ✅ FIX: Severus now goes to fraud page
     if (journey.type === 'flagged') {
-      return res.redirect('/v6-1/counter-fraud-checks/bring-up-some-security-questions-single');
+      return res.redirect('/v6-1/counter-fraud-checks/bring-up-security-questions-single');
     }
 
     return res.redirect('/v6-1/kbv-questions/another-benefit-you-have-previously-applied-for');
@@ -306,7 +333,7 @@ return res.redirect('/v6-1/kbv-questions/what-is-your-mobile-telephone-number');
   // END SESSION ✅
   // =========================================
 
-  router.post('/v6-1/end/end-session', (req, res) => {
+  router.post('/v6-1/end/end-this-session', (req, res) => {
 
     const answer = req.body.endSession;
 
@@ -336,7 +363,7 @@ return res.redirect('/v6-1/kbv-questions/what-is-your-mobile-telephone-number');
 // NO KBV ✅
 // =========================================
 
-router.post('/v6-1/no-kbv/find-some-security-questions-to-ask-you', (req, res) => {
+router.post('/v6-1/no-kbv/find-some-security-questions', (req, res) => {
 
   const answer = req.body.correctnokbv;
 
@@ -369,12 +396,12 @@ router.get('/v6-1/establish-identity/route-from-found', (req, res) => {
 
   // ✅ Romilda
   if (journey.type === 'no-kbv') {
-    return res.redirect('/v6-1/no-kbv/find-some-security-questions-to-ask-you');
+    return res.redirect('/v6-1/no-kbv/find-some-security-questions');
   }
 
   // ✅ Severus
   if (journey.type === 'flagged') {
-    return res.redirect('/v6-1/counter-fraud-checks/bring-up-some-security-questions-single');
+    return res.redirect('/v6-1/counter-fraud-checks/bring-up-security-questions-single');
   }
 
   // ✅ Albus

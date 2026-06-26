@@ -2,7 +2,7 @@
 {% set hideEndSession = true %}
 
 {% block pageTitle %}
-  End session – {{ serviceName }}
+  Are you sure you want to end this session – {{ serviceName }}
 {% endblock %}
 
 {% block content %}
@@ -10,7 +10,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="/v6-1/end/end-session" method="post">
+    <form action="/v6-1/end/end-this-session" method="post">
 
       <div class="govuk-form-group">
 
