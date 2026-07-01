@@ -1,0 +1,25 @@
+{% extends "v6-1/layouts/main_matching.html" %}
+{% set hideEndSession = true %}
+
+{% block pageTitle %}
+  Sorry, there is a problem with the service – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <h1 class="govuk-heading-l">
+        Sorry, there is a problem with the service
+      </h1>
+
+      <p class="govuk-body">Try again later.</p>
+
+      <p class="govuk-body">Use DWP systems to help you ask security questions until the service is available again.</p>
+
+      <p class="govuk-body">Refer to your service line instructions for any further guidance.</p>
+
+  </div>
+
+{% endblock %}

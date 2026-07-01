@@ -269,7 +269,13 @@ module.exports = function (router) {
 
   router.post('/v6-1/kbv-questions/when-did-you-receive-your-last-payment', (req, res) => {
 
-    const journey = req.session.data.journey;
+    let journey = req.session.data.journey;
+
+    // ✅ allow back button / retry
+    if (!journey) {
+      journey = { type: 'standard' };
+      req.session.data.journey = journey;
+    }
 
     const day = req.body['payment-received-day'];
     const month = req.body['payment-received-month'];
@@ -301,7 +307,14 @@ return res.redirect('/v6-1/kbv-questions/what-is-your-mobile-telephone-number');
 
   router.post('/v6-1/kbv-questions/what-is-your-mobile-telephone-number', (req, res) => {
 
-  const journey = req.session.data.journey;
+    let journey = req.session.data.journey;
+
+    // ✅ allow back button / retry
+    if (!journey) {
+      journey = { type: 'standard' };
+      req.session.data.journey = journey;
+    }
+    
   const mobile = req.body['customer-mobile-tel-v6'];
 
   if (!mobile || mobile.trim() === '') {
