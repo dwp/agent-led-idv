@@ -1,0 +1,104 @@
+{% extends "v6-1/layouts/main_idv_representative_matching.html" %}
+
+{% block pageTitle %}
+  I need to check that I have found the correct record – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <h1 class="govuk-heading-l">
+        I need to check that I have found the correct record
+      </h1>
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m">
+          Customer details
+        </caption>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header table-label">Name</th>
+            <td class="govuk-table__cell">
+              {{ data['customerName'] or "Albus Dumbledore" }}
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header table-label">
+              National Insurance number
+            </th>
+            <td class="govuk-table__cell">
+              {{ data['nationalinsurancenumberFormatted'] or "QQ 12 34 56 C" }}
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header table-label">
+              Date of birth
+            </th>
+            <td class="govuk-table__cell">
+              {{ data['customerDob'] or "5 January 1978" }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m">
+          Official representative details
+        </caption>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header table-label">Name</th>
+            <td class="govuk-table__cell">Mr Gordon Smith</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header table-label">
+              Relationship type
+            </th>
+            <td class="govuk-table__cell">Power of Attorny (POA)</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header table-label">Benefit type</th>
+            <td class="govuk-table__cell">Pension Credit</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header table-label">Start and end date</th>
+            <td class="govuk-table__cell">10 April 2025 to present</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form action="/v6-1/establish-identity/check-correct-record" method="post">
+
+      {{ govukRadios({
+        name: "correctrecord",
+        value: data['correctrecord'],
+        fieldset: {
+          legend: {
+            text: "Is this the correct customer record?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+</div>
+
+{% endblock %}
