@@ -1,0 +1,101 @@
+{% extends "v7/layouts/main_idv_quick_reference_rep.html" %}
+{% set hideEndSession = true %}
+
+{% block pageTitle %}
+  What type of representative are you – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/v7/representative/what-type-of-representative-are-you" method="post">
+
+      <div class="govuk-form-group">
+
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What type of representative are you?
+            </h1>
+          </legend>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+
+            <div class="govuk-radios__item">
+              <input
+                class="govuk-radios__input"
+                id="representative-type-appointee"
+                name="representativeType"
+                type="radio"
+                value="appointee">
+              <label class="govuk-label govuk-radios__label" for="representative-type-appointee">
+                Appointee
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input
+                class="govuk-radios__input"
+                id="representative-type-pab"
+                name="representativeType"
+                type="radio"
+                value="pab">
+              <label class="govuk-label govuk-radios__label" for="representative-type-pab">
+                Personal Acting Body (PAB)
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input
+                class="govuk-radios__input"
+                id="representative-type-poa"
+                name="representativeType"
+                type="radio"
+                value="poa">
+              <label class="govuk-label govuk-radios__label" for="representative-type-poa">
+                Power of Attorney (POA)
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input
+                class="govuk-radios__input"
+                id="representative-type-cab"
+                name="representativeType"
+                type="radio"
+                value="cab">
+              <label class="govuk-label govuk-radios__label" for="representative-type-cab">
+                Corporate Acting Body (CAB)
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input
+                class="govuk-radios__input"
+                id="representative-type-dont-know"
+                name="representativeType"
+                type="radio"
+                value="dont-know">
+              <label class="govuk-label govuk-radios__label" for="representative-type-dont-know">
+                I do not know
+              </label>
+            </div>
+
+          </div>
+
+        </fieldset>
+
+      </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

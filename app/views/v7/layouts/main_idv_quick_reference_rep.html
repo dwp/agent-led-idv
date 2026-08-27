@@ -27,11 +27,11 @@
 
 <div class="dwp-header__service-action">
 
-  {% if not hideEndSession %}
-    <a href="/v6-1/end/end-session" class="dwp-header__link">
-      End session
-    </a>
-  {% endif %}
+    <span
+    class="dwp-header__link"
+    style="cursor:not-allowed; text-decoration:none;">
+    End session
+    </span>
 
 </div>
 
@@ -40,13 +40,14 @@
   <!-- FULL-WIDTH BLUE BANNER -->
   <section
     class="dwp-quick-reference-custom dwp-quick-reference--alternative"
-    aria-label="Case information">
+    aria-label="Customer information">
 
     <!-- CONTENT CONSTRAINED TO GOV.UK GRID -->
     <div class="govuk-width-container">
 
       <dl class="dwp-quick-reference__block">
         <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+
 
         <dd class="dwp-quick-reference__primary">
           <span class="white-text govuk-!-font-size-36 govuk-!-font-weight-bold">
@@ -62,13 +63,23 @@
   {{ data['nationalinsurancenumberFormatted'] or "QQ 33 22 88 K" }}
 </dd>
 
+<!--
+
+{% if data.representativeJourney %}
+
 <dt class="dwp-quick-reference__label">Call type:</dt>
+
 <dd class="dwp-quick-reference__status">
-<strong class="govuk-tag govuk-tag--purple">
-  Representative
-</strong>
+  <strong class="govuk-tag govuk-tag--purple">
+    Representative
+  </strong>
 </dd>
 
+{% endif %}
+
+-->
+
+</dl>
     </div>
 
   </section>
@@ -110,10 +121,6 @@
             {
                 href: "",
                 text: "Accessibility statement"
-            },
-            {
-              href: "/manage-prototype",
-              text: "Manage prototype"
             },
             {
                 href: "",

@@ -1,0 +1,80 @@
+{% extends "v7/layouts/main_idv_quick_reference_rep.html" %}
+{% set hideEndSession = true %}
+
+{% block pageTitle %}
+  Check your name is on the customer's record – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/v7/representative/check-your-name-is-on-the-customers-record" method="post">
+
+      <div class="govuk-form-group">
+
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              I am going to check your name is on the customer's record
+            </h1>
+          </legend>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+
+          <div class="govuk-radios__item">
+            <input
+              class="govuk-radios__input"
+              id="representative-yes"
+              name="representativeCheck"
+              type="radio"
+              value="yes">
+
+            <label class="govuk-label govuk-radios__label" for="representative-yes">
+              Caller provided the correct name
+            </label>
+          </div>
+
+          <div class="govuk-radios__item">
+            <input
+              class="govuk-radios__input"
+              id="representative-no"
+              name="representativeCheck"
+              type="radio"
+              value="no">
+
+            <label class="govuk-label govuk-radios__label" for="representative-no">
+              Caller name does not match
+            </label>
+          </div>
+
+          <div class="govuk-radios__item">
+            <input
+              class="govuk-radios__input"
+              id="representative-not-found"
+              name="representativeCheck"
+              type="radio"
+              value="not-found">
+
+            <label class="govuk-label govuk-radios__label" for="representative-not-found">
+              No representative found
+            </label>
+          </div>
+
+        </div>
+
+        </fieldset>
+
+      </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

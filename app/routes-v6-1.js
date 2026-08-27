@@ -236,6 +236,12 @@ module.exports = function (router) {
       return res.redirect('/v6-1/reset-session');
     }
 
+    if (req.session.data.representativeJourney) {
+      return res.redirect(
+        '/v7/representative/are-you-an-official-representative'
+      );
+    }
+
     return routeFromJourney(req.session.data.journey, res);
 
   });
@@ -314,14 +320,17 @@ return res.redirect('/v6-1/kbv-questions/what-is-your-mobile-telephone-number');
       journey = { type: 'standard' };
       req.session.data.journey = journey;
     }
-    
-  const mobile = req.body['customer-mobile-tel-v6'];
+
+    const mobile = req.body['customer-mobile-tel-v6'];
 
   if (!mobile || mobile.trim() === '') {
     return res.redirect('/v6-1/errors/input-errors/missing-phone');
   }
 
-  const isCorrect = (mobile === '07700 900000');
+  // Remove all spaces before validation
+  const normalisedMobile = mobile.replace(/\s+/g, '');
+
+  const isCorrect = (normalisedMobile === '07700900000');
 
   // ✅ Severus (flagged)
   if (journey.type === 'flagged') {
@@ -426,12 +435,27 @@ router.get('/v6-1/establish-identity/route-from-found', (req, res) => {
 // CLEAR SESSION
 // =========================================
 
+// =========================================
+// CLEAR SESSION
+// =========================================
+
 router.get('/v6-1/reset-session', (req, res) => {
 
-  req.session.destroy(() => {
-    res.redirect('/v6-1/establish-identity/what-is-your-national-insurance-number');
-  });
+  const representativeJourney =
+    req.session.data?.representativeJourney
 
-});
+  req.session.destroy(() => {
+
+    if (representativeJourney) {
+      return res.redirect('/v7/representative/reset')
+    }
+
+    return res.redirect(
+      '/v6-1/establish-identity/what-is-your-national-insurance-number'
+    )
+
+  })
+
+})
 
 };

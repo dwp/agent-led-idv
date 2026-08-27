@@ -16,6 +16,26 @@ routesV6(router);
 const routesV61 = require('./routes-v6-1');
 routesV61(router);
 
+// =========================================
+// Routes V7
+// =========================================
+
+const routesV7 = require('./routes-v7');
+routesV7(router);
+
+
+// =========================================
+// Reset sitemap page data
+// =========================================
+
+router.get('/site-map', function (req, res) {
+
+  delete req.session.data.representativeJourney
+
+  res.render('site-map')
+
+})
+
 
 // BRIDGE ROUTE (IMPORTANT)
 router.post('/v6-1-bridge/nino-answer', function (req, res) {
@@ -1112,11 +1132,3 @@ router.get('*', function (req, res, next) {
 
     next();
 });
-
-// ---------------------------------------------------------
-// UR-R5 - All end session paths
-// ---------------------------------------------------------
-
-// ---------------------------------------------------------
-// End ession routing removed for now
-// ---------------------------------------------------------

@@ -40,37 +40,22 @@
   <!-- FULL-WIDTH BLUE BANNER -->
   <section
     class="dwp-quick-reference-custom dwp-quick-reference--alternative"
-    aria-label="Case information">
+    aria-label="Call type">
 
     <!-- CONTENT CONSTRAINED TO GOV.UK GRID -->
     <div class="govuk-width-container">
 
-      <dl class="dwp-quick-reference__block">
-        <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+      {% if data.representativeJourney %}
 
+      <dt class="dwp-quick-reference__label">Call type:</dt>
 
-        <dd class="dwp-quick-reference__primary">
-          <span class="white-text govuk-!-font-size-36 govuk-!-font-weight-bold">
-            Romilda Vane
-          </span>
-        </dd>
+      <dd class="dwp-quick-reference__status">
+        <strong class="govuk-tag govuk-tag--purple">
+          Representative
+        </strong>
+      </dd>
 
-        <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary">
-  National Insurance number:
-</dt>
-
-<dd class="dwp-quick-reference__secondary">
-  QQ 33 33 33 C
-</dd>
-
-
-
-      <!--  <dt class="dwp-quick-reference__label govuk-visually-hidden">
-          Channel:
-        </dt>
-
-        <dd class="dwp-quick-reference__secondary">Inbound call</dd>
-        </dl>-->
+      {% endif %}
 
     </div>
 
@@ -113,6 +98,10 @@
             {
                 href: "",
                 text: "Accessibility statement"
+            },
+            {
+              href: "/manage-prototype",
+              text: "Manage prototype"
             },
             {
                 href: "",

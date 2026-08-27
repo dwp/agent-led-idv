@@ -27,16 +27,12 @@
     </div>
 
     <h1 class="govuk-heading-l">
-      {% if data.representativeJourney %}
         I am waiting for the system to load the next questions I need to ask you
-      {% else %}
-        I am just waiting for the system to bring up some security questions
-      {% endif %}
     </h1>
 
     {{ govukButton({
       text: "Continue",
-      href: "/v6-1/kbv-questions/another-benefit-you-have-previously-applied-for"
+      href: "#"
     }) }}
 
   </div>

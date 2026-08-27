@@ -10,7 +10,11 @@
     <div class="govuk-grid-column-three-quarters">
 
       <h1 class="govuk-heading-l">
-        I will try to search for your customer record another way
+        {% if data.representativeJourney %}
+          I will try to search for their customer record another way
+        {% else %}
+          I will try to search for your customer record another way
+        {% endif %}
       </h1>
 
       <div class="govuk-inset-text colour-blue">

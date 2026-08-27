@@ -1,0 +1,90 @@
+{% extends "/v7/layouts/main_matching_rep_flag.html" %}
+{% set hideEndSession = true %}
+
+{% block pageTitle %}
+  What is their National Insurance number – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/v6-1/establish-identity/what-is-your-national-insurance-number" method="post" class="form">
+
+      <fieldset class="govuk-fieldset" aria-describedby="national-insurance-number-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            What is their National Insurance number?
+          </h1>
+        </legend>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-visually-hidden" for="national-insurance-number">
+            What is their National Insurance number?
+          </label>
+
+          <div id="national-insurance-number-hint" class="govuk-hint">
+            It’s on their National Insurance card, benefit letter, payslip or P60 – for example, 'QQ 12 34 56 C'.
+          </div>
+
+          <input
+            class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing"
+            id="national-insurance-number"
+            name="nationalinsurancenumber"
+            type="text"
+            value="{{ data['nationalinsurancenumber'] }}"
+            autocomplete="off"
+            spellcheck="false"
+            aria-describedby="national-insurance-number-hint">
+        </div>
+      </fieldset>
+
+      {{ govukButton({
+        text: "Search for customer record"
+      }) }}
+
+      </form>
+
+    <p class="govuk-body">
+      <a href="#" class="govuk-link">
+        Search without a National Insurance number
+      </a>
+    </p>
+
+
+
+    <div class="govuk-grid-row grey-row">
+      <div class="govuk-grid-column-full">
+        <p class="govuk-body">
+          <strong>User guide</strong>
+        </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            Only use QQ 12 34 56 C nino for this journey.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+
+    <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+      <h2 class="govuk-heading-s" id="subsection-title">
+        Guidance
+      </h2>
+      <div class="govuk-!-padding-bottom-1"></div>
+
+      <p class="govuk-body">
+         The caller must provide the customer's National Insurance number.
+      </p>
+
+    </aside>
+  </div>
+</div>
+
+
+{% endblock %}

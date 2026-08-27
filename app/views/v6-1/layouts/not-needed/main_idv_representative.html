@@ -48,10 +48,9 @@
       <dl class="dwp-quick-reference__block">
         <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
 
-
         <dd class="dwp-quick-reference__primary">
           <span class="white-text govuk-!-font-size-36 govuk-!-font-weight-bold">
-            Romilda Vane
+            {{ data['customerName'] or "Forename Surname" }}
           </span>
         </dd>
 
@@ -60,17 +59,20 @@
 </dt>
 
 <dd class="dwp-quick-reference__secondary">
-  QQ 33 33 33 C
+  {{ data['nationalinsurancenumberFormatted'] or "QQ 33 22 88 K" }}
 </dd>
 
+{% if data.representativeJourney %}
 
+<dt class="dwp-quick-reference__label">Call type:</dt>
 
-      <!--  <dt class="dwp-quick-reference__label govuk-visually-hidden">
-          Channel:
-        </dt>
+<dd class="dwp-quick-reference__status">
+  <strong class="govuk-tag govuk-tag--purple">
+    Representative
+  </strong>
+</dd>
 
-        <dd class="dwp-quick-reference__secondary">Inbound call</dd>
-        </dl>-->
+{% endif %}
 
     </div>
 
@@ -113,6 +115,10 @@
             {
                 href: "",
                 text: "Accessibility statement"
+            },
+            {
+              href: "/manage-prototype",
+              text: "Manage prototype"
             },
             {
                 href: "",

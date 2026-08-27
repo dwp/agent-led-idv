@@ -39,10 +39,21 @@
       </li>
     </ul>
 
-    {{ govukButton({
-      text: "Reset Identity Checker",
-      href: "/v6-1/reset-session"
-    }) }}
+    {% if data.representativeJourney %}
+
+      {{ govukButton({
+        text: "Reset Identity Checker",
+        href: "/v7/representative/reset"
+      }) }}
+
+    {% else %}
+
+      {{ govukButton({
+        text: "Reset Identity Checker",
+        href: "/v6-1/reset-session"
+      }) }}
+
+    {% endif %}
 
   </div>
 </div>

@@ -1,0 +1,39 @@
+{% extends "v7/layouts/main_idv_quick_reference_rep.html" %}
+{% set hideEndSession = true %}
+
+{% block pageTitle %}
+  Can you confirm your full name – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <h1 class="govuk-heading-l">
+      Can you confirm your full name?
+    </h1>
+
+    <div class="govuk-inset-text colour-blue">
+
+      <h2 class="govuk-heading-m">
+        What you should do next
+      </h2>
+
+      <ul class="govuk-list govuk-list--number">
+        <li>Use your service line system to search for representative details.</li>
+        <li>If your service does not show this, use Searchlight and go to 'Relationships' to check this information.</li>
+        <li>If the customer has a represenative, make a note of their name.</li>
+      </ul>
+
+    </div>
+
+    {{ govukButton({
+      text: "Continue",
+      href: "check-your-name-is-on-the-customers-record"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

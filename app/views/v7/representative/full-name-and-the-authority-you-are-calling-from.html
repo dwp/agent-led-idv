@@ -1,0 +1,42 @@
+{% extends "v7/layouts/main_idv_quick_reference_rep.html" %}
+{% set hideEndSession = true %}
+
+{% block pageTitle %}
+  Can you confirm your full name and the authority you are calling from? – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <h1 class="govuk-heading-l">
+      Can you confirm your full name and the authority you are calling from?
+    </h1>
+
+    <p class="govuk-body">I will check the details we have for you match our records</p>
+
+    <div class="govuk-inset-text colour-blue">
+
+      <h2 class="govuk-heading-m">
+        What you should do next
+      </h2>
+
+      <ul class="govuk-list govuk-list--number">
+        <li>Find the LA on the <a href="#" class="govuk-link">Apollo Register</a>.</li>
+        <li>Check the name matches the one you have been given.</li>
+        <li>If the name is shown correctly, ask what information they need, why they need it and what they intend to do with it.</li>
+        <li>If the name is incorrect, request a different member of the LA call back.</li>
+      </ul>
+
+    </div>
+
+    {{ govukButton({
+    text: "Reset Identity Checker",
+    href: "/v7/representative/reset"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

@@ -25,12 +25,21 @@
       I can now continue with your request.
     </p>
 
-    {% from "govuk/components/button/macro.njk" import govukButton %}
+    {% if data.representativeJourney %}
 
-    {{ govukButton({
-      text: "Reset Identity Checker",
-      href: "/v6-1/reset-session"
-    }) }}
+      {{ govukButton({
+        text: "Reset Identity Checker",
+        href: "/v7/representative/reset"
+      }) }}
+
+    {% else %}
+
+      {{ govukButton({
+        text: "Reset Identity Checker",
+        href: "/v6-1/reset-session"
+      }) }}
+
+    {% endif %}
 
   </div>
 

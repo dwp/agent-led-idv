@@ -1,0 +1,57 @@
+{% extends "v7/layouts/main_idv_quick_reference_rep.html" %}
+{% set hideEndSession = true %}
+
+{% block pageTitle %}
+  I am limited with what I can help you with – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <h1 class="govuk-heading-l">
+      As you are not an official representative, I am limited with what I can help you with
+    </h1>
+
+    <div class="govuk-inset-text colour-blue">
+
+      <h2 class="govuk-heading-m">
+        What you should do next
+      </h2>
+
+      <h3 class="govuk-heading-s">
+        Questions about the customer's claim
+      </h3>
+
+      <p class="govuk-body">  If the caller can provide basic information about the customer's claim, you can tell them:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>the progress of the claim</li>
+        <li>how the benefit amount or payment has been calculated</li>
+        <li>how a decision has been reached</li>
+        <li>what is expected to happen next</li>
+      </ul>
+
+      <h3 class="govuk-heading-s">
+        Making a change or sharing other information
+      </h3>
+
+      <ul class="govuk-list govuk-list--number">
+        <li>Do not report a change of circumstances or share personal information about the customer.</li>
+        <li>Advise the caller to try again with the customer present, so they can answer the security questions.</li>
+        <li>Alternatively, the customer can send identity documents to us by post. They will also need to include the reason for the call today.</li>
+      </ul>
+
+    </div>
+
+    {{ govukButton({
+    text: "Reset Identity Checker",
+    href: "/v7/representative/reset"
+    }) }}
+
+
+  </div>
+</div>
+
+{% endblock %}

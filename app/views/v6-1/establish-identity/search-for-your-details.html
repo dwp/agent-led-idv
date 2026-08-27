@@ -1,8 +1,12 @@
 {% extends "v6-1/layouts/main_matching.html" %}
+{% set possessive = "your" %}
+{% if data.representativeJourney %}
+  {% set possessive = "their" %}
+{% endif %}
 {% set backLink = 'true' %}
 
 {% block pageTitle %}
-  I need to search for your details – {{ serviceName }}
+  I need to search for {{ possessive }} details – {{ serviceName }}
 {% endblock %}
 
 {% block content %}
@@ -15,11 +19,11 @@
       <fieldset class="govuk-fieldset">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <h1 class="govuk-fieldset__heading">
-            I need to search for your details another way
+            I need to search for {{ possessive }} details another way
           </h1>
         </legend>
 
-        <h2 class="govuk-heading-m">What is your full name?</h2>
+        <h2 class="govuk-heading-m">What is {{ possessive }} full name?</h2>
 
         <!-- FIRST NAME -->
         <div class="govuk-form-group">
@@ -38,7 +42,7 @@
           <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-birth">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h2 class="govuk-fieldset__heading">
-                What is your date of birth?
+                What is {{ possessive }} date of birth?
               </h2>
             </legend>
 
@@ -91,7 +95,7 @@
         <div class="govuk-form-group">
           <label class="govuk-label govuk-label--m" for="address-postcode">
             <h2 class="govuk-fieldset__heading">
-              What is your postcode?
+              What is {{ possessive }} postcode?
             </h2>
           </label>
           <input class="govuk-input govuk-input--width-10"

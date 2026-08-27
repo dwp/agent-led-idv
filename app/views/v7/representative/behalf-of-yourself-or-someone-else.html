@@ -1,0 +1,96 @@
+{% extends "v7/layouts/main_matching.html" %}
+{% set hideEndSession = true %}
+
+{% block pageTitle %}
+Are you calling on behalf of yourself or someone else – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
+
+<form action="/v7/representative/behalf-of-yourself-or-someone-else" method="post">
+
+<div class="govuk-form-group">
+
+<fieldset class="govuk-fieldset">
+<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+<h1 class="govuk-fieldset__heading">
+Are you calling on behalf of yourself or someone else?
+</h1>
+</legend>
+
+<div id="customer-hint" class="govuk-hint">
+Tell us whether you're calling about your own claim or on behalf of another customer.
+</div>
+
+<div class="govuk-radios" data-module="govuk-radios">
+
+<div class="govuk-radios__item">
+<input
+class="govuk-radios__input"
+id="calling-myself"
+name="calling"
+type="radio"
+value="myself">
+
+<label class="govuk-label govuk-radios__label" for="calling-myself">
+Myself
+</label>
+</div>
+
+<div class="govuk-radios__item">
+<input
+class="govuk-radios__input"
+id="calling-someone-else"
+name="calling"
+type="radio"
+value="someone-else">
+
+<label class="govuk-label govuk-radios__label" for="calling-someone-else">
+Someone else
+</label>
+</div>
+
+</div>
+
+</fieldset>
+
+</div>
+
+{{ govukButton({
+text: "Continue"
+}) }}
+
+</form>
+
+<div class="govuk-grid-row grey-row">
+  <div class="govuk-grid-column-full">
+    <p class="govuk-body">
+      <strong>User guide</strong>
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        Select 'Someone else' for representative path.
+      </li>
+      <li>
+        Select 'Myself' for existing customer path
+      </li>
+      <li>
+        Search by name, dob and post code has been disabled for the representative journey.
+      </li>
+      <li>
+        This representative journey is presented with no fraud flag found on the record.
+      </li>
+      <li>
+        'End session' link in the header will  not work as intended on the representative path, so please avoid.
+      </li>
+    </ul>
+  </div>
+</div>
+
+</div>
+</div>
+
+{% endblock %}
