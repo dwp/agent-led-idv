@@ -154,7 +154,7 @@ router.post('/v7/representative/what-type-of-representative-are-you', function (
   }
 
   if (answer === 'poa') {
-    return res.redirect('/v7/representative/power-of-attorney')
+    return res.redirect('/v7/representative/can-you-confirm-your-full-name')
   }
 
   if (answer === 'cab') {

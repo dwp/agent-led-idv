@@ -39,10 +39,21 @@
         </tbody>
       </table>
 
-    {{ govukButton({
-      text: "Continue",
-      href: "/v6-1/establish-identity/route-from-found"
-    }) }}
+      {% if data.representativeJourney %}
+
+        {{ govukButton({
+          text: "Continue",
+          href: "/v7/representative/are-you-an-official-representative"
+        }) }}
+
+      {% else %}
+
+        {{ govukButton({
+          text: "Continue",
+          href: "/v6-1/establish-identity/route-from-found"
+        }) }}
+
+      {% endif %}
 
 </div>
 

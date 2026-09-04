@@ -1,12 +1,8 @@
 {% extends "v6-1/layouts/main_matching.html" %}
-{% set possessive = "your" %}
-{% if data.representativeJourney %}
-  {% set possessive = "their" %}
-{% endif %}
 {% set backLink = 'true' %}
 
 {% block pageTitle %}
-  I need to search for {{ possessive }} details – {{ serviceName }}
+  I need to search for their details – {{ serviceName }}
 {% endblock %}
 
 {% block content %}
@@ -14,16 +10,14 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="/v6-1/establish-identity/name-dob-postcode-answer" method="post">
-
       <fieldset class="govuk-fieldset">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <h1 class="govuk-fieldset__heading">
-            I need to search for {{ possessive }} details another way
+            I need to search for their details another way
           </h1>
         </legend>
 
-        <h2 class="govuk-heading-m">What is {{ possessive }} full name?</h2>
+        <h2 class="govuk-heading-m">What is their full name?</h2>
 
         <!-- FIRST NAME -->
         <div class="govuk-form-group">
@@ -42,7 +36,7 @@
           <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-birth">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h2 class="govuk-fieldset__heading">
-                What is {{ possessive }} date of birth?
+                What is their date of birth?
               </h2>
             </legend>
 
@@ -95,7 +89,7 @@
         <div class="govuk-form-group">
           <label class="govuk-label govuk-label--m" for="address-postcode">
             <h2 class="govuk-fieldset__heading">
-              What is {{ possessive }} postcode?
+              What is their postcode?
             </h2>
           </label>
           <input class="govuk-input govuk-input--width-10"
@@ -108,10 +102,9 @@
       </fieldset>
 
       {{ govukButton({
-        text: "Search for customer record"
+        text: "Search for customer record",
+        href: "#"
       }) }}
-
-    </form>
 
     <div class="govuk-grid-row grey-row">
       <div class="govuk-grid-column-full">
@@ -123,13 +116,13 @@
             Standard IDV path - Albus Dumbledore, 5-1-1978, PE1 6AN
           </li>
           <li>
-            Fraud flag found - Severus Snape, 9-1-1960, SW1A 1AA (Do not use for representative journey)
+            Fraud flag found - Severus Snape, 9-1-1960, SW1A 1AA
           </li>
           <li>
-            No KBVs available - Romilda Vane, 13-2-1981, M1 1AA (Do not use for representative journey)
+            No KBVs available - Romilda Vane, 13-2-1981, M1 1AA
           </li>
           <li>
-            No match path - Any other data (Not present for representative journey)
+            No match path - Any other data
           </li>
         </ul>
       </div>
