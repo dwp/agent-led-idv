@@ -10,7 +10,7 @@
     "@govuk-prototype-kit/step-by-step": "^3.0.0",
     "axios": "1.18.1",
     "govuk-frontend": "6.4.0",
-    "govuk-prototype-kit": "13.20.3",
+    "govuk-prototype-kit": "13.20.4",
     "jquery": "3.7.1",
     "notifications-node-client": "8.4.0",
     "qs": "^6.14.1",
