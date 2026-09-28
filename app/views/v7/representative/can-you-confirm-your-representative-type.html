@@ -2,7 +2,7 @@
 {% set hideEndSession = true %}
 
 {% block pageTitle %}
-  What type of representative are you – {{ serviceName }}
+  Can you confirm your representative type – {{ serviceName }}
 {% endblock %}
 
 {% block content %}
@@ -10,14 +10,14 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="/v7/representative/what-type-of-representative-are-you" method="post">
+    <!-- <form action="/v7/representative/what-type-of-representative-are-you" method="post"> -->
 
       <div class="govuk-form-group">
 
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              What type of representative are you?
+              Can you confirm your representative type?
             </h1>
           </legend>
 
@@ -26,25 +26,33 @@
             <div class="govuk-radios__item">
               <input
                 class="govuk-radios__input"
-                id="representative-type-appointee"
+                id="representative-type-dwpappointee"
                 name="representativeType"
                 type="radio"
-                value="appointee">
-              <label class="govuk-label govuk-radios__label" for="representative-type-appointee">
-                Appointee
+                value="dwpappointee"
+                aria-describedby="representative-type-pab-hint">
+              <label class="govuk-label govuk-radios__label" for="representative-type-dwpappointee">
+                DWP Appointee
               </label>
+              <div id="representative-type-pab-hint" class="govuk-hint govuk-radios__hint">
+              They have been appointed by DWP to act on behalf of the customer
+            </div>
             </div>
 
             <div class="govuk-radios__item">
               <input
                 class="govuk-radios__input"
-                id="representative-type-poa"
+                id="representative-type-otherpab"
                 name="representativeType"
                 type="radio"
-                value="poa">
-              <label class="govuk-label govuk-radios__label" for="representative-type-poa">
-                Power of Attorney (POA)
+                value="otherpab"
+                aria-describedby="representative-type-otherpab-hint">
+              <label class="govuk-label govuk-radios__label" for="representative-type-otherpab">
+                Other Personal Acting Body (PAB)
               </label>
+              <div id="representative-type-cab-hint" class="govuk-hint govuk-radios__hint">
+              This could be a Power of Attorney (POA), Deputy or Guardian
+            </div>
             </div>
 
             <div class="govuk-radios__item">
@@ -53,34 +61,14 @@
                 id="representative-type-cab"
                 name="representativeType"
                 type="radio"
-                value="cab">
+                value="cab"
+                aria-describedby="representative-type-cab-hint">
               <label class="govuk-label govuk-radios__label" for="representative-type-cab">
                 Corporate Acting Body (CAB)
               </label>
+              <div id="representative-type-cab-hint" class="govuk-hint govuk-radios__hint">
+              This could be a solicitor, nursing home, Local Authority, Police, hospital and more
             </div>
-
-            <div class="govuk-radios__item">
-              <input
-                class="govuk-radios__input"
-                id="representative-type-deputy"
-                name="representativeType"
-                type="radio"
-                value="deputy">
-              <label class="govuk-label govuk-radios__label" for="representative-type-deputy">
-                Deputy
-              </label>
-            </div>
-
-            <div class="govuk-radios__item">
-              <input
-                class="govuk-radios__input"
-                id="representative-type-guardian"
-                name="representativeType"
-                type="radio"
-                value="guardian">
-              <label class="govuk-label govuk-radios__label" for="representative-type-guardian">
-                Guardian
-              </label>
             </div>
 
             <div class="govuk-radios__item">
@@ -105,7 +93,7 @@
         text: "Continue"
       }) }}
 
-    </form>
+  <!--  </form> -->
 
   </div>
 </div>

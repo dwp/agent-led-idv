@@ -134,7 +134,7 @@ router.post('/v7/representative/check-your-name-is-on-the-customers-record', fun
 })
 
 // =========================================
-// Type of appointee
+// Type of Representative
 // =========================================
 
 router.post('/v7/representative/what-type-of-representative-are-you', function (req, res) {
@@ -149,7 +149,11 @@ router.post('/v7/representative/what-type-of-representative-are-you', function (
     return res.redirect('/v7/representative/can-you-confirm-your-full-name')
   }
 
-  if (answer === 'pab') {
+  if (answer === 'deputy') {
+    return res.redirect('/v7/representative/can-you-confirm-your-full-name')
+  }
+
+  if (answer === 'guardian') {
     return res.redirect('/v7/representative/can-you-confirm-your-full-name')
   }
 
@@ -163,28 +167,6 @@ router.post('/v7/representative/what-type-of-representative-are-you', function (
 
   if (answer === 'dont-know') {
     return res.redirect('/v7/representative/can-you-confirm-your-full-name')
-  }
-
-})
-
-// =========================================
-// Type of CAB
-// =========================================
-
-router.post('/v7/representative/what-type-of-corporate-acting-body-are-you', function (req, res) {
-
-  const answer = req.body.representativeType
-
-  if (!answer) {
-    return res.redirect('/v6-1/errors/input-errors/missing-selection')
-  }
-
-  if (answer === 'cab-type-la') {
-    return res.redirect('/v7/representative/full-name-and-the-authority-you-are-calling-from')
-  }
-
-  if (answer === 'cab-type-other') {
-    return res.redirect('/v7/representative/cab-other')
   }
 
 })
